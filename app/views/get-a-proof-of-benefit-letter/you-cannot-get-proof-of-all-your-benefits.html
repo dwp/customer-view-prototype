@@ -42,17 +42,31 @@ Check your details before you send them
           You cannot get proof of all your benefits using this service
         </h1>
 
-        {% if (data['which-benefits-need-proof'].length == 2) %}
+        {# {{ (or (data['which-benefits-need-proof'].length == 2 and 'I need a letter for another benefit' in data['which-benefits-need-proof'])) | dump }} #}
+        {% if (data['which-benefits-need-proof'].length == 3 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
+          <p>You can get a letter for {{ data['which-benefits-need-proof'][0] }} and {{ data['which-benefits-need-proof'][1] }}.</p>
+        {% elif (data['which-benefits-need-proof'].length == 2 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
+          <p>You can get a letter for {{ data['which-benefits-need-proof'][0]}}.</p>
+        {% elif (data['which-benefits-need-proof'].length == 2) %}
           <p>You can get a letter for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
-        {% elseif (data['which-benefits-need-proof'].length == 3) %}
-          <p>You can get a letter for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
-        {% elseif (data['which-benefits-need-proof'].length == 4) %}
+        {% elif (data['which-benefits-need-proof'].length > 3 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
           <p>We can send you letters for:</p>
           <ul class="govuk-list govuk-list--bullet">
-            {% for benefit in data['which-benefits-need-proof'] %}
-              <li>{{ benefit }}</li>
+              {% for benefit in data['which-benefits-need-proof'] %}
+                {% if benefit !== 'I need a letter for another benefit' %}
+                    <li>{{ benefit }}</li>
+              {% endif %}
             {% else %}
-              <p>No benefit selected</p>
+                <p>No benefit selected</p>
+            {% endfor %}    
+          </ul>
+        {% elif (data['which-benefits-need-proof'].length > 2) %}
+          <p>We can send you letters for:</p>
+          <ul class="govuk-list govuk-list--bullet">
+              {% for benefit in data['which-benefits-need-proof'] %}
+                <li>{{ benefit }}</li>
+            {% else %}
+                <p>No benefit selected</p>
             {% endfor %}    
           </ul>
         {% endif %}
