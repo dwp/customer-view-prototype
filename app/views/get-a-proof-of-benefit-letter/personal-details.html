@@ -160,7 +160,9 @@ Customer view
                   </dt>
                   <dd class="govuk-summary-list__value">
                     {% for benefit in data['researchSetUpBenefits'] %}
+                    {% if benefit !== 'I need a letter for another benefit' %}
                     <p class="govuk-body">{{ benefit }}<br>
+                    {% endif %}
                     {% else %}
                       <p>No benefit selected</p>
                     {% endfor %}
