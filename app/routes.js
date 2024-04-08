@@ -2067,7 +2067,7 @@ router.post('/get-a-proof-of-benefit-letter/multi-benefits-answer', function (re
   // Check if correspondence address is available
   if (researchSetUpAddress === "yes" && !whichBenefitNeedProof.includes("I need a letter for another benefit"))  {
     // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/where-can-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
 
   } else if (researchSetUpAddress === "no" && !whichBenefitNeedProof.includes("I need a letter for another benefit"))  {
     // Send user to single address page
@@ -2075,7 +2075,8 @@ router.post('/get-a-proof-of-benefit-letter/multi-benefits-answer', function (re
 
   } else {
     // Send to you can't get proof for all benefits.
-    res.redirect('/get-a-proof-of-benefit-letter/you-cannot-get-proof-of-all-your-benefits');
+    res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
+
   }
 
 })
@@ -2090,7 +2091,7 @@ router.post('/get-a-proof-of-benefit-letter/single-benefits-answer', function (r
   // Check if correspondence address is available
   if (researchSetUpAddress === "yes" && doYouWantLetterFor == "yes")  {
     // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/where-can-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
 
   } else if (researchSetUpAddress === "no" && doYouWantLetterFor == "yes")  {
     // Send user to next single address page
@@ -2144,7 +2145,7 @@ router.post('/get-a-proof-of-benefit-letter/cant-get-proof-all-benefits-answer',
   // Check if correspondence address is available
   if (researchSetUpAddress === "yes")  {
     // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/where-can-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
 
   } else  {
     // Send user to single address page

@@ -48,7 +48,9 @@ Check your details before you send them
             </dt>
             <dd class="govuk-summary-list__value">
               {% for benefit in data['which-benefits-need-proof'] %}
-              <p class="govuk-body">{{ benefit }}<br>
+                {% if benefit !== 'I need a letter for another benefit' %}
+                  <p class="govuk-body">{{ benefit }}<br>
+                {% endif %}
               {% else %}
                 <p>No benefit selected</p>
               {% endfor %}
@@ -68,7 +70,10 @@ Check your details before you send them
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['researchSetUpAddress'] === "yes") %}
-                <p class="govuk-body">{{ data['whereToSendLetter'] }}<br>
+              <p>12 Gregg Lane
+                <br>London
+                <br>SE12 6FH
+              </p>
               {% else %}
               <p>72 Guild Street
                 <br>London

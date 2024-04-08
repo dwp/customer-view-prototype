@@ -10,9 +10,9 @@ Which benefits do you get?
 
 {% block beforeContent %}
 
-{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+  {%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
 
-{{
+  {{
   hmrcLanguageSelect({
     language: 'en',
     en: {
@@ -41,15 +41,26 @@ Which benefits do you get?
         <div id="home-address-hint" class="govuk-hint govuk-!-margin-bottom-6" >
           Proof of benefit letters can take one week to be delivered.
         </div>
-  
-        <p>Your address is saved as:</p>
+
+        {% if data.researchSetUpAddress === 'no' %}
+          <p>Your address is saved as:</p>
+        {% else %}
+          <p>The address we send your letters to is saved as:</p>
+        {% endif %}
 
         <div class="govuk-inset-text">
-        <p>72 Guild Street
-          <br>London
-          <br>SE23 6FH
-        </p>
-      </div>
+          {% if data.researchSetUpAddress === 'no' %}
+            <p>72 Guild Street
+                  <br>London
+                  <br>SE23 6FH
+                </p>
+          {% else %}
+            <p>12 Gregg Lane
+                  <br>London
+                  <br>SE12 SFH
+                </p>
+          {% endif %}
+        </div>
 
         <h2 class="govuk-heading-m">Is your address correct?</h2>
 
