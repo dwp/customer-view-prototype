@@ -2075,7 +2075,8 @@ router.post('/get-a-proof-of-benefit-letter/multi-benefits-answer', function (re
 
   } else {
     // Send to you can't get proof for all benefits.
-    res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
+    res.redirect('/get-a-proof-of-benefit-letter/you-cannot-get-proof-of-all-your-benefits.html');
+
 
   }
 
