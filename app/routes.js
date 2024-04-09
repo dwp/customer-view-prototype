@@ -2065,11 +2065,11 @@ router.post('/get-a-proof-of-benefit-letter/multi-benefits-answer', function (re
   var whichBenefitNeedProof = req.session.data['which-benefits-need-proof']
 
   // Check if correspondence address is available
-  if (researchSetUpAddress === "yes" && !whichBenefitNeedProof.includes("I need a letter for another benefit"))  {
+  if (researchSetUpAddress === "post" && !whichBenefitNeedProof.includes("I need a letter for another benefit"))  {
     // Send user to multi address page
     res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
 
-  } else if (researchSetUpAddress === "no" && !whichBenefitNeedProof.includes("I need a letter for another benefit"))  {
+  } else if (researchSetUpAddress === "home" && !whichBenefitNeedProof.includes("I need a letter for another benefit"))  {
     // Send user to single address page
     res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
 
@@ -2090,11 +2090,11 @@ router.post('/get-a-proof-of-benefit-letter/single-benefits-answer', function (r
 
 
   // Check if correspondence address is available
-  if (researchSetUpAddress === "yes" && doYouWantLetterFor == "yes")  {
+  if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes")  {
     // Send user to multi address page
     res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
 
-  } else if (researchSetUpAddress === "no" && doYouWantLetterFor == "yes")  {
+  } else if (researchSetUpAddress === "home" && doYouWantLetterFor == "yes")  {
     // Send user to next single address page
     res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
 
@@ -2144,7 +2144,7 @@ router.post('/get-a-proof-of-benefit-letter/cant-get-proof-all-benefits-answer',
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
 
   // Check if correspondence address is available
-  if (researchSetUpAddress === "yes")  {
+  if (researchSetUpAddress === "post")  {
     // Send user to multi address page
     res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
 

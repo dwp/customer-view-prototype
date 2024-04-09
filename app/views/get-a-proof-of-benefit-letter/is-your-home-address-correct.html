@@ -42,14 +42,14 @@ Which benefits do you get?
           Proof of benefit letters can take one week to be delivered.
         </div>
 
-        {% if data.researchSetUpAddress === 'no' %}
+        {% if data.researchSetUpAddress === 'home' %}
           <p>Your address is saved as:</p>
         {% else %}
           <p>The address we send your letters to is saved as:</p>
         {% endif %}
 
         <div class="govuk-inset-text">
-          {% if data.researchSetUpAddress === 'no' %}
+          {% if data.researchSetUpAddress === 'home' %}
             <p>72 Guild Street
                   <br>London
                   <br>SE23 6FH
