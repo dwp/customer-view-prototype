@@ -23,26 +23,23 @@ Before we start the user research scenario - benefits
 
       <form class="form" action="address" method="post">
 
-        <h1 class="govuk-heading-l">Before we start the research</h1>
+        <h1 class="govuk-heading-l">The researcher will help you during this part of the session</h1>
 
-        <p>Tell us more about your situation.</p>
+        <div id="account-number-hint" class="govuk-hint">
+          Your answers will determine what content appears during user testing.
+        </div>
 
-        <p>Your information is confidential and will not be saved.</p>
-
+        <div class="govuk-!-padding-bottom-4"></div>
 
         {{ govukCheckboxes({
           name: "researchSetUpBenefits",
           value: data['researchSetUpBenefits'],
           fieldset: {
             legend: {
-              text: "Which benefits do you get?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--m"
+              isPageHeading: true
             }
           },
-          hint: {
-            text: "Select all that apply."
-          },
+
           items: [
           {
             value: "Attendance Allowance",
