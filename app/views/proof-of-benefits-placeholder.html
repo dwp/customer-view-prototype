@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{ serviceName }}
+      </h1>
+
+
+      <p class="govuk-body">
+        <a href="/get-a-proof-of-benefit-letter/research-set-up/benefits" class="govuk-link">Prototype A</a>.
+      </p>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Prototype B</a>.
+      </p>
+
+
+
+    </div>
+
+
+  </div>
+
+{% endblock %}
