@@ -2156,13 +2156,15 @@ router.post('/get-a-proof-of-benefit-letter/cant-get-proof-all-benefits-answer',
 
 })
 
+router.post('/proof-of-benefit-placeholder', function (req, res) {
+  res.redirect('/get-a-proof-of-benefit-letter/research-set-up/benefits')
+})
 
-
-
-
-
-
-
-
-
-
+// Select address page based on how many benefits are selected by the user.
+router.post('/idv/hmrciv/success', function (req, res) {
+  if (req.session.data.prototypeVersion === 'protoA') {
+    res.redirect('/get-a-proof-of-benefit-letter/account-home')
+  } else {
+    res.redirect('http://localhost:3000/get-a-proof-of-benefit-letter/personal-details')
+  }
+})
