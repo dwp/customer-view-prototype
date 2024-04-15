@@ -24,6 +24,11 @@ Customer view
   })
 }}
 
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
 {% endblock %}
 
 
@@ -33,8 +38,7 @@ Customer view
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">Account home</span>
-            Sarah Phillips
+            Personal details
           </h1>
           
           <div class="govuk-summary-card">
@@ -283,6 +287,8 @@ Customer view
           <h2 class="govuk-heading-m">Tell us about a change</h2>
 
           <p>To change your details, like your address, <a href="https://www.gov.uk/report-benefits-change-circumstances#:~:text=How%20to%20report%20changes" class="govuk-link" rel="noreferrer noopener" target="_blank">contact your benefit office (opens in a new tab)</a>.</p>
+
+          <p><a href="account-home" class="govuk-link">Go back to account home</a>.</p>
 
       </form>  
     </div>
