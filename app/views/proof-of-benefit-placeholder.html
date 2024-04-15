@@ -10,8 +10,6 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-
 {% endblock %}
 
 {% block content %}
@@ -23,19 +21,33 @@
         {{ serviceName }}
       </h1>
 
+      <form class="form" action="/proof-of-benefit-placeholder" method="post">
+        {{ govukRadios({
+          name: "prototypeVersion",
+          value: data['prototypeVersion'],
+          fieldset: {
+            legend: {
+              isPageHeading: true
+            }
+          },
+          items: [
+          {
+            value: "protoA",
+            text: "Prototype A"
+          },
+          {
+            value: "protoB",
+            text: "Prototype B"
+          }
+          ]
+      }) }}
 
-      <p class="govuk-body">
-        <a href="/get-a-proof-of-benefit-letter/research-set-up/benefits" class="govuk-link">Prototype A</a>.
-      </p>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
-      <p class="govuk-body">
-        <a href="/get-a-proof-of-benefit-letter/research-set-up/benefits" class="govuk-link">Prototype B</a>.
-      </p>
-
-
-
+      </form>
     </div>
-
 
   </div>
 
