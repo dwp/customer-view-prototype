@@ -2165,6 +2165,6 @@ router.post('/idv/hmrciv/success', function (req, res) {
   if (req.session.data.prototypeVersion === 'protoA') {
     res.redirect('/get-a-proof-of-benefit-letter/account-home')
   } else {
-    res.redirect('http://localhost:3000/get-a-proof-of-benefit-letter/personal-details')
+    res.redirect('/get-a-proof-of-benefit-letter/personal-details')
   }
 })
