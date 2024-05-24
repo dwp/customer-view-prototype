@@ -2191,24 +2191,30 @@ router.post('/get-a-proof-of-benefit-letter/v2/how-did-you-find-out-about-this-s
   }
 })
 
-// Select address page based on how many benefits are selected by the user.
+// Select which benefit selection page to show based on number of benefits available for user.
 router.all('/get-a-proof-of-benefit-letter/v2/list-benefits-answer', function (req, res) {
 
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
-  // Check whether multiple benefits selected
-  if (researchSetUpBenefits.length > 1)  {
-    // Send user to next page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/select-benefits');
+  if (researchSetUpBenefits !== undefined) {
 
-  } else {
-    // Send to single benefit page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/do-you-want-a-letter-for');
+    if (researchSetUpBenefits.length > 1)  {
+      res.redirect('/get-a-proof-of-benefit-letter/v2/select-benefits');
+
+    } else {
+      res.redirect('/get-a-proof-of-benefit-letter/v2/do-you-want-a-letter-for');
+    }  
+
   }
 
+  else {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter-no-benefits-recorded');
+  }
+  
 })
 
-// Display mutli address or single address page for MULTI benefits
+
+// Display post or home address for MULTI benefit select page
 router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function (req, res) {
 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
@@ -2232,7 +2238,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
 
 })
 
-// Display mutli address or single address page for SINGLE benefit
+// Display post or home address for SINGLE benefit select page
 router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function (req, res) {
 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
@@ -2251,13 +2257,13 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
 
   } else if (doYouWantLetterFor == "no") {
         // Send user to can't get letter page
-        res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter');
+        res.redirect('/get-a-proof-of-benefit-letter/v2/contact-us-for-different-benefit-letter');
 
   }
 
   else {
     // Send user to can't get letter page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2/contact-us-for-different-benefit-letter');
   }
 
 })
@@ -2272,12 +2278,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/send-letter-to-address-answer', f
   // Check if user selected no on single address page
   if (confirmLetterSend == "no")  {
     // Send user to contact us page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/contact-us-to-get-proof-of-benefit-letter');
-
-    // Check if user selected no on multi address page
-  } else if (whereToSendLetter === "none-of-these")  {
-    // Send user to contact us page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/contact-us-to-get-proof-of-benefit-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2/your-address-is-incorrect');
   }
 
   else {
@@ -2289,6 +2290,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/send-letter-to-address-answer', f
 
 
 // Place user back into journey from you cant get a proof for all benefits
+// TODO Ask Kealan why this is needed
 router.post('/get-a-proof-of-benefit-letter/v2/cant-get-proof-all-benefits-answer', function (req, res) {
 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
