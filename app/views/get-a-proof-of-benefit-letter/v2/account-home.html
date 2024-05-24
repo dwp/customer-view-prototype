@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Customer view
+{% endblock %}
+
+{% block beforeContent %}
+
+<div style="display: flex; justify-content: space-between;">
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+  {{
+    hmrcLanguageSelect({
+      language: 'en',
+      en: {
+        href: '?en'
+      },
+      cy: {
+        href: '?cy'
+      }
+      })
+  }}
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+  <form action="select-benefits-answer">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <span class="govuk-caption-xl">Account home</span>
+          <h1 class="govuk-heading-xl">
+            Sarah Phillips
+          </h1>
+
+          <p class="govuk-body">
+            <a href="/get-a-proof-of-benefit-letter/v2/select-benefits" class="govuk-link">Get a proof of benefit letter</a>
+          </p>
+
+          <p class="govuk-body">
+            <a href="/get-a-proof-of-benefit-letter/v2/personal-details" class="govuk-link">View your personal details</a>
+          </p>
+
+      </form>  
+    </div>
+  </div>
+
+{% endblock %}

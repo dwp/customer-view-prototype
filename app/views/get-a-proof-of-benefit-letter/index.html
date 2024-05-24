@@ -1,0 +1,160 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Get a proof of benefit letter
+      </h1>
+
+      <div class="govuk-!-margin-bottom-6"> 
+        <strong class="govuk-tag govuk-tag--purple">Alpha</strong> <strong class="govuk-tag govuk-tag--green">Beta</strong> <strong class="govuk-tag govuk-tag--blue">In progress</strong>
+      </div>
+
+      <p class="govuk-body-l">This journey lets people get a proof of benefit letter sent in the post.</p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <!-- ------------- Version 2 ------------- -->
+      
+      <span class="govuk-caption-m">April 2024 - May 2024</span>
+      <h2 class="govuk-heading-l">Version 2</h2>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+          The dynamic content in this design is for user testing only
+        </strong>
+      </div>
+
+      <p>This design is based on research and evidence found in user research round 19.</p>
+
+      <p>We tested this design in user testing round 20.</p>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Change log
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Since version 1, we have:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Reduced and iterated content on the start page</li>
+            <li>Removed ID requirements on the start page</li>
+            <li>Added signposting pages for people who are not eligible in beta</li>
+            <li>Kept account homepage design A</li>
+            <li>Removed personal details homepage design B</li>
+            <li>Changed ‘go back to account home’ link on personal details page to a button</li>
+            <li>Added ‘go back to account home’ buttons on signposting pages within the service and confirmation page</li>
+            <li>Added out-of-scope benefits to research set-up page to determine user’s benefits and the ‘which benefits do you need proof of?’ page</li>
+            <li>Named out-of-scope benefits on the in-and-out-of-scope benefits signposting page</li>
+            <li>Iterated the content on the in-and-out-of-scope benefits signposting page</li>
+            <li>Iterated content on confirmation page and named out-of-scope benefits for signposting</li>
+            <li>Removed address change link from check your answers page</li>
+            <li>Added signed out and timed out pages</li>
+            <li>Added error pages</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+        <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+        <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+          <br>
+          <strong>Register mobile:</strong> 969862
+          <br>
+          <strong>Sign in mobile:</strong> 471350
+        </p>
+      </div>
+
+
+      {{ govukButton({
+        text: "View prototype",
+        href: "get-a-proof-of-benefit-letter/v2/research-set-up/benefits"
+      }) }}
+
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <!-- ------------- Version 1 ------------- -->
+
+      <span class="govuk-caption-m">March 2024 - April 2024</span>
+      <h2 class="govuk-heading-l">Version 1</h2>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+          The dynamic content in this design is for user testing only
+        </strong>
+      </div>
+
+      <p></p>
+
+      <p>We’re conducting A/B testing to see which flow works best for users.</p>
+
+      <p>We tested this design in user testing round 20.</p>
+
+      <h3 class="govuk-heading-s">Flow A: account homepage</h3>
+
+      <p>Flow A has an account homepage with two links on: view your personal details, and get your proof of benefit letter.</p>
+
+      <h3 class="govuk-heading-s">Flow B: personal details homepage</h3>
+
+      <p>Flow B has a homepage with personal details on, and a link to the proof of benefits feature.</p>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Change log
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>This version includes:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>A happy path for users who get in-scope benefits</li>
+            <li>A happy path for users whose address is correct</li>
+            <li>Signposting for users whose benefits are out-of-scope</li>
+            <li>Signposting for users whose address needs updating</li>
+            <li>Dynamic content depending on the benefits the user gets</li>
+            <li>Dynamic content depending on whether the user has a correspondence address saved on our records</li>
+            <li>The OIDV journey</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+        <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+        <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+          <br>
+          <strong>Register mobile:</strong> 969862
+          <br>
+          <strong>Sign in mobile:</strong> 471350
+        </p>
+      </div>
+
+
+      {{ govukButton({
+        text: "View prototype",
+        href: "get-a-proof-of-benefit-letter/v1/proof-of-benefit-placeholder"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

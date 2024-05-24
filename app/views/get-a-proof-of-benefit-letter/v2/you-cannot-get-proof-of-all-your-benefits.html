@@ -1,0 +1,91 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Check your details before you send them
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div style="display: flex; justify-content: space-between;">
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back()"
+    }) }}
+
+    {{
+      hmrcLanguageSelect({
+        language: 'en',
+        en: {
+          href: '?en'
+        },
+        cy: {
+          href: '?cy'
+        }
+        })
+    }}
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="cant-get-proof-all-benefits-answer" method="post">
+
+
+        <h1 class="govuk-heading-l">
+          You cannot get proof of all your benefits using this service
+        </h1>
+
+        {% if (data['which-benefits-need-proof'].length == 3 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
+          <p>If you continue, we can send you proof of benefit letters for {{ data['which-benefits-need-proof'][0] }} and {{ data['which-benefits-need-proof'][1] }}.</p>
+        {% elif (data['which-benefits-need-proof'].length == 2 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
+          <p>If you continue, we can send you a proof of benefit letter for {{ data['which-benefits-need-proof'][0]}}.</p>
+        {% elif (data['which-benefits-need-proof'].length == 2) %}
+          <p>You can get a letter for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
+        {% elif (data['which-benefits-need-proof'].length > 3 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
+          <p>If you continue, we can send you proof of benefit letters for</p>
+          <ul class="govuk-list govuk-list--bullet">
+              {% for benefit in data['which-benefits-need-proof'] %}
+                {% if benefit !== 'I need a letter for another benefit' %}
+                    <li>{{ benefit }}</li>
+              {% endif %}
+            {% else %}
+                <p>No benefit selected</p>
+            {% endfor %}    
+          </ul>
+        {% elif (data['which-benefits-need-proof'].length > 2) %}
+          <p>If you continue, we can send you proof of benefit letters for</p>
+          <ul class="govuk-list govuk-list--bullet">
+              {% for benefit in data['which-benefits-need-proof'] %}
+                <li>{{ benefit }}</li>
+            {% else %}
+                <p>No benefit selected</p>
+            {% endfor %}    
+          </ul>
+        {% endif %}
+
+          <p>
+            You cannot get a proof of benefit letter for other benefits online yet.</a>
+          </p>
+
+          <p>
+            To get proof of another benefit, contact the office that pays your benefit. Find their contact details in a letter they’ve sent to you, or <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">in guidance about the benefit (opens in a new tab)</a>.</p>
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          
+          </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

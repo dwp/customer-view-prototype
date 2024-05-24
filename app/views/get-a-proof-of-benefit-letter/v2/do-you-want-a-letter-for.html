@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Which benefits do you get?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div style="display: flex; justify-content: space-between;">
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back()"
+    }) }}
+
+    {{
+      hmrcLanguageSelect({
+        language: 'en',
+        en: {
+          href: '?en'
+        },
+        cy: {
+          href: '?cy'
+        }
+        })
+    }}
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="single-benefits-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="doYouWantLetterFor-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you want a proof of benefit letter for {{ data['researchSetUpBenefits'] }}?
+              </h1>
+            </legend>
+            <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="doYouWantLetterFor" name="doYouWantLetterFor" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="doYouWantLetterFor">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="doYouWantLetterFor-2" name="doYouWantLetterFor" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="doYouWantLetterFor-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

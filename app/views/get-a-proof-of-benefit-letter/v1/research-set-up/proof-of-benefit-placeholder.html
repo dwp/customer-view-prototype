@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{ serviceName }}
+      </h1>
+
+      <form class="form" action="proof-of-benefit-placeholder" method="post">
+        {{ govukRadios({
+          name: "prototypeVersion",
+          value: data['prototypeVersion'],
+          fieldset: {
+            legend: {
+              isPageHeading: true
+            }
+          },
+          items: [
+          {
+            value: "protoA",
+            text: "Prototype A: account home page"
+          },
+          {
+            value: "protoB",
+            text: "Prototype B: personal details home page"
+          }
+          ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+
+  </div>
+
+{% endblock %}

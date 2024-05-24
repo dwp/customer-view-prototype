@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Which benefits do you get?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div style="display: flex; justify-content: space-between;">
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back()"
+    }) }}
+
+    {{
+      hmrcLanguageSelect({
+        language: 'en',
+        en: {
+          href: '?en'
+        },
+        cy: {
+          href: '?cy'
+        }
+        })
+    }}
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="send-letter-to-address-answer" method="post">
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-1" >Where we send your letters</h1>
+        <div id="home-address-hint" class="govuk-hint govuk-!-margin-bottom-6" >
+          Proof of benefit letters can take one week to be delivered.
+        </div>
+
+        {% if data.researchSetUpAddress === 'home' %}
+          <p>Your address is saved as:</p>
+        {% else %}
+          <p>The address we send your letters to is saved as:</p>
+        {% endif %}
+
+        <div class="govuk-inset-text">
+          {% if data.researchSetUpAddress === 'home' %}
+            <p>72 Guild Street
+                  <br>London
+                  <br>SE23 6FH
+                </p>
+          {% else %}
+            <p>12 Gregg Lane
+                  <br>London
+                  <br>SE12 SFH
+                </p>
+          {% endif %}
+        </div>
+
+        <h2 class="govuk-heading-m">Is your address correct?</h2>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="confirmLetterSend" name="confirmLetterSend" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="confirmLetterSend">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="confirmLetterSend-2" name="confirmLetterSend" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="confirmLetterSend-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

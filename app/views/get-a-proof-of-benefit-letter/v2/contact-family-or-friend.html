@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Check your details before you send them
+{% endblock %}
+
+{% block beforeContent %}
+
+  <div style="display: flex; justify-content: space-between;">
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back()"
+    }) }}
+
+    {{
+      hmrcLanguageSelect({
+        language: 'en',
+        en: {
+          href: '?en'
+        },
+        cy: {
+          href: '?cy'
+        }
+        })
+    }}
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot get a proof of benefit letter using this service
+      </h1>
+
+        <p>
+          To get proof of your benefits, you need to contact each benefit that pays you.
+        </p>
+
+        <h2 class="govuk-heading-m">How to get a proof of benefit letter</h2>
+
+        <p>
+          To get proof of another benefit, contact the office that pays your benefit.
+        </p>
+
+        <p>
+          Find their contact details in a letter they’ve sent to you, or <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">in guidance about the benefit (opens in a new tab)</a>.
+        </p>
+
+        <p>
+          To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.
+        </p>
+
+        <p>
+          For State Pension, <a href="https://www.gov.uk/contact-pension-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service (opens in a new tab)</a>.
+        </p>
+
+    </div>
+  </div>
+
+{% endblock %}

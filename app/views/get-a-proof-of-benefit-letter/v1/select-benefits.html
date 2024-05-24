@@ -1,0 +1,73 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Which benefits do you get?
+{% endblock %}
+
+{% block beforeContent %}
+
+{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+
+{{
+  hmrcLanguageSelect({
+    language: 'en',
+    en: {
+      href: '?en'
+    },
+    cy: {
+      href: '?cy'
+    }
+  })
+}}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="multi-benefits-answer" method="post">
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="which-benefits-need-proof-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Which benefits do you need proof of?
+              </h1>
+            </legend>
+            <div id="which-benefits-need-proof-hint" class="govuk-hint">
+              If you select more than one benefit, you will get separate letters for each benefit.
+            </div>
+            {% for benefit in data['researchSetUpBenefits'] %}
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="which-benefits-need-proof" name="which-benefits-need-proof" type="checkbox" value="{{ benefit }}" >
+                    <label class="govuk-label govuk-checkboxes__label" for="which-benefits-need-proof">
+                      {{ benefit }}
+                    </label>
+              </div>
+              {% endfor %}
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

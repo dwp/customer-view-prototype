@@ -24,11 +24,6 @@ Customer view
   })
 }}
 
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-
 {% endblock %}
 
 
@@ -38,7 +33,8 @@ Customer view
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h1 class="govuk-heading-xl">
-            Personal details
+            <span class="govuk-caption-xl">Account home</span>
+            Sarah Phillips
           </h1>
           
           <div class="govuk-summary-card">
@@ -157,7 +153,12 @@ Customer view
               <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                      Benefits
+                    {% if data['which-benefits-need-proof'].length > 1 %}
+                    Benefits
+                    {% else %}
+                    Benefit
+                    </p>
+                    {% endif %}
                   </dt>
                   <dd class="govuk-summary-list__value">
                     {% for benefit in data['researchSetUpBenefits'] %}
@@ -173,122 +174,13 @@ Customer view
             </div>
           </div>
 
-        <!-- Old table with all personal details -->
-          <!-- <h2 class="govuk-heading-m">Your details</h2>
+          <h2 class="govuk-heading-m">Get a proof of benefit letter</h2>
 
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Name
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    Sarah Philips
-                </dd>
-              </div>
-
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Date of birth
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    5 January 1978
-                </dd>
-              </div>
-              
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    National Insurance number
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    AB 12 34 56 C
-                </dd>
-              </div>
-            </dl>
-
-        
-            <h2 class="govuk-heading-m">Contact details</h2>
-
-            <dl class="govuk-summary-list">
-              {% if (data['researchSetUpAddress'] === "yes") %}
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                      Home address
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                      72 Guild Street<br>London<br>SE23 6FH
-                  </dd>
-                </div>
-                
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                      Postal address
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                      12 Gregg Lane<br>London<br>SE12 6FH
-                  </dd>
-                </div>
-
-              {% else %}
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                      Home address
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                      72 Guild Street<br>London<br>SE23 6FH
-                  </dd>
-                </div>
-              {% endif %}
-
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Mobile
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    <p class="govuk-body">07700 900 457</p>
-                </dd>
-              </div>
-
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Home phone
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    <p class="govuk-body">01234 567 890</p>
-                </dd>
-              </div>
-
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Email
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    <p class="govuk-body">sarah.phillips@example.com</p>
-                </dd>
-              </div>
-            </dl>   
-
-            <h2 class="govuk-heading-m">Your benefits</h2>
-            
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Benefits
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {% for benefit in data['researchSetUpBenefits'] %}
-                  <p class="govuk-body">{{ benefit }}<br>
-                  {% else %}
-                    <p>No benefit selected</p>
-                  {% endfor %}
-                </dd>
-              </div>
-            </dl> -->
+          <p>If you need evidence of your benefit payments, you can <a type="submit" data-module="govuk-button" href="list-benefits-answer">get a proof of benefit letter</a>.</p>
 
           <h2 class="govuk-heading-m">Tell us about a change</h2>
 
           <p>To change your details, like your address, <a href="https://www.gov.uk/report-benefits-change-circumstances#:~:text=How%20to%20report%20changes" class="govuk-link" rel="noreferrer noopener" target="_blank">contact your benefit office (opens in a new tab)</a>.</p>
-
-          <p><a href="account-home" class="govuk-link">Go back to account home</a>.</p>
 
       </form>  
     </div>
