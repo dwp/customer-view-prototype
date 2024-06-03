@@ -2176,12 +2176,14 @@ router.post('/idv/hmrciv/success', function (req, res) {
 // * Version 2
 
 var inScope = [];  
+var uCBenefit = false;
 var oOScope = [];
 
 router.all('/get-a-proof-of-benefit-letter/PoB-data-clear', function (req, res) {
 
   inScope = [];
   oOScope = [];
+  uCBenefit = false
   req.session.data.inScope = inScope;
   req.session.data.oOScope = oOScope;
   delete req.session.data['which-benefits-need-proof'];
@@ -2303,6 +2305,10 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
 
   for (var i=0; i < whichBenefitNeedProof.length; i++) {
 
+    if (whichBenefitNeedProof[i] === 'Universal Credit') {
+      uCBenefit = true;
+    }
+
     if (whichBenefitNeedProof[i] === 'Bereavement Benefit' ||
           whichBenefitNeedProof[i] === 'Widow’s Benefit' ||
           whichBenefitNeedProof[i] === 'Bereavement Allowance' ||
@@ -2325,7 +2331,6 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
           whichBenefitNeedProof[i] === 'Severe Disablement Allowance' ||
           whichBenefitNeedProof[i] === 'Short Term Benefit' ||
           whichBenefitNeedProof[i] === 'Support for Mortgage Interest' ||
-          whichBenefitNeedProof[i] === 'Universal Credit' ||
           whichBenefitNeedProof[i] === 'Winter Fuel Payments'
           ) {
             oOScope.push(whichBenefitNeedProof[i])
@@ -2340,21 +2345,21 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
 
   req.session.data.oOScope = oOScope;
   req.session.data.inScope = inScope;
+  req.session.data.uCBenefit = uCBenefit;
 
-  if (researchSetUpAddress === "post" && oOScope.length === 0)  {
+  if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
     res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
 
-  } else if (researchSetUpAddress === "home" && oOScope.length === 0)  {
+  } else if (researchSetUpAddress === "home" && (oOScope.length === 0 && uCBenefit == false))  {
     res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
     
 
   } else if (inScope.length === 0)  {
     res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter');
-    
 
-  } else if (inScope.length >= 1 && oOScope.length >= 1) {
+  } else if (inScope.length >= 1 && (oOScope.length >= 1 || uCBenefit == true)) {
     res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-all-your-benefits');
-  
+
   } else {
     console.log(inScope)
     console.log(oOScope)
