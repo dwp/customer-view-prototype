@@ -53,10 +53,8 @@ Check your details before you send them
               {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              {% for benefit in data['which-benefits-need-proof'] %}
-                {% if benefit !== 'I need a letter for another benefit' %}
+              {% for benefit in data['inScope'] %}
                   <p class="govuk-body">{{ benefit }}<br>
-                {% endif %}
               {% else %}
                 <p>No benefit selected</p>
               {% endfor %}
@@ -67,7 +65,7 @@ Check your details before you send them
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              {% if data['which-benefits-need-proof'].length > 1 %}
+              {% if data['inScope'].length > 1 %}
               Address we send your proof of benefit letters to
               {% else %}
               Address we send your proof of benefit letter to

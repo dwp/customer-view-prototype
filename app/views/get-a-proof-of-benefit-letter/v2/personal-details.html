@@ -120,7 +120,9 @@ Customer view
                     Mobile phone
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    <p class="govuk-body">07700 900 457</p>
+                    <p class="govuk-body">07700 900 457<br>
+                      07700 900 456<br>
+                      07700 900 123</p>
                 </dd>
               </div>
 
@@ -130,6 +132,8 @@ Customer view
                 </dt>
                 <dd class="govuk-summary-list__value">
                     <p class="govuk-body">01234 567 890</p>
+                    <p>01234 100 200</p>
+                    <p>01234 300 400</p>
                 </dd>
               </div>
 
@@ -139,6 +143,8 @@ Customer view
                 </dt>
                 <dd class="govuk-summary-list__value">
                     <p class="govuk-body">sarah.phillips@example.com</p>
+                    <p class="govuk-body">sarah.phillips@gmail.com</p>
+                    <p class="govuk-body">sarah.phillips@yahoo.com</p>
                 </dd>
               </div>
               </dl>
@@ -167,7 +173,7 @@ Customer view
                   <dd class="govuk-summary-list__value">
                     {% for benefit in data['researchSetUpBenefits'] %}
                     {% if benefit !== 'I need a letter for another benefit' %}
-                    <p class="govuk-body">{{ benefit }}<br>
+                      <p class="govuk-body">{{ benefit }}
                     {% endif %}
                     {% else %}
                       <p>No benefit selected</p>

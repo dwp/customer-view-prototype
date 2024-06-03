@@ -43,47 +43,30 @@ Check your details before you send them
         What happens next
       </h2>
 
-      {% if (data['which-benefits-need-proof'].length == 1) %}
-        <p>You have requested a proof of benefit letter for {{ data['which-benefits-need-proof'][0] }}.</p>
+      {% if data['inScope'].length === 1 %}
+        <p>You have requested a proof of benefit letter for {{ data['inScope'][0] }}.</p>
 
-      {% elif (data['which-benefits-need-proof'].length == 2) %}
-        <p>You have requested proof of benefit letters for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
+      {% elif data['inScope'].length === 2 %}
+        <p>You have requested proof of benefit letters for {{ data['inScope'] | formatList }}.</p>
 
-      {% elif (data['which-benefits-need-proof'].length > 2) %}
+      {% elif data['inScope'].length > 2 %}
         <p>You have requested proof of benefit letters for:</p>
         <ul class="govuk-list govuk-list--bullet">
-            {% for benefit in data['which-benefits-need-proof'] %}
+            {% for benefit in data['inScope'] %}
               <li>{{ benefit }}</li>
           {% else %}
               <p>No benefit selected</p>
           {% endfor %}    
         </ul>
-
-
-      {% elif (data['which-benefits-need-proof'].length == 2 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
-        <p>You have requested a proof of benefit letter for {{ data['which-benefits-need-proof'][0]}}.</p>
-      
-      {% elif (data['which-benefits-need-proof'].length == 3 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
-        <p>You have requested proof of benefit letters for {{ data['which-benefits-need-proof'][0] }} and {{ data['which-benefits-need-proof'][1] }}.</p>
-        
-      {% elif (data['which-benefits-need-proof'].length > 3 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
-          <p>You have requested proof of benefit letters for:</p>
-          <ul class="govuk-list govuk-list--bullet">
-              {% for benefit in data['which-benefits-need-proof'] %}
-                {% if benefit !== 'I need a letter for another benefit' %}
-                    <li>{{ benefit }}</li>
-              {% endif %}
-            {% else %}
-                <p>No benefit selected</p>
-            {% endfor %}    
-          </ul>
-      
+      {% else %}
+      <p>Failed!</p>
       {% endif %}
 
-      {% if (data['which-benefits-need-proof'].length == 2 and 'I need a letter for another benefit' in data['which-benefits-need-proof']) %}
-        <p>Your letter should arrive separately within one week.</p>
+      {% if data['inScope'].length === 1 %}
+      <p>Your letter should arrive within one week.</p>
+  
       
-      {% elif (data['which-benefits-need-proof'].length > 2) %}
+      {% elif data['inScope'].length >= 2 %}
         <p>Your letters should arrive separately within one week.</p>
       
       {% else %}
@@ -95,27 +78,29 @@ Check your details before you send them
         How to get proof of your other benefits
       </h2>
 
-      {% if (data['which-benefits-need-proof'].length == 1 and ('XX Bereavement Benefit' or 'XX Carer’s Allowance' or 'XX Widow’s Benefit') in data['which-benefits-need-proof']) %}
-      <p>Find the contact details for {{ data['which-benefits-need-proof'][0] }} in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
-      {% endif %}
+      {% if data['oOScope'].length === 1 and 'Universal Credit' not in data['oOScope'] %}
+        <p>Find the contact details for {{ data['oOScope'][0] }} in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
 
-      {% if (data['which-benefits-need-proof'].length == 2 and ('XX Bereavement Benefit' or 'XX Carer’s Allowance' or 'XX Widow’s Benefit') in data['which-benefits-need-proof']) %}
-      <p>Find the contact details for {{ data['which-benefits-need-proof'][0] }} and {{ data['which-benefits-need-proof'][1] }} in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
-      {% endif %}
+      {% elif data['oOScope'].length === 2 %}
+        {% if 'Universal Credit' in data['oOScope'] %}
+          <p>Find the contact details for {{ data['oOScope'][0] }} in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+        {% else %}  
+          <p>Find the contact details for {{ data['oOScope'] | formatList }} in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+        {% endif %}
 
-      {% if (data['which-benefits-need-proof'].length > 2 and ('XX Bereavement Benefit' or 'XX Carer’s Allowance' or 'XX Widow’s Benefit') in data['which-benefits-need-proof']) %}
-        <ul class="govuk-list govuk-list--bullet">
-          {% for benefit in data['which-benefits-need-proof'] %}
-            <li>{{ benefit }}</li>
-          {% else %}
-            <p>No benefit selected</p>
-          {% endfor %}    
-        </ul>
+        {% elif data['oOScope'].length > 2 %}
+        {% if data['oOScope'].length <= 3 %}
+        <p>Find the contact details for {{ data['oOScope'] | formatList }} in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+        
+        {% else %}
         <p>Find their contact details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+        
+        {% endif %}
+        
       {% endif %}
 
 
-      {% if ('Universal Credit' in data['which-benefits-need-proof']) %}
+      {% if 'Universal Credit' in data['oOScope'] %}
         <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
       {% endif %}
 

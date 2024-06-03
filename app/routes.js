@@ -2060,7 +2060,7 @@ router.all('/get-a-proof-of-benefit-letter/v1/list-benefits-answer', function (r
 
 })
 
-// Display mutli address or single address page for MULTI benefits
+// Display post or home address for MULTI benefit select page
 router.post('/get-a-proof-of-benefit-letter/v1/multi-benefits-answer', function (req, res) {
 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
@@ -2083,6 +2083,7 @@ router.post('/get-a-proof-of-benefit-letter/v1/multi-benefits-answer', function 
   }
 
 })
+
 
 // Display mutli address or single address page for SINGLE benefit
 router.post('/get-a-proof-of-benefit-letter/v1/single-benefits-answer', function (req, res) {
@@ -2174,6 +2175,21 @@ router.post('/idv/hmrciv/success', function (req, res) {
 
 // * Version 2
 
+var inScope = [];  
+var oOScope = [];
+
+router.all('/get-a-proof-of-benefit-letter/PoB-data-clear', function (req, res) {
+
+  inScope = [];
+  oOScope = [];
+  req.session.data.inScope = inScope;
+  req.session.data.oOScope = oOScope;
+  delete req.session.data['which-benefits-need-proof'];
+  
+  res.redirect("/get-a-proof-of-benefit-letter/v2/research-set-up/benefits");
+  
+  })
+
 // Drop user if they were not invited to use the service
 router.post('/get-a-proof-of-benefit-letter/v2/how-did-you-find-out-about-this-service-answer', function (req, res) {
 
@@ -2196,47 +2212,19 @@ router.all('/get-a-proof-of-benefit-letter/v2/list-benefits-answer', function (r
 
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
-  if (researchSetUpBenefits !== undefined) {
+  if (researchSetUpBenefits == [] || researchSetUpBenefits == undefined)  {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter-no-benefits-recorded');
+    return
 
-    if (researchSetUpBenefits.length > 1)  {
+  } else if (researchSetUpBenefits.length > 1)  {
       res.redirect('/get-a-proof-of-benefit-letter/v2/select-benefits');
 
-    } else {
+  } else {
       res.redirect('/get-a-proof-of-benefit-letter/v2/do-you-want-a-letter-for');
     }  
-
-  }
-
-  else {
-    res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter-no-benefits-recorded');
-  }
   
 })
 
-
-// Display post or home address for MULTI benefit select page
-router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function (req, res) {
-
-  var researchSetUpAddress = req.session.data['researchSetUpAddress']
-  var whichBenefitNeedProof = req.session.data['which-benefits-need-proof']
-
-  // Check if correspondence address is available
-  if (researchSetUpAddress === "post" && !whichBenefitNeedProof.includes("I need a letter for another benefit"))  {
-    // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
-
-  } else if (researchSetUpAddress === "home" && !whichBenefitNeedProof.includes("I need a letter for another benefit"))  {
-    // Send user to single address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
-
-  } else {
-    // Send to you can't get proof for all benefits.
-    res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-all-your-benefits.html');
-
-
-  }
-
-})
 
 // Display post or home address for SINGLE benefit select page
 router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function (req, res) {
@@ -2308,3 +2296,68 @@ router.post('/get-a-proof-of-benefit-letter/v2/cant-get-proof-all-benefits-answe
 
 })
 
+router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function (req, res) {
+
+  var researchSetUpAddress = req.session.data['researchSetUpAddress']
+  var whichBenefitNeedProof = req.session.data['which-benefits-need-proof']
+
+  for (var i=0; i < whichBenefitNeedProof.length; i++) {
+
+    if (whichBenefitNeedProof[i] === 'Bereavement Benefit' ||
+          whichBenefitNeedProof[i] === 'Widow’s Benefit' ||
+          whichBenefitNeedProof[i] === 'Bereavement Allowance' ||
+          whichBenefitNeedProof[i] === 'Bereavement Support Payment' ||
+          whichBenefitNeedProof[i] === 'Carer’s Allowance' ||
+          whichBenefitNeedProof[i] === 'Child Disability Payment' ||
+          whichBenefitNeedProof[i] === 'Child Benefit' ||
+          whichBenefitNeedProof[i] === 'Cold Weather Payment' ||
+          whichBenefitNeedProof[i] === 'Constant Attendance Allowance' ||
+          whichBenefitNeedProof[i] === 'Disability Living Allowance (DLA) for children' ||
+          whichBenefitNeedProof[i] === 'Disablement Benefit' ||
+          whichBenefitNeedProof[i] === 'Exceptionally Severe Disablement Benefit' ||
+          whichBenefitNeedProof[i] === 'Funeral Payment' ||
+          whichBenefitNeedProof[i] === 'Incapacity Benefit' ||
+          whichBenefitNeedProof[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
+          whichBenefitNeedProof[i] === 'Maternity Allowance' ||
+          whichBenefitNeedProof[i] === 'Sure Start Maternity Grant' ||
+          whichBenefitNeedProof[i] === 'Reduced Earnings Allowance' ||
+          whichBenefitNeedProof[i] === 'Retirement Allowance' ||
+          whichBenefitNeedProof[i] === 'Severe Disablement Allowance' ||
+          whichBenefitNeedProof[i] === 'Short Term Benefit' ||
+          whichBenefitNeedProof[i] === 'Support for Mortgage Interest' ||
+          whichBenefitNeedProof[i] === 'Universal Credit' ||
+          whichBenefitNeedProof[i] === 'Winter Fuel Payments'
+          ) {
+            oOScope.push(whichBenefitNeedProof[i])
+  
+    } else {
+      inScope.push(whichBenefitNeedProof[i])
+    }
+  }
+
+  console.log(inScope)
+  console.log(oOScope)
+
+  req.session.data.oOScope = oOScope;
+  req.session.data.inScope = inScope;
+
+  if (researchSetUpAddress === "post" && oOScope.length === 0)  {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
+
+  } else if (researchSetUpAddress === "home" && oOScope.length === 0)  {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
+    
+
+  } else if (inScope.length === 0)  {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter');
+    
+
+  } else if (inScope.length >= 1 && oOScope.length >= 1) {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-all-your-benefits');
+  
+  } else {
+    console.log(inScope)
+    console.log(oOScope)
+  }
+
+})
