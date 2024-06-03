@@ -2179,7 +2179,8 @@ var inScope = [];
 var uCBenefit = false;
 var oOScope = [];
 
-router.all('/get-a-proof-of-benefit-letter/PoB-data-clear', function (req, res) {
+router.all('/get-a-proof-of-benefit-letter/v2/research-set-up/PoB-clear-data', function (req, res) {
+
 
   inScope = [];
   oOScope = [];
@@ -2187,8 +2188,13 @@ router.all('/get-a-proof-of-benefit-letter/PoB-data-clear', function (req, res) 
   req.session.data.inScope = inScope;
   req.session.data.oOScope = oOScope;
   delete req.session.data['which-benefits-need-proof'];
+  delete inScope;
+  delete oOScope;
+
+  console.log(inScope);
+  console.log(oOScope);
   
-  res.redirect("/get-a-proof-of-benefit-letter/v2/research-set-up/benefits");
+  res.redirect("benefits");
   
   })
 
@@ -2233,25 +2239,70 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
   var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
+  var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
+  for (var i=0; i < researchSetUpBenefits.length; i++) {
 
+    if (researchSetUpBenefits[i] === 'Bereavement Benefit' ||
+          researchSetUpBenefits[i] === 'Widow’s Benefit' ||
+          researchSetUpBenefits[i] === 'Bereavement Allowance' ||
+          researchSetUpBenefits[i] === 'Bereavement Support Payment' ||
+          researchSetUpBenefits[i] === 'Carer’s Allowance' ||
+          researchSetUpBenefits[i] === 'Child Disability Payment' ||
+          researchSetUpBenefits[i] === 'Child Benefit' ||
+          researchSetUpBenefits[i] === 'Cold Weather Payment' ||
+          researchSetUpBenefits[i] === 'Constant Attendance Allowance' ||
+          researchSetUpBenefits[i] === 'Disability Living Allowance (DLA) for children' ||
+          researchSetUpBenefits[i] === 'Disablement Benefit' ||
+          researchSetUpBenefits[i] === 'Exceptionally Severe Disablement Benefit' ||
+          researchSetUpBenefits[i] === 'Funeral Payment' ||
+          researchSetUpBenefits[i] === 'Incapacity Benefit' ||
+          researchSetUpBenefits[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
+          researchSetUpBenefits[i] === 'Maternity Allowance' ||
+          researchSetUpBenefits[i] === 'Sure Start Maternity Grant' ||
+          researchSetUpBenefits[i] === 'Reduced Earnings Allowance' ||
+          researchSetUpBenefits[i] === 'Retirement Allowance' ||
+          researchSetUpBenefits[i] === 'Severe Disablement Allowance' ||
+          researchSetUpBenefits[i] === 'Short Term Benefit' ||
+          researchSetUpBenefits[i] === 'Support for Mortgage Interest' ||
+          researchSetUpBenefits[i] === 'Winter Fuel Payments'
+          ) {
+            oOScope.push(researchSetUpBenefits[i])
+  
+          } else if (researchSetUpBenefits[i] === 'Universal Credit') {
+            uCBenefit = true;
+          
+          } else {
+            inScope.push(researchSetUpBenefits[i])
+          }
+    }
+
+  console.log(inScope)
+  console.log(oOScope)
+
+  req.session.data.oOScope = oOScope;
+  req.session.data.inScope = inScope;
+  req.session.data.uCBenefit = uCBenefit;
+
+ 
   // Check if correspondence address is available
-  if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes")  {
+  if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to multi address page
     res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
 
-  } else if (researchSetUpAddress === "home" && doYouWantLetterFor == "yes")  {
+  } else if (researchSetUpAddress === "home" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to next single address page
     res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
 
-
+  } else if ((oOScope.length === 1 || uCBenefit == true)) {
+      res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter.html');
+    
+    
   } else if (doYouWantLetterFor == "no") {
         // Send user to can't get letter page
         res.redirect('/get-a-proof-of-benefit-letter/v2/contact-us-for-different-benefit-letter');
-
-  }
-
-  else {
+  
+  } else {
     // Send user to can't get letter page
     res.redirect('/get-a-proof-of-benefit-letter/v2/contact-us-for-different-benefit-letter');
   }
@@ -2305,37 +2356,39 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
 
   for (var i=0; i < whichBenefitNeedProof.length; i++) {
 
-    if (whichBenefitNeedProof[i] === 'Universal Credit') {
-      uCBenefit = true;
+    if (whichBenefitNeedProof[i] === 'Employment and Support Allowance (ESA)' ||
+        whichBenefitNeedProof[i] === 'Bereavement Benefit' ||
+        whichBenefitNeedProof[i] === 'Widow’s Benefit' ||
+        whichBenefitNeedProof[i] === 'Bereavement Allowance' ||
+        whichBenefitNeedProof[i] === 'Bereavement Support Payment' ||
+        whichBenefitNeedProof[i] === 'Carer’s Allowance' ||
+        whichBenefitNeedProof[i] === 'Child Disability Payment' ||
+        whichBenefitNeedProof[i] === 'Child Benefit' ||
+        whichBenefitNeedProof[i] === 'Cold Weather Payment' ||
+        whichBenefitNeedProof[i] === 'Constant Attendance Allowance' ||
+        whichBenefitNeedProof[i] === 'Disability Living Allowance (DLA) for children' ||
+        whichBenefitNeedProof[i] === 'Disablement Benefit' ||
+        whichBenefitNeedProof[i] === 'Exceptionally Severe Disablement Benefit' ||
+        whichBenefitNeedProof[i] === 'Funeral Payment' ||
+        whichBenefitNeedProof[i] === 'Incapacity Benefit' ||
+        whichBenefitNeedProof[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
+        whichBenefitNeedProof[i] === 'Maternity Allowance' ||
+        whichBenefitNeedProof[i] === 'Sure Start Maternity Grant' ||
+        whichBenefitNeedProof[i] === 'Reduced Earnings Allowance' ||
+        whichBenefitNeedProof[i] === 'Retirement Allowance' ||
+        whichBenefitNeedProof[i] === 'Severe Disablement Allowance' ||
+        whichBenefitNeedProof[i] === 'Short Term Benefit' ||
+        whichBenefitNeedProof[i] === 'Support for Mortgage Interest' ||
+        whichBenefitNeedProof[i] === 'Winter Fuel Payments'
+        ) {
+          oOScope.push(whichBenefitNeedProof[i])
+        } 
+    
+    else if (whichBenefitNeedProof[i] === 'Universal Credit') {
+            uCBenefit = true;
     }
-
-    if (whichBenefitNeedProof[i] === 'Bereavement Benefit' ||
-          whichBenefitNeedProof[i] === 'Widow’s Benefit' ||
-          whichBenefitNeedProof[i] === 'Bereavement Allowance' ||
-          whichBenefitNeedProof[i] === 'Bereavement Support Payment' ||
-          whichBenefitNeedProof[i] === 'Carer’s Allowance' ||
-          whichBenefitNeedProof[i] === 'Child Disability Payment' ||
-          whichBenefitNeedProof[i] === 'Child Benefit' ||
-          whichBenefitNeedProof[i] === 'Cold Weather Payment' ||
-          whichBenefitNeedProof[i] === 'Constant Attendance Allowance' ||
-          whichBenefitNeedProof[i] === 'Disability Living Allowance (DLA) for children' ||
-          whichBenefitNeedProof[i] === 'Disablement Benefit' ||
-          whichBenefitNeedProof[i] === 'Exceptionally Severe Disablement Benefit' ||
-          whichBenefitNeedProof[i] === 'Funeral Payment' ||
-          whichBenefitNeedProof[i] === 'Incapacity Benefit' ||
-          whichBenefitNeedProof[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
-          whichBenefitNeedProof[i] === 'Maternity Allowance' ||
-          whichBenefitNeedProof[i] === 'Sure Start Maternity Grant' ||
-          whichBenefitNeedProof[i] === 'Reduced Earnings Allowance' ||
-          whichBenefitNeedProof[i] === 'Retirement Allowance' ||
-          whichBenefitNeedProof[i] === 'Severe Disablement Allowance' ||
-          whichBenefitNeedProof[i] === 'Short Term Benefit' ||
-          whichBenefitNeedProof[i] === 'Support for Mortgage Interest' ||
-          whichBenefitNeedProof[i] === 'Winter Fuel Payments'
-          ) {
-            oOScope.push(whichBenefitNeedProof[i])
-  
-    } else {
+    
+    else {
       inScope.push(whichBenefitNeedProof[i])
     }
   }
