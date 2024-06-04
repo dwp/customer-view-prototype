@@ -10,20 +10,6 @@ Check your details before you send them
 
 {% block beforeContent %}
 
-  {%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
-
-  {{
-  hmrcLanguageSelect({
-    language: 'en',
-    en: {
-      href: '?en'
-    },
-    cy: {
-      href: '?cy'
-    }
-  })
-}}
-
 {% endblock %}
 
 {% block content %}

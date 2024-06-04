@@ -10,24 +10,10 @@ Is the payment in your name?
 
 {% block beforeContent %}
 
-  <div style="display: flex; justify-content: space-between;">
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:window.history.back()"
-    }) }}
-
-    {{
-      hmrcLanguageSelect({
-        language: 'en',
-        en: {
-          href: '?en'
-        },
-        cy: {
-          href: '?cy'
-        }
-        })
-    }}
-  </div>
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
 
 {% endblock %}
 

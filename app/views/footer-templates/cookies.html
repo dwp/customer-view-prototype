@@ -1,0 +1,177 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Cookies on [service name]</h1>
+      
+      <p class="govuk-body">Cookies are small text files that we save on your phone, tablet or computer when you use this service. Some cookies on [service name] are essential and others are optional.</p>
+      
+      <p>We cannot use cookies to identify you.</p>
+      
+      <h2 class="govuk-heading-l">Essential cookies</h2>
+      
+      <div class="govuk-body" id="essential_cookies_desc">
+      
+        <p>Essential cookies are needed to make the service work. If you do not want us to use them you can turn off cookies in your web browser, but the service may not work properly.</p>
+      
+        <p>We will not set any essential cookies until you start using the service.</p>
+      
+        <details class="govuk-details" data-module="essential-cookies-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Essential cookies used by this service
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <h3 class="govuk-heading-m" id="security_cookies_desc">Security cookies</h3>
+            <table class="govuk-table" aria-describedby="security_cookies_desc">
+              <thead class="govuk-table__header">
+                <tr>
+                  <th scope="col" class="govuk-table__header">Name</th>
+                  <th scope="col" class="govuk-table__header">Purpose</th>
+                  <th scope="col" class="govuk-table__header">Expires</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr scope="row" class="govuk-table__row">
+                  <td class="govuk-table__cell">Cookie 1</td>
+                  <td class="govuk-table__cell">Plain language description of cookie purpose</td>
+                  <td class="govuk-table__cell">Cookie duration</td>
+                </tr>
+                <tr scope="row" class="govuk-table__row">
+                  <td class="govuk-table__cell">Cookie 2</td>
+                  <td class="govuk-table__cell">Plain language description of cookie purpose</td>
+                  <td class="govuk-table__cell">Cookie duration</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 class="govuk-heading-m" id="functional_cookies_desc">Functional cookies</h3>
+            <table class="govuk-table" aria-describedby="functional_cookies_desc">
+              <thead class="govuk-table__header">
+                <tr>
+                  <th scope="col" class="govuk-table__header">Name</th>
+                  <th scope="col" class="govuk-table__header">Purpose</th>
+                  <th scope="col" class="govuk-table__header">Expires</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr scope="row" class="govuk-table__row">
+                  <td class="govuk-table__cell">Cookie 1</td>
+                  <td class="govuk-table__cell">Plain language description of cookie purpose</td>
+                  <td class="govuk-table__cell">Cookie duration</td>
+                </tr>
+                <tr scope="row" class="govuk-table__row">
+                  <td class="govuk-table__cell">Cookie 2</td>
+                  <td class="govuk-table__cell">Plain language description of cookie purpose</td>
+                  <td class="govuk-table__cell">Cookie duration</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 class="govuk-heading-m" id="performance_cookies_desc">Performance cookies</h3>
+            <table class="govuk-table" aria-describedby="performance_cookies_desc">
+              <thead class="govuk-table__header">
+                <tr>
+                  <th scope="col" class="govuk-table__header">Name</th>
+                  <th scope="col" class="govuk-table__header">Purpose</th>
+                  <th scope="col" class="govuk-table__header">Expires</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr scope="row" class="govuk-table__row">
+                  <td class="govuk-table__cell">Cookie 1</td>
+                  <td class="govuk-table__cell">Plain language description of cookie purpose</td>
+                  <td class="govuk-table__cell">Cookie duration</td>
+                </tr>
+                <tr scope="row" class="govuk-table__row">
+                  <td class="govuk-table__cell">Cookie 2</td>
+                  <td class="govuk-table__cell">Plain language description of cookie purpose</td>
+                  <td class="govuk-table__cell">Cookie duration</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+      
+      <div class="govuk-body" id="optional_cookies_desc">
+      
+        <h2 class="govuk-heading-l">Optional cookies</h2>
+      
+        <p>Optional cookies help us to improve the service, but it will work without them. We will not use them without your permission and you can change your mind at any time.</p>
+      
+        <form action="#">
+        
+          <h3 class="govuk-heading-m" id="google_analytics_cookies_desc">Analytics cookies (Google Analytics)</h3>
+        
+          <p class="govuk-body">We use Google Analytics software to collect information about how you use this service and help us make it better. We do not allow Google to use or share this data.</p>
+        
+          <details class="govuk-details" data-module="analytics-cookies-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Analytics cookies used by this service
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <table class="govuk-table" aria-describedby="google_analytics_cookies_desc">
+                <thead class="govuk-table__header">
+                  <tr>
+                    <th scope="col" class="govuk-table__header">Name</th>
+                    <th scope="col" class="govuk-table__header">Purpose</th>
+                    <th scope="col" class="govuk-table__header">Expires</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr scope="row" class="govuk-table__row">
+                    <td class="govuk-table__cell">_ga</td>
+                    <td class="govuk-table__cell">Checks if you have visited before so we can count how many people use the service.</td>
+                    <td class="govuk-table__cell">2 years</td>
+                  </tr>
+                  <tr scope="row" class="govuk-table__row">
+                    <td class="govuk-table__cell">_ga_&lt;container-id&gt;</td>
+                    <td class="govuk-table__cell">Collects information about how you use the service so we can make it better.</td>
+                    <td class="govuk-table__cell">2 years</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        
+          <div class="govuk-form-group">
+          
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-visually-hidden">Can we use analytics cookies?</legend>
+              <input value="" type="hidden" name="cookie_preferences_form[ga]" id="cookie_preferences_form_ga">
+              <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="google_analytics" name="google_analytics" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="google_analytics">
+                    Accept analytics cookies
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="google_analytics-2" name="google_analytics" type="radio" value="no" checked>
+                  <label class="govuk-label govuk-radios__label" for="google_analytics-2">
+                    Reject analytics cookies
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        
+          <button class="govuk-button">Save cookie settings</button>
+        </form>
+    </div>
+  </div>
+
+{% endblock %}
