@@ -60,18 +60,26 @@ Check your details before you send them
       
       {% endif %}
 
-      <h2 class="govuk-heading-m">
-        How to get proof of your other benefits
-      </h2>
-
       {% if data['oOScope'].length === 1 %}
+        <h2 class="govuk-heading-m">
+          How to get proof of your other benefits
+        </h2>
+
         <p>Find the contact details for {{ data['oOScope'][0] }} in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
 
       {% elif data['oOScope'].length === 2 %}
+        <h2 class="govuk-heading-m">
+          How to get proof of your other benefits
+        </h2>
+
         <p>Find the contact details for {{ data['oOScope'] | formatList }} in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
 
 
       {% elif data['oOScope'].length > 2 %}
+        <h2 class="govuk-heading-m">
+          How to get proof of your other benefits
+        </h2>
+
         <p>You cannot use this service to get a proof of benefit letter for:</p>
         <ul class="govuk-list govuk-list--bullet">
             {% for benefit in data['oOScope'] %}
@@ -86,7 +94,16 @@ Check your details before you send them
 
 
       {% if data['uCBenefit'] == true %}
+        {% if data['oOScope'].length === 0 %}
+        <h2 class="govuk-heading-m">
+          How to get proof of your other benefits
+        </h2>
+        
         <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+
+        {% else %}
+        <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+
       {% endif %}
 
 
