@@ -46,7 +46,13 @@ Check your details before you send them
               {% endfor %}
             </dd>
             <dd class="govuk-summary-list__actions">
+              {% if data['researchSetUpBenefits'].length > 1 %}
               <a class="govuk-link" href="select-benefits">Change<span class="govuk-visually-hidden"> benefits</span></a>
+
+              {% else %}
+              <a class="govuk-link" href="do-you-want-a-letter-for">Change<span class="govuk-visually-hidden"> benefit</span></a>
+
+              {% endif %}
             </dd>
           </div>
           <div class="govuk-summary-list__row">

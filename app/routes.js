@@ -9,6 +9,13 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // ! ----------------------------------------------------------------------------------------------------------------------------------
 
+// ! GOV UK Notify
+
+var NotifyClient = require('notifications-node-client').NotifyClient,
+    notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+
+// ! ----------------------------------------------------------------------------------------------------------------------------------
+
 // ! OIDV
 
 // Add your routes here
@@ -2241,6 +2248,13 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
   var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
+  req.session.data.inScope = inScope;
+  req.session.data.oOScope = oOScope;
+  req.session.data.uCBenefit = uCBenefit;
+  delete inScope;
+  delete oOScope;
+  delete uCBenefit;
+
   for (var i=0; i < researchSetUpBenefits.length; i++) {
 
     if (researchSetUpBenefits[i] === 'Bereavement Benefit' ||
@@ -2279,11 +2293,6 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
 
   console.log(inScope)
   console.log(oOScope)
-
-  req.session.data.oOScope = oOScope;
-  req.session.data.inScope = inScope;
-  req.session.data.uCBenefit = uCBenefit;
-
  
   // Check if correspondence address is available
   if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
@@ -2301,10 +2310,6 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
   } else if (doYouWantLetterFor == "no") {
         // Send user to can't get letter page
         res.redirect('/get-a-proof-of-benefit-letter/v2/contact-us-for-different-benefit-letter');
-  
-  } else {
-    // Send user to can't get letter page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/contact-us-for-different-benefit-letter');
   }
 
 })
@@ -2354,32 +2359,25 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
   var whichBenefitNeedProof = req.session.data['which-benefits-need-proof']
 
+  req.session.data.inScope = inScope;
+  req.session.data.oOScope = oOScope;
+  req.session.data.uCBenefit = uCBenefit;
+  delete inScope;
+  delete oOScope;
+  delete uCBenefit;
+
   for (var i=0; i < whichBenefitNeedProof.length; i++) {
 
-    if (whichBenefitNeedProof[i] === 'Employment and Support Allowance (ESA)' ||
-        whichBenefitNeedProof[i] === 'Bereavement Benefit' ||
-        whichBenefitNeedProof[i] === 'Widow’s Benefit' ||
-        whichBenefitNeedProof[i] === 'Bereavement Allowance' ||
+    if (whichBenefitNeedProof[i] === 'Bereavement Benefit' ||
         whichBenefitNeedProof[i] === 'Bereavement Support Payment' ||
         whichBenefitNeedProof[i] === 'Carer’s Allowance' ||
-        whichBenefitNeedProof[i] === 'Child Disability Payment' ||
-        whichBenefitNeedProof[i] === 'Child Benefit' ||
-        whichBenefitNeedProof[i] === 'Cold Weather Payment' ||
-        whichBenefitNeedProof[i] === 'Constant Attendance Allowance' ||
-        whichBenefitNeedProof[i] === 'Disability Living Allowance (DLA) for children' ||
-        whichBenefitNeedProof[i] === 'Disablement Benefit' ||
-        whichBenefitNeedProof[i] === 'Exceptionally Severe Disablement Benefit' ||
-        whichBenefitNeedProof[i] === 'Funeral Payment' ||
         whichBenefitNeedProof[i] === 'Incapacity Benefit' ||
         whichBenefitNeedProof[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
         whichBenefitNeedProof[i] === 'Maternity Allowance' ||
-        whichBenefitNeedProof[i] === 'Sure Start Maternity Grant' ||
-        whichBenefitNeedProof[i] === 'Reduced Earnings Allowance' ||
-        whichBenefitNeedProof[i] === 'Retirement Allowance' ||
+        whichBenefitNeedProof[i] === 'Personal Independence Payment (PIP)' ||
         whichBenefitNeedProof[i] === 'Severe Disablement Allowance' ||
-        whichBenefitNeedProof[i] === 'Short Term Benefit' ||
-        whichBenefitNeedProof[i] === 'Support for Mortgage Interest' ||
-        whichBenefitNeedProof[i] === 'Winter Fuel Payments'
+        whichBenefitNeedProof[i] === 'Universal Credit' ||
+        whichBenefitNeedProof[i] === 'Widow’s Benefit'
         ) {
           oOScope.push(whichBenefitNeedProof[i])
         } 
@@ -2396,10 +2394,6 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
   console.log(inScope)
   console.log(oOScope)
 
-  req.session.data.oOScope = oOScope;
-  req.session.data.inScope = inScope;
-  req.session.data.uCBenefit = uCBenefit;
-
   if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
     res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
 
@@ -2412,6 +2406,9 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
 
   } else if (inScope.length >= 1 && (oOScope.length >= 1 || uCBenefit == true)) {
     res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-all-your-benefits');
+
+  } else if (!(whichBenefitNeedProof == []) || !(whichBenefitNeedProof == undefined)) {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/check-answers');
 
   } else {
     console.log(inScope)
