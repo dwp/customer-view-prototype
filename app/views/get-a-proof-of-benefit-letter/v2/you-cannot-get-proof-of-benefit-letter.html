@@ -5,7 +5,7 @@
   {{ hmrcHeader({
     serviceName: "Get a proof of benefit letter",
     serviceUrl : "/",
-    signOutHref : "?sign-out",
+    signOutHref : "signout",
     useTudorCrown: "true"
   }) }}
 
@@ -80,7 +80,7 @@ You cannot get a proof of benefit letter using this service
         <div class="govuk-button-group">
           {{ govukButton({
             text: "Sign out",
-            href: "#"
+            href: "signout"
           }) }}
 
           {{ govukButton({

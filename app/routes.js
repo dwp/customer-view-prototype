@@ -2212,7 +2212,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/how-did-you-find-out-about-this-s
 
 
   if (howDidYouFindOutAboutThisService === "letter-from-the-department-for-work-and-pensions")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2/identity-check');
+    res.redirect('/get-a-proof-of-benefit-letter/v2/account-home');
 
   } else if (howDidYouFindOutAboutThisService === "family-or-friend")  {
     res.redirect('/get-a-proof-of-benefit-letter/v2/contact-family-or-friend');
