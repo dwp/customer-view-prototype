@@ -1,20 +1,34 @@
 {% extends "layouts/main.html" %}
 
-{% set serviceName %}
-Manage your benefits and State Pension
-{% endset%}
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
 
 {% block pageTitle %}
-Which benefits do you get?
+Where we send your letters
 {% endblock %}
 
 {% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
 
   {{ govukBackLink({
     text: "Back",
     href: "javascript:window.history.back()"
   }) }}
-
+  
 {% endblock %}
 
 {% block content %}

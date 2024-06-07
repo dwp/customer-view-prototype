@@ -1,15 +1,29 @@
 {% extends "layouts/main.html" %}
 
-{% set serviceName %}
-Manage your benefits and State Pension
-{% endset%}
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Manage your benefits and State Pension",
+    serviceUrl : "/",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
 
 {% block pageTitle %}
-Customer view
+Account home
 {% endblock %}
 
 {% block beforeContent %}
 
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+  
 {% endblock %}
 
 

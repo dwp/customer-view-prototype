@@ -2297,11 +2297,11 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
   // Check if correspondence address is available
   if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
+    res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
 
   } else if (researchSetUpAddress === "home" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to next single address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
+    res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
 
   } else if ((oOScope.length === 1 || uCBenefit == true)) {
       res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter.html');
@@ -2344,11 +2344,11 @@ router.post('/get-a-proof-of-benefit-letter/v2/cant-get-proof-all-benefits-answe
   // Check if correspondence address is available
   if (researchSetUpAddress === "post")  {
     // Show post address
-    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
+    res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
 
   } else  {
     // Show home address
-    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
+    res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
 
   } 
 
@@ -2395,10 +2395,10 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
   console.log(oOScope)
 
   if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
+    res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
 
   } else if (researchSetUpAddress === "home" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2/is-your-home-address-correct');
+    res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
     
 
   } else if (inScope.length === 0)  {
