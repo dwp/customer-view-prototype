@@ -2248,12 +2248,17 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
   var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
+  inScope = [];
+  oOScope = [];
+  uCBenefit = false
+  delete inScope;
+  delete oOScope;
+  delete uCBenefit
+
   req.session.data.inScope = inScope;
   req.session.data.oOScope = oOScope;
   req.session.data.uCBenefit = uCBenefit;
-  delete inScope;
-  delete oOScope;
-  delete uCBenefit;
+
 
   for (var i=0; i < researchSetUpBenefits.length; i++) {
 
@@ -2359,12 +2364,17 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
   var whichBenefitNeedProof = req.session.data['which-benefits-need-proof']
 
+  inScope = [];
+  oOScope = [];
+  uCBenefit = false
+  delete inScope;
+  delete oOScope;
+  delete uCBenefit
+
   req.session.data.inScope = inScope;
   req.session.data.oOScope = oOScope;
   req.session.data.uCBenefit = uCBenefit;
-  delete inScope;
-  delete oOScope;
-  delete uCBenefit;
+
 
   for (var i=0; i < whichBenefitNeedProof.length; i++) {
 
