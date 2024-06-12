@@ -2262,29 +2262,15 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
 
   for (var i=0; i < researchSetUpBenefits.length; i++) {
 
-    if (researchSetUpBenefits[i] === 'Bereavement Benefit' ||
-          researchSetUpBenefits[i] === 'Widow’s Benefit' ||
-          researchSetUpBenefits[i] === 'Bereavement Allowance' ||
-          researchSetUpBenefits[i] === 'Bereavement Support Payment' ||
-          researchSetUpBenefits[i] === 'Carer’s Allowance' ||
-          researchSetUpBenefits[i] === 'Child Disability Payment' ||
-          researchSetUpBenefits[i] === 'Child Benefit' ||
-          researchSetUpBenefits[i] === 'Cold Weather Payment' ||
-          researchSetUpBenefits[i] === 'Constant Attendance Allowance' ||
-          researchSetUpBenefits[i] === 'Disability Living Allowance (DLA) for children' ||
-          researchSetUpBenefits[i] === 'Disablement Benefit' ||
-          researchSetUpBenefits[i] === 'Exceptionally Severe Disablement Benefit' ||
-          researchSetUpBenefits[i] === 'Funeral Payment' ||
-          researchSetUpBenefits[i] === 'Incapacity Benefit' ||
-          researchSetUpBenefits[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
-          researchSetUpBenefits[i] === 'Maternity Allowance' ||
-          researchSetUpBenefits[i] === 'Sure Start Maternity Grant' ||
-          researchSetUpBenefits[i] === 'Reduced Earnings Allowance' ||
-          researchSetUpBenefits[i] === 'Retirement Allowance' ||
-          researchSetUpBenefits[i] === 'Severe Disablement Allowance' ||
-          researchSetUpBenefits[i] === 'Short Term Benefit' ||
-          researchSetUpBenefits[i] === 'Support for Mortgage Interest' ||
-          researchSetUpBenefits[i] === 'Winter Fuel Payments'
+    if (doYouWantLetterFor[i] === 'Bereavement Benefit' ||
+    doYouWantLetterFor[i] === 'Bereavement Support Payment' ||
+    doYouWantLetterFor[i] === 'Carer’s Allowance' ||
+    doYouWantLetterFor[i] === 'Incapacity Benefit' ||
+    doYouWantLetterFor[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
+    doYouWantLetterFor[i] === 'Maternity Allowance' ||
+    doYouWantLetterFor[i] === 'Personal Independence Payment (PIP)' ||
+    doYouWantLetterFor[i] === 'Severe Disablement Allowance' ||
+    doYouWantLetterFor[i] === 'Widow’s Benefit'
           ) {
             oOScope.push(researchSetUpBenefits[i])
   
@@ -2386,7 +2372,6 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
         whichBenefitNeedProof[i] === 'Maternity Allowance' ||
         whichBenefitNeedProof[i] === 'Personal Independence Payment (PIP)' ||
         whichBenefitNeedProof[i] === 'Severe Disablement Allowance' ||
-        whichBenefitNeedProof[i] === 'Universal Credit' ||
         whichBenefitNeedProof[i] === 'Widow’s Benefit'
         ) {
           oOScope.push(whichBenefitNeedProof[i])
@@ -2426,3 +2411,23 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
   }
 
 })
+
+// The URL here needs to match the URL of the page that the user is on
+// when they type in their email address
+router.post('/get-a-proof-of-benefit-letter/v2/email', function (req, res) {
+
+  notify.sendEmail(
+    // this long string is the template ID, copy it from the template
+    // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
+    // in your code.
+    'd097783b-3c1d-497c-befb-393017170d1b',
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    req.body.emailAddress
+  );
+
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+  res.redirect('/get-a-proof-of-benefit-letter/v2/confirmation');
+
+});
