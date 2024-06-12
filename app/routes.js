@@ -2201,7 +2201,7 @@ router.all('/get-a-proof-of-benefit-letter/v2/research-set-up/PoB-clear-data', f
   console.log(inScope);
   console.log(oOScope);
   
-  res.redirect("benefits");
+  res.redirect("notify-info");
   
   })
 
@@ -2255,11 +2255,6 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
   delete oOScope;
   delete uCBenefit
 
-  req.session.data.inScope = inScope;
-  req.session.data.oOScope = oOScope;
-  req.session.data.uCBenefit = uCBenefit;
-
-
   for (var i=0; i < researchSetUpBenefits.length; i++) {
 
     if (doYouWantLetterFor[i] === 'Bereavement Benefit' ||
@@ -2281,6 +2276,10 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
             inScope.push(researchSetUpBenefits[i])
           }
     }
+
+  req.session.data.inScope = inScope;
+  req.session.data.oOScope = oOScope;
+  req.session.data.uCBenefit = uCBenefit;
 
   console.log(inScope)
   console.log(oOScope)
@@ -2357,11 +2356,6 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
   delete oOScope;
   delete uCBenefit
 
-  req.session.data.inScope = inScope;
-  req.session.data.oOScope = oOScope;
-  req.session.data.uCBenefit = uCBenefit;
-
-
   for (var i=0; i < whichBenefitNeedProof.length; i++) {
 
     if (whichBenefitNeedProof[i] === 'Bereavement Benefit' ||
@@ -2386,8 +2380,14 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
     }
   }
 
+  req.session.data.inScope = inScope;
+  req.session.data.oOScope = oOScope;
+  req.session.data.uCBenefit = uCBenefit;
+
+
   console.log(inScope)
   console.log(oOScope)
+  console.log(uCBenefit)
 
   if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
     res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
@@ -2402,9 +2402,6 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
   } else if (inScope.length >= 1 && (oOScope.length >= 1 || uCBenefit == true)) {
     res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-all-your-benefits');
 
-  } else if (!(whichBenefitNeedProof == []) || !(whichBenefitNeedProof == undefined)) {
-    res.redirect('/get-a-proof-of-benefit-letter/v2/check-answers');
-
   } else {
     console.log(inScope)
     console.log(oOScope)
@@ -2414,20 +2411,23 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
 
 // The URL here needs to match the URL of the page that the user is on
 // when they type in their email address
-router.post('/get-a-proof-of-benefit-letter/v2/email', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/v2/research-set-up/notify-info-answers', function (req, res) {
 
   notify.sendEmail(
     // this long string is the template ID, copy it from the template
     // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
     // in your code.
-    'd097783b-3c1d-497c-befb-393017170d1b',
+    '84aa1288-3b44-4ce0-a278-ae54e833dfb4', req.body.notifyEmailAddress, 
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
-    req.body.emailAddress
-  );
-
+    {
+      personalisation: {
+      'fullname': req.body.notifyFullName,
+    }
+  }
+  )
   // This is the URL the users will be redirected to once the email
   // has been sent
-  res.redirect('/get-a-proof-of-benefit-letter/v2/confirmation');
+  res.redirect('/get-a-proof-of-benefit-letter/v2/research-set-up/benefits');
 
 });

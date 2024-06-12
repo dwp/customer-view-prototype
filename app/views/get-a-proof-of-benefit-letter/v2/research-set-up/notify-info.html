@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post" action="notify-info-answers">
+
+        {{ govukPasswordInput({
+          label: {
+            text: "Email Address"
+          },
+          id: "notify-email-address",
+          name: "notifyEmailAddress"
+        }) }}
+
+        {{ govukPasswordInput({
+          label: {
+            text: "Full name"
+          },
+          id: "notify-full-name",
+          name: "notifyFullName"
+        }) }}
+
+        <!-- {{ govukInput({
+          label: {
+            text: "Email Address"
+          },
+          id: "notify-email-address",
+          name: "notifyEmailAddress",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Full name"
+          },
+          id: "notify-full-name",
+          name: "notifyFullName",
+          spellcheck: false
+        }) }} -->
+
+        {{ govukButton({
+          text: "Continue"
+        })}}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
