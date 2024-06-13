@@ -2414,7 +2414,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
 router.post('/get-a-proof-of-benefit-letter/v2/notify-info-answers', function (req, res) {
 
   var notifyEmailAddress = req.session.data['notifyEmailAddress']
-  var notifyFullName = req.session.data['notifyFullName']
+  var notifyName = req.session.data['notifyName']
   req.session.data.inScope = inScope;
   console.log(inScope)
 
