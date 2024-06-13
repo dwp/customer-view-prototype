@@ -2411,23 +2411,28 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
 
 // The URL here needs to match the URL of the page that the user is on
 // when they type in their email address
-router.post('/get-a-proof-of-benefit-letter/v2/research-set-up/notify-info-answers', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/v2/notify-info-answers', function (req, res) {
+
+  var notifyEmailAddress = req.session.data['notifyEmailAddress']
+  var notifyFullName = req.session.data['notifyFullName']
+  req.session.data.inScope = inScope;
+  console.log(inScope)
 
   notify.sendEmail(
     // this long string is the template ID, copy it from the template
     // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
     // in your code.
-    '84aa1288-3b44-4ce0-a278-ae54e833dfb4', req.body.notifyEmailAddress, 
+    '84aa1288-3b44-4ce0-a278-ae54e833dfb4', notifyEmailAddress, 
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
     {
       personalisation: {
-      'fullname': req.body.notifyFullName,
+      'fullname': notifyFullName,
     }
   }
   )
   // This is the URL the users will be redirected to once the email
   // has been sent
-  res.redirect('/get-a-proof-of-benefit-letter/v2/research-set-up/benefits');
+  res.redirect('/get-a-proof-of-benefit-letter/v2/confirmation');
 
 });
