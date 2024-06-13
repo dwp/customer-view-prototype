@@ -2427,7 +2427,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/notify-info-answers', function (r
     // your HTML page
     {
       personalisation: {
-      'fullname': notifyFullName,
+      'name': notifyName,
     }
   }
   )
