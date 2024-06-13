@@ -2247,6 +2247,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
   var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
+  var confirmLetterSend = req.session.data['confirmLetterSend']
 
   inScope = [];
   oOScope = [];
@@ -2283,9 +2284,14 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
 
   console.log(inScope)
   console.log(oOScope)
+  console.log("Confirm letter" + confirmLetterSend)
  
   // Check if correspondence address is available
-  if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
+  
+  if (confirmLetterSend === 'yes' && oOScope.length === 0 && uCBenefit == false)   {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/check-your-answers');
+  
+  } else if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to multi address page
     res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
 
@@ -2293,9 +2299,8 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
     // Send user to next single address page
     res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
 
-  } else if ((oOScope.length === 1 || uCBenefit == true)) {
+  }  else if ((oOScope.length === 1 || uCBenefit == true)) {
       res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter.html');
-    
     
   } else if (doYouWantLetterFor == "no") {
         // Send user to can't get letter page
@@ -2326,20 +2331,19 @@ router.post('/get-a-proof-of-benefit-letter/v2/send-letter-to-address-answer', f
 
 
 // Place user back into journey from you cant get a proof for all benefits
-// TODO Ask Kealan why this is needed
 router.post('/get-a-proof-of-benefit-letter/v2/cant-get-proof-all-benefits-answer', function (req, res) {
 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
+  var confirmLetterSend = req.session.data['confirmLetterSend']
 
   // Check if correspondence address is available
-  if (researchSetUpAddress === "post")  {
-    // Show post address
-    res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
-
+  
+  if (confirmLetterSend === 'yes')   {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/check-your-answers');
+  
   } else  {
     // Show home address
     res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
-
   } 
 
 })
@@ -2348,6 +2352,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
   var whichBenefitNeedProof = req.session.data['which-benefits-need-proof']
+  var confirmLetterSend = req.session.data['confirmLetterSend']
 
   inScope = [];
   oOScope = [];
@@ -2389,7 +2394,10 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
   console.log(oOScope)
   console.log(uCBenefit)
 
-  if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
+  if (confirmLetterSend === 'yes' && oOScope.length === 0 && uCBenefit == false)   {
+    res.redirect('/get-a-proof-of-benefit-letter/v2/check-your-answers');
+  
+  } else if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
     res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
 
   } else if (researchSetUpAddress === "home" && (oOScope.length === 0 && uCBenefit == false))  {
@@ -2402,9 +2410,6 @@ router.post('/get-a-proof-of-benefit-letter/v2/multi-benefits-answer', function 
   } else if (inScope.length >= 1 && (oOScope.length >= 1 || uCBenefit == true)) {
     res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-all-your-benefits');
 
-  } else {
-    console.log(inScope)
-    console.log(oOScope)
   }
 
 })
