@@ -2188,13 +2188,13 @@ var oOScope = [];
 
 router.all('/get-a-proof-of-benefit-letter/v2/research-set-up/PoB-clear-data', function (req, res) {
 
-
+  req.session.data = {}
   inScope = [];
   oOScope = [];
   uCBenefit = false
   req.session.data.inScope = inScope;
   req.session.data.oOScope = oOScope;
-  delete req.session.data['which-benefits-need-proof'];
+  // delete req.session.data['which-benefits-need-proof'];
   delete inScope;
   delete oOScope;
 
