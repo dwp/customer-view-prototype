@@ -70,30 +70,7 @@
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}
-  {% block footer %}
-    {{ govukFooter({
-      meta: {
-        items: [
-          {
-            href: "/footer-templates/accessibility",
-            text: "Accessibility statement"
-          }, {
-            href: "/footer-templates/cookies",
-            text: "Cookies"
-          }, {
-            href: "https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter",
-            text: "Privacy"
-          }, {
-            href: "/get-a-proof-of-benefit-letter/v2/research-set-up/intro.html",
-            text: "Restart session"
-          }, {
-            href: "/prototype-admin/clear-data",
-            text: "Clear data"
-          }    
-        ]
-      }
-    }) }}
-  {% endblock %}
+
 {% endif %}
 
 {% block bodyEnd %}
