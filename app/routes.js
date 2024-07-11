@@ -2258,15 +2258,15 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
 
   for (var i=0; i < researchSetUpBenefits.length; i++) {
 
-    if (doYouWantLetterFor[i] === 'Bereavement Benefit' ||
-    doYouWantLetterFor[i] === 'Bereavement Support Payment' ||
-    doYouWantLetterFor[i] === 'Carer’s Allowance' ||
-    doYouWantLetterFor[i] === 'Incapacity Benefit' ||
-    doYouWantLetterFor[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
-    doYouWantLetterFor[i] === 'Maternity Allowance' ||
-    doYouWantLetterFor[i] === 'Personal Independence Payment (PIP)' ||
-    doYouWantLetterFor[i] === 'Severe Disablement Allowance' ||
-    doYouWantLetterFor[i] === 'Widow’s Benefit'
+    if (researchSetUpBenefits[i] === 'Bereavement Benefit' ||
+    researchSetUpBenefits[i] === 'Bereavement Support Payment' ||
+    researchSetUpBenefits[i] === 'Carer’s Allowance' ||
+    researchSetUpBenefits[i] === 'Incapacity Benefit' ||
+    researchSetUpBenefits[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
+    researchSetUpBenefits[i] === 'Maternity Allowance' ||
+    researchSetUpBenefits[i] === 'Personal Independence Payment (PIP)' ||
+    researchSetUpBenefits[i] === 'Severe Disablement Allowance' ||
+    researchSetUpBenefits[i] === 'Widow’s Benefit'
           ) {
             oOScope.push(researchSetUpBenefits[i])
   
@@ -2284,6 +2284,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
 
   console.log(inScope)
   console.log(oOScope)
+  console.log(doYouWantLetterFor)
   console.log("Confirm letter" + confirmLetterSend)
  
   // Check if correspondence address is available
@@ -2299,7 +2300,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
     // Send user to next single address page
     res.redirect('/get-a-proof-of-benefit-letter/v2/where-we-send-your-letter');
 
-  }  else if ((oOScope.length === 1 || uCBenefit == true)) {
+  }  else if ((oOScope.length === 1 || uCBenefit == true) && doYouWantLetterFor == "yes") {
       res.redirect('/get-a-proof-of-benefit-letter/v2/you-cannot-get-proof-of-benefit-letter.html');
     
   } else if (doYouWantLetterFor == "no") {
