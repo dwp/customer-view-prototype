@@ -2289,7 +2289,7 @@ router.post('/get-a-proof-of-benefit-letter/v2/single-benefits-answer', function
  
   // Check if correspondence address is available
   
-  if (confirmLetterSend === 'yes' && oOScope.length === 0 && uCBenefit == false)   {
+  if (confirmLetterSend === 'yes' && oOScope.length === 0 && uCBenefit == false && doYouWantLetterFor == "yes")   {
     res.redirect('/get-a-proof-of-benefit-letter/v2/check-your-answers');
   
   } else if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
