@@ -44,7 +44,11 @@ Getting proof of your benefits
 
         <p>You can get proof of some of your benefits using this service, but not all of them.</p>
 
-        <p>This is because not all benefits are online yet.</p>
+        {% if data['uCBenefit'] == false %}
+        <p>
+          This is because not all benefits are online yet.
+        </p>
+        {% endif %}
 
         <h2 class="govuk-heading-m">Benefits you cannot get proof of using this service</h2>
 

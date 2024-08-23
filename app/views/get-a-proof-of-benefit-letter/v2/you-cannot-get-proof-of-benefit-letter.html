@@ -44,9 +44,11 @@ You cannot get a proof of benefit letter using this service
           You can get proof of some benefits using this service, but not all of them.
         </p>
 
+        {% if data['uCBenefit'] == false %}
         <p>
           This is because not all benefits are online yet.
         </p>
+        {% endif %}
 
         <h2 class="govuk-heading-m">How to get proof of your benefits</h2>
 
