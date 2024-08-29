@@ -1,0 +1,156 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Check your payment - Index
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Scope 2</span>
+      Change your address
+    </h1>
+    <p>This MVP lets users change their address.</p>
+    <p>While investigating the business process for this feature, we iterated the ‘task-based’ design to improve on the radio homepage.</p>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <h2 class="govuk-heading-m">Iteration 3: three homepages</h2>
+
+    <div class="tags">
+      <strong class="govuk-tag">V1.3</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--green"><i></i>Complete</strong>
+    </div>
+    <br>
+
+    <p>
+      Iterations of three alternative homepage designs in one place.
+    </p>
+    <p>
+      We continued designing the homepages when we changed scope to the ‘change bank details’ MVP.
+    </p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text"> What's new? </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>simplified radio homepage</li>
+          <li>list homepage</li>
+          <li>cards homepage</li>
+        </ul>
+      </div>
+    </details>
+
+    <p>31 Oct 22 - 23 Dec 22</p>
+
+    {{ govukButton({
+      text: "View prototype",
+      href: "v3/.html"
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <h2 class="govuk-heading-m">Iteration 2: cards homepage</h2>
+    
+    <div class="tags">
+      <strong class="govuk-tag">V1.2</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--green"><i></i>Complete</strong>
+    </div>
+    <br>
+
+    <p>
+      An alternative to the list homepage, we created this cards design in sprint 19.
+    </p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text"> What's new? </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>cards homepage</li>
+          <li>navigation bar</li>
+
+          <li>new content in personal details:</li>
+            <ul class="govuk-list govuk-list--bullet" style="list-style-type:circle">
+              <li>change link on phone number - not functional</li>
+              <li>check and change bank details content - not functional</li>
+            </ul>
+        </ul>
+      </div>
+    </details>
+
+    <p>19 Oct 22 - 31 Oct 22</p>
+
+
+    {{ govukButton({
+      text: "View prototype",
+      href: "v2/"
+    }) }}
+    
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <h2 class="govuk-heading-m">Iteration 1: list homepage</h2>
+    
+    <div class="tags">
+      <strong class="govuk-tag">V1.1</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--green"><i></i>Complete</strong>
+    </div>
+    <br>
+
+    <p>
+      Iteration of the task-based design from sprint 19, showing the homepage as a list. 
+    </p>
+    <p>
+      This design shows early investigations into the change address feature, which we didn’t test with users as we changed scope.
+    </p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text"> What's new? </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>list homepage</li>
+          <li>users can now ‘check and change’ personal details</li>
+          <li>personal details has change link in address section</li>
+          
+          <li>questions to understand more about user’s home move</li>
+            <ul class="govuk-list govuk-list--bullet" style="list-style-type:circle">
+              <li>when did you move</li>
+              <li>is your home in the UK</li>
+              <li>find address or enter manually</li>
+            </ul>
+        </ul>
+      </div>
+    </details>
+
+    <p>19 Oct 22 - 31 Oct 22</p>
+
+    {{ govukButton({
+      text: "View prototype",
+      href: "v1/"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

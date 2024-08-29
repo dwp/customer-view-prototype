@@ -5,8 +5,16 @@ index.html
   Customer View internal prototype homepage
 {% endblock %}
 
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
 {% block content %}
-<a class="govuk-back-link" href="../../../testindex.html">Back</a> 
   
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -20,7 +28,7 @@ index.html
 
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <h2 class="govuk-heading-l"><a href="testiteration5.html">Iteration 5</a></h2>
+    <h2 class="govuk-heading-l"><a href="iteration5">Iteration 5</a></h2>
     <strong class="govuk-tag">V5</strong> &nbsp; <strong class="govuk-tag govuk-tag--green">Beta</strong> &nbsp; <strong class="govuk-tag govuk-tag--blue"><I></I>In progress</strong><br>
     <br>
     <p>Details about iteration 5 TBC</p><div class="govuk-warning-text">
@@ -58,7 +66,7 @@ index.html
   <div class="govuk-grid-column-two-thirds">
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <h2 class="govuk-heading-l"><a href="testiteration4.html">Iteration 4</a></h2>
+    <h2 class="govuk-heading-l"><a href="iteration4.html">Iteration 4</a></h2>
     <strong class="govuk-tag">V4</strong> &nbsp; <strong class="govuk-tag govuk-tag--turquoise">Beta</strong> &nbsp; <strong class="govuk-tag govuk-tag--green"><I></I>Complete</strong><br>
     <br>
     <p>Iterations based on <a href="https://app.mural.co/t/dwpdigital7412/m/dwpdigital7412/1684091549331/fdc654b217d7b2824cf14c14c29eaef7dbc717f2?sender=uce3c70a63d831a88364d6151" target="_blank">feedback from the external alpha assessment</a> on 5 July 23, new parts of the journey, plus design ideas and the graveyard.</p>
@@ -95,7 +103,7 @@ index.html
   <div class="govuk-grid-column-two-thirds">
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <h2 class="govuk-heading-l"><a href="testiteration3.html">Iteration 3</a></h2>
+    <h2 class="govuk-heading-l"><a href="iteration3.html">Iteration 3</a></h2>
     <strong class="govuk-tag">V3</strong> &nbsp; <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp; <strong class="govuk-tag govuk-tag--green"><I></I>Complete</strong><br>
     <br>
     <p>Iterations based on <a href="https://app.mural.co/t/dwpdigital7412/m/dwpdigital7412/1684091549331/fdc654b217d7b2824cf14c14c29eaef7dbc717f2?sender=uce3c70a63d831a88364d6151" target="_blank">user research round 13</a> and some <a href="https://app.mural.co/t/dwpdigital7412/m/dwpdigital7412/1684091549331/fdc654b217d7b2824cf14c14c29eaef7dbc717f2?sender=uce3c70a63d831a88364d6151" target="_blank">mock assessment design recommendations</a>.</p>
@@ -136,7 +144,7 @@ index.html
   <div class="govuk-grid-column-two-thirds">
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <h2 class="govuk-heading-l"><a href="testiteration2.html">Iteration 2</a>  </h2>
+    <h2 class="govuk-heading-l"><a href="iteration2">Iteration 2</a>  </h2>
     <strong class="govuk-tag">V2</strong> &nbsp; <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp; <strong class="govuk-tag govuk-tag--green"><I></I>Complete</strong><br>
    
     <br>
@@ -219,7 +227,7 @@ index.html
   <div class="govuk-grid-column-two-thirds">
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <h2 class="govuk-heading-l"><a href="testiteration1.html">Iteration 1</a></h2>
+    <h2 class="govuk-heading-l"><a href="iteration1.html">Iteration 1</a></h2>
     <strong class="govuk-tag">V1</strong> &nbsp; <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp; <strong class="govuk-tag govuk-tag--green"><I></I>Complete</strong><br>
     <br>
     

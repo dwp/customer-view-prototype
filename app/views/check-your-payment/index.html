@@ -1,0 +1,187 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Check your payment - Index
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Scope 1</span>
+      Check your payments and get a proof of benefit letter
+    </h1>
+    <p>
+      This MVP lets users view their payment amount and date. They can also get evidence of their benefits. We’ve also experimented with payment history.
+    </p>
+
+    <p>
+      <a href="https://app.mural.co/t/dwpdigital7412/m/dwpdigital7412/1656931506432/5ad01c0da9645dd2678c81e1723ca39a8763b647?sender=uce3c70a63d831a88364d6151">View the design iteration board on Mural</a>
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <h2 class="govuk-heading-m">Task-based design 2</h2>
+
+    <div class="tags">
+      <strong class="govuk-tag">V1.2</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--green"><i></i>Complete</strong>
+    </div>
+    <br>
+
+    <p>
+      After choosing to stick with the task-based design, we iterated this
+      design during sprints 9 - 10.
+    </p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text"> What's new? </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>iterated content on start page</li>
+          <li>iterated menu content and removed hint text ‘caveats’</li>
+          <li>added ‘return to menu’ button instead of radio questions</li>
+          <li>
+            moved bank details out of personal details because of security and
+            confidence levels in the OIDV
+          </li>
+          <li>iterated proof of benefit letter information</li>
+          <li>changed ‘download’ and ‘print’ buttons to links</li>
+        </ul>
+      </div>
+    </details>
+
+    <p>31 Oct 22 - 23 Dec 22</p>
+
+    {{ govukButton({
+      text: "View prototype",
+      href: "v3/scenario.html"
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <h2 class="govuk-heading-m">Task-based design</h2>
+    
+    <div class="tags">
+      <strong class="govuk-tag">V1.1</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--green"><i></i>Complete</strong>
+    </div>
+    <br>
+
+    <p>
+      The task-based design lets users select what they want to do on the service, instead of a traditional dashboard design.
+    </p>
+
+    <p>
+      We tested and iterated this design during alpha sprint 2 - 9.
+    </p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text"> What's new? </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list govuk-list--bullet">
+            <li>service start page for MVP at the time</li>
+            <li>menu (or homepage)</li>
+            <li>check my next benefit payment</li>
+            <li>view payment history</li>
+            <li>prove to someone that I’m getting benefits</li>
+            <li>view my personal details</li>
+            <li>view my bank details</li>
+            <li>ask questions about my benefits - not functional</li>
+            <li>check my contact history with benefit services - not functional</li>
+            <li>return to menu options on each transaction page</li>
+            <li>sign out</li>
+        </ul>
+      </div>
+    </details>
+
+    <p>User testing round 13</p>
+    <p>23 Feb 22 - 17 June 22</p>
+
+
+    {{ govukButton({
+      text: "View prototype",
+      href: "v2/scenario.html"
+    }) }}
+    
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+    <h2 class="govuk-heading-m">All-in-one design</h2>
+    
+    <div class="tags">
+      <strong class="govuk-tag">V1.0</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp;
+      <strong class="govuk-tag govuk-tag--green"><i></i>Complete</strong>
+    </div>
+    <br>
+
+    <p>
+      The all-in-one design is more like a traditional homepage or dashboard.
+    </p>
+    <p>
+      We tested and iterated this design during alpha sprint 1 - 9. This is the last iteration of the all-in-one design. 
+    </p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text"> What's new? </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>service start page for MVP at the time</li>
+
+          <li>benefits summary:</li>
+            <ul class="govuk-list govuk-list--bullet" style="list-style-type:circle">
+              <li>payment amount and next payment date</li>
+            </ul>
+
+          <li>benefit details:</li>
+          <ul class="govuk-list govuk-list--bullet" style="list-style-type:circle">
+            <li>proof of benefit letter for each benefit</li>
+            <li>payment history for each benefit</li>
+          </ul>
+
+          <li>navigation bar showing:</li>
+          <ul class="govuk-list govuk-list--bullet" style="list-style-type:circle">
+            <li>payment history</li>
+            <li>proof of benefit information and digital evidence</li>
+            <li>contact an advisor form with benefit contacts</li>
+            <li>contact history - not functional</li>
+            <li>basic personal details, including bank details</li>
+            <li>help - not functional</li>
+          </ul>
+
+          <li>sign out button and sign out page </li>
+        </ul>
+      </div>
+    </details>
+
+    <p>Feb 9 2022 - June 17 2022</p>
+
+    {{ govukButton({
+      text: "View prototype",
+      href: "v1/scenario.html"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
