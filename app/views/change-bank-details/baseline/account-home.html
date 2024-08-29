@@ -10,6 +10,23 @@ Customer view
 
 {% block beforeContent %}
 
+{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+
+{{
+  hmrcLanguageSelect({
+    language: 'en',
+    en: {
+      href: '?en'
+    },
+    cy: {
+      href: '?cy'
+    }
+  })
+}}
+
+{% endblock %}
+
+
 {% block content %}
 
   <div class="govuk-grid-row">
