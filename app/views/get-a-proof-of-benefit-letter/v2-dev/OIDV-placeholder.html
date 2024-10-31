@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+We are taking you to our identity checking service
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="account-home" method="post">
+        
+        <h1 class="govuk-heading-l">
+          Replace this screen with the OIDV journey
+        </h1>
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-visually-hidden">Warning</span>
+            This page does not need to be built.
+          </strong>
+        </div>
+
+        <p class="govuk-body">The OIDV journey is quite long. To keep things shorter, we've added this placeholder page for you to know where to integrate the OIDV journey without having to go through it in full.</p>
+
+        <p class="govuk-body">You can jump into the <a href="../OIDV/register/start" class="govuk-link">OIDV journey here</a> if you'd like.</p>
+
+        {{ govukButton({
+          text: "Skip to account home"
+        }) }}
+        
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

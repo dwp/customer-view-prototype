@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+We are taking you to our identity checking service
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="OIDV-placeholder" method="post">
+        
+        <h1 class="govuk-heading-l">
+          We are taking you to our identity checking service
+        </h1>
+
+        <p>To keep your information secure, you’ll need to register or sign in before you can access your details.</p>
+        
+        <p>If you need to register, we will ask you security questions.</p>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

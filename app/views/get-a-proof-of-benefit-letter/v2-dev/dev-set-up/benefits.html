@@ -1,0 +1,143 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Manage your benefits and State Pension",
+    serviceUrl : "/",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Before we start the user research scenario - benefits
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="address" method="post">
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Select benefits that will appear in the journey</h1>
+
+        <div id="benefit-selection-hint" class="govuk-hint govuk-!-margin-bottom-6">
+          Since we're not pulling data with any APIs for the prototype, manually add any benefits you want the main journey to display.
+        </div>
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-visually-hidden">Warning</span>
+            This page does not need to be built.
+          </strong>
+        </div>
+        
+        {{ govukCheckboxes({
+          name: "researchSetUpBenefits",
+          value: data['researchSetUpBenefits'],
+          fieldset: {
+            legend: {
+              isPageHeading: true
+            }
+          },
+          items: [
+          {
+            value: "Attendance Allowance",
+            text: "Attendance Allowance"
+          },
+          {
+            value: "Bereavement Benefit",
+            text: "Bereavement Benefit"
+          },
+          {
+            value: "Bereavement Support Payment",
+            text: "Bereavement Support Payment"
+          },
+          {
+            value: "Carer’s Allowance",
+            text: "Carer’s Allowance"
+          },
+          {
+            value: "Disability Living Allowance (DLA) for adults",
+            text: "Disability Living Allowance (DLA) for adults"
+          },
+          {
+            value: "Employment and Support Allowance (ESA)",
+            text: "Employment and Support Allowance (ESA)"
+          },
+          {
+            value: "Incapacity Benefit",
+            text: "Incapacity Benefit"
+          },
+          {
+            value: "Income Support",
+            text: "Income Support"
+          },
+          {
+            value: "Industrial Injuries Disablement Benefit (IIDB)",
+            text: "Industrial Injuries Disablement Benefit (IIDB)"
+          },
+          {
+            value: "Jobseeker’s Allowance",
+            text: "Jobseeker’s Allowance"
+          },
+          {
+            value: "Maternity Allowance",
+            text: "Maternity Allowance"
+          },
+          {
+            value: "Pension Credit",
+            text: "Pension Credit"
+          },
+          {
+            value: "Personal Independence Payment (PIP)",
+            text: "Personal Independence Payment (PIP)"
+          },
+          {
+            value: "Severe Disablement Allowance",
+            text: "Severe Disablement Allowance"
+          },
+          {
+            value: "State Pension",
+            text: "State Pension"
+          },
+          {
+            value: "Universal Credit",
+            text: "Universal Credit"
+          },
+          {
+            value: "Widow’s Benefit",
+            text: "Widow’s Benefit"
+          }
+        ]
+
+        }) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

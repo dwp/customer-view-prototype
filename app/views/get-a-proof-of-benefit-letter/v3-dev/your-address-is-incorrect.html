@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+You cannot get a proof of benefit letter using this service
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot get a proof of benefit letter using this service
+      </h1>
+
+      <p>
+        We can only send proof of benefit letters to the address you have saved with us.  
+      </p>
+
+      <h2 class="govuk-heading-m">
+        How to change your address
+      </h2>
+
+      <p>You cannot change your address online yet.</p>
+      
+      <p>
+        You need to tell us if your circumstances have changed. To tell us your correct address, <a href="https://www.gov.uk/report-benefits-change-circumstances#:~:text=How%20to%20report%20changes" class="govuk-link" rel="noreferrer noopener" target="_blank">contact each benefit that pays you (opens in a new tab)</a>.
+      </p>
+      
+      <h2 class="govuk-heading-m">
+        How to get a proof of benefit letter
+      </h2>
+      
+      <p>You may ask for a proof of benefit letter when you contact us to tell us your correct address.</p>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Sign out",
+          href: "signout"
+        }) }}
+
+        {{ govukButton({
+          text: "Go back to account home",
+          href: "account-home",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
