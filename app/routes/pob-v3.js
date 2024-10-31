@@ -32,14 +32,11 @@ router.post('/get-a-proof-of-benefit-letter/v3-research/how-did-you-find-out-abo
   var howDidYouFindOutAboutThisService = req.session.data['how-did-you-find-out-about-this-service']
 
 
-  if (howDidYouFindOutAboutThisService === "letter-from-the-department-for-work-and-pensions")  {
+  if (howDidYouFindOutAboutThisService === "heard-about-on-phone" || howDidYouFindOutAboutThisService === "job-centre")  {
     res.redirect('/get-a-proof-of-benefit-letter/v3-research/account-home');
 
-  } else if (howDidYouFindOutAboutThisService === "family-or-friend")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/contact-family-or-friend');
-
   } else {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/contact-somewhere-else');
+    res.redirect('/get-a-proof-of-benefit-letter/v3-research/cannot-get-a-proof-of-benefit-letter');
   }
 })
 
