@@ -53,20 +53,14 @@ Check your details before you send them
               {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              {% for benefit in data['inScope'] %}
-                  <p class="govuk-body">{{ benefit }}<br>
+              {% for benefit in data['which-benefits-need-proof'] %}
+                  <p>{{ benefit }}<br>
               {% else %}
                 <p>No benefit selected</p>
               {% endfor %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              {% if data['researchSetUpBenefits'].length > 1 %}
               <a class="govuk-link" href="select-benefits">Change<span class="govuk-visually-hidden"> benefits</span></a>
-
-              {% else %}
-              <a class="govuk-link" href="do-you-want-a-letter-for">Change<span class="govuk-visually-hidden"> benefit</span></a>
-
-              {% endif %}
             </dd>
           </div>
           <div class="govuk-summary-list__row">

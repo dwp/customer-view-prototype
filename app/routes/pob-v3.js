@@ -26,6 +26,56 @@ router.all('/get-a-proof-of-benefit-letter/v3-research/research-set-up/PoB-clear
   
   })
 
+  router.post('/get-a-proof-of-benefit-letter/v3-research/research-set-up/benefits-answer', function (req, res) {
+
+    var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
+  
+    inScope = [];
+    oOScope = [];
+    uCBenefit = false
+    delete inScope;
+    delete oOScope;
+    delete uCBenefit
+  
+    for (var i=0; i < researchSetUpBenefits.length; i++) {
+  
+      if (researchSetUpBenefits[i] === 'Bereavement Benefit' ||
+            researchSetUpBenefits[i] === 'Bereavement Support Payment' ||
+            researchSetUpBenefits[i] === 'Carer’s Allowance' ||
+            researchSetUpBenefits[i] === 'Incapacity Benefit' ||
+            researchSetUpBenefits[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
+            researchSetUpBenefits[i] === 'Maternity Allowance' ||
+            researchSetUpBenefits[i] === 'Personal Independence Payment (PIP)' ||
+            researchSetUpBenefits[i] === 'Severe Disablement Allowance' ||
+            researchSetUpBenefits[i] === 'Widow’s Benefit'
+          ) {
+            oOScope.push(researchSetUpBenefits[i])
+          } 
+      
+      else if (researchSetUpBenefits[i] === 'Universal Credit') {
+              uCBenefit = true;
+      }
+      
+      else {
+        inScope.push(researchSetUpBenefits[i])
+      }
+    }
+  
+    req.session.data.inScope = inScope;
+    req.session.data.oOScope = oOScope;
+    req.session.data.uCBenefit = uCBenefit;
+  
+  
+    console.log(inScope)
+    console.log(oOScope)
+    console.log(uCBenefit)
+  
+  res.redirect('/get-a-proof-of-benefit-letter/v3-research/research-set-up/address');
+  
+   })
+
+  
+
 // Drop user if they were not invited to use the service
 router.post('/get-a-proof-of-benefit-letter/v3-research/how-did-you-find-out-about-this-service-answer', function (req, res) {
 
@@ -59,75 +109,6 @@ router.all('/get-a-proof-of-benefit-letter/v3-research/list-benefits-answer', fu
 })
 
 
-// Display post or home address for SINGLE benefit select page
-router.post('/get-a-proof-of-benefit-letter/v3-research/single-benefits-answer', function (req, res) {
-
-  var researchSetUpAddress = req.session.data['researchSetUpAddress']
-  var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
-  var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
-  var confirmLetterSend = req.session.data['confirmLetterSend']
-
-  inScope = [];
-  oOScope = [];
-  uCBenefit = false
-  delete inScope;
-  delete oOScope;
-  delete uCBenefit
-
-  for (var i=0; i < researchSetUpBenefits.length; i++) {
-
-    if (researchSetUpBenefits[i] === 'Bereavement Benefit' ||
-    researchSetUpBenefits[i] === 'Bereavement Support Payment' ||
-    researchSetUpBenefits[i] === 'Carer’s Allowance' ||
-    researchSetUpBenefits[i] === 'Incapacity Benefit' ||
-    researchSetUpBenefits[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
-    researchSetUpBenefits[i] === 'Maternity Allowance' ||
-    researchSetUpBenefits[i] === 'Personal Independence Payment (PIP)' ||
-    researchSetUpBenefits[i] === 'Severe Disablement Allowance' ||
-    researchSetUpBenefits[i] === 'Widow’s Benefit'
-          ) {
-            oOScope.push(researchSetUpBenefits[i])
-  
-          } else if (researchSetUpBenefits[i] === 'Universal Credit') {
-            uCBenefit = true;
-          
-          } else {
-            inScope.push(researchSetUpBenefits[i])
-          }
-    }
-
-  req.session.data.inScope = inScope;
-  req.session.data.oOScope = oOScope;
-  req.session.data.uCBenefit = uCBenefit;
-
-  console.log(inScope)
-  console.log(oOScope)
-  console.log(doYouWantLetterFor)
-  console.log("Confirm letter" + confirmLetterSend)
- 
-  // Check if correspondence address is available
-  
-  if (confirmLetterSend === 'yes' && oOScope.length === 0 && uCBenefit == false)   {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/check-your-answers');
-  
-  } else if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
-    // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/where-we-send-your-letter');
-
-  } else if (researchSetUpAddress === "home" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
-    // Send user to next single address page
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/where-we-send-your-letter');
-
-  }  else if ((oOScope.length === 1 || uCBenefit == true) && doYouWantLetterFor == "yes") {
-      res.redirect('/get-a-proof-of-benefit-letter/v3-research/you-cannot-get-proof-of-benefit-letter.html');
-    
-  } else if (doYouWantLetterFor == "no") {
-        // Send user to can't get letter page
-        res.redirect('/get-a-proof-of-benefit-letter/v3-research/contact-us-for-different-benefit-letter');
-  }
-
-})
-
 // Drop user if they state their address is incorrect
 router.post('/get-a-proof-of-benefit-letter/v3-research/send-letter-to-address-answer', function (req, res) {
 
@@ -143,7 +124,7 @@ router.post('/get-a-proof-of-benefit-letter/v3-research/send-letter-to-address-a
 
   else {
     // Send user to check answers
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/check-your-answers');
+    res.redirect('/get-a-proof-of-benefit-letter/v3-research/check-your-answers-exp');
   }
 
 })
@@ -169,66 +150,13 @@ router.post('/get-a-proof-of-benefit-letter/v3-research/cant-get-proof-all-benef
 
 router.post('/get-a-proof-of-benefit-letter/v3-research/multi-benefits-answer', function (req, res) {
 
-  var researchSetUpAddress = req.session.data['researchSetUpAddress']
-  var whichBenefitNeedProof = req.session.data['which-benefits-need-proof']
   var confirmLetterSend = req.session.data['confirmLetterSend']
 
-  inScope = [];
-  oOScope = [];
-  uCBenefit = false
-  delete inScope;
-  delete oOScope;
-  delete uCBenefit
-
-  for (var i=0; i < whichBenefitNeedProof.length; i++) {
-
-    if (whichBenefitNeedProof[i] === 'Bereavement Benefit' ||
-        whichBenefitNeedProof[i] === 'Bereavement Support Payment' ||
-        whichBenefitNeedProof[i] === 'Carer’s Allowance' ||
-        whichBenefitNeedProof[i] === 'Incapacity Benefit' ||
-        whichBenefitNeedProof[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
-        whichBenefitNeedProof[i] === 'Maternity Allowance' ||
-        whichBenefitNeedProof[i] === 'Personal Independence Payment (PIP)' ||
-        whichBenefitNeedProof[i] === 'Severe Disablement Allowance' ||
-        whichBenefitNeedProof[i] === 'Widow’s Benefit'
-        ) {
-          oOScope.push(whichBenefitNeedProof[i])
-        } 
-    
-    else if (whichBenefitNeedProof[i] === 'Universal Credit') {
-            uCBenefit = true;
-    }
-    
-    else {
-      inScope.push(whichBenefitNeedProof[i])
-    }
-  }
-
-  req.session.data.inScope = inScope;
-  req.session.data.oOScope = oOScope;
-  req.session.data.uCBenefit = uCBenefit;
-
-
-  console.log(inScope)
-  console.log(oOScope)
-  console.log(uCBenefit)
-
-  if (confirmLetterSend === 'yes' && oOScope.length === 0 && uCBenefit == false)   {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/check-your-answers');
+  if (confirmLetterSend === 'yes')   {
+    res.redirect('/get-a-proof-of-benefit-letter/v3-research/check-your-answers-exp');
   
-  } else if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/where-we-send-your-letter');
-
-  } else if (researchSetUpAddress === "home" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/where-we-send-your-letter');
-    
-
-  } else if (inScope.length === 0)  {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/you-cannot-get-proof-of-benefit-letter');
-
-  } else if (inScope.length >= 1 && (oOScope.length >= 1 || uCBenefit == true)) {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/you-cannot-get-proof-of-all-your-benefits');
-
+  }  else {
+      res.redirect('/get-a-proof-of-benefit-letter/v3-research/where-we-send-your-letter');
   }
 
 })
