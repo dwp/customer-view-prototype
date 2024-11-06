@@ -112,7 +112,11 @@ Which benefits do you need proof of?
           <fieldset class="govuk-fieldset" aria-describedby="doYouWantLetterFor-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
+                {% if data['researchSetUpBenefits'] == "State Pension" %}
+                Do you want a proof of benefit letter for your {{ data['researchSetUpBenefits'] }}?
+                {% else %}
                 Do you want a proof of benefit letter for {{ data['researchSetUpBenefits'] }}?
+                {% endif %}
               </h1>
             </legend>
             <div class="govuk-radios govuk-radios" data-module="govuk-radios">
