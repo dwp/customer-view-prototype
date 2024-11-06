@@ -1,0 +1,144 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Manage your benefits and State Pension",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Account home
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+  
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-xl">Account home</span>
+      <h1 class="govuk-heading-xl">
+        Sarah Phillips
+      </h1>
+
+      <ul class="govuk-grid-row customer-view-card-group">
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Get a proof of benefit letter</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Set preferences</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Payment queries</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Upload evidence</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Letters online</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Change of circumstances</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Apply for a benefit online</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Progress chase</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Repay debt</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+        <li class="govuk-grid-column-one-third customer-view-card-group__item">
+          <div class="customer-view-card customer-view-card--clickable">
+            <div class="customer-view-card__content">
+              <h2 class="customer-view-card__heading govuk-heading-m">
+                <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="#">Complete a mandatory review</a>
+              </h2>
+              <p class="govuk-body customer-view-card__description"></p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}
