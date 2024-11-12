@@ -1,0 +1,43 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+{{ govukHeader({
+  homepageUrl: "#"
+}) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+There is a problem with the service – [Micro UI name] – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Sorry, there is a problem with the service
+      </h1>
+
+      <p>
+        Try again later.
+      </p>
+
+      <p>
+        If you need information about your benefits, you will need to contact them. 
+      </p>
+
+      <p>
+        Find their contact details in a letter they’ve sent to you, or in <a class="govuk-link" href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
