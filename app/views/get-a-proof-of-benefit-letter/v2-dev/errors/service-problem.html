@@ -14,6 +14,13 @@ There is a problem with the service – [Micro UI name] – GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
   
 {% endblock %}
 

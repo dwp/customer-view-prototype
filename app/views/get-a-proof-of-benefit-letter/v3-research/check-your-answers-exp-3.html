@@ -37,7 +37,7 @@ Check your details before you send them
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
    
-    <h1 class="govuk-heading-l">Check your answers before sending your request</h1>
+    <h1 class="govuk-heading-l">Check your details before sending your request</h1>
 
     <form class="form" action="confirmation" method="post" novalidate>
 
@@ -73,12 +73,7 @@ Check your details before you send them
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                {% if data['which-benefits-need-proof'].length > 1 %}
-                The address we send your proof of benefit letters to
-                {% else %}
-                The address we send your proof of benefit letter to
-                </p>
-                {% endif %}
+                Address we send your proof of benefit letters to
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if (data['researchSetUpAddress'] === "post") %}

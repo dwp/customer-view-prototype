@@ -78,6 +78,27 @@ Which benefits do you need proof of?
 
         {% endif %}
 
+        <h2 class="govuk-heading-m">Benefits you can get proof of using this service</h2>
+
+        {% if data['inScope'].length === 1 %}
+          <p>If you continue, you can request a proof of benefit letter for {{ data['inScope'][0] }}.</p>
+
+        {% elif data['inScope'].length === 2 %}
+          <p>If you continue, you can request proof of benefit letters for {{ data['inScope'] | formatList }} using this service.</p>
+
+        {% elif data['inScope'].length > 2 %}
+          <p>If you continue, you can request proof of benefit letters for:</p>
+          <ul class="govuk-list govuk-list--bullet">
+              {% for benefit in data['inScope'] %}
+                <li>{{ benefit }}</li>
+              {% else %}
+                <p>No benefit selected</p>
+              {% endfor %}    
+          </ul>
+        {% else %}
+          <p>Failed!</p>
+        {% endif %}
+
 
         {% if data['inScope'].length > 1 %}
 
