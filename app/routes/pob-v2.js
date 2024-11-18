@@ -35,11 +35,8 @@ router.post('/get-a-proof-of-benefit-letter/v2-research/how-did-you-find-out-abo
   if (howDidYouFindOutAboutThisService === "letter-from-the-department-for-work-and-pensions")  {
     res.redirect('/get-a-proof-of-benefit-letter/v2-research/account-home');
 
-  } else if (howDidYouFindOutAboutThisService === "family-or-friend")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/contact-family-or-friend');
-
   } else {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/contact-somewhere-else');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/cannot-get-a-proof-of-benefit-letter');
   }
 })
 
@@ -49,14 +46,14 @@ router.all('/get-a-proof-of-benefit-letter/v2-research/list-benefits-answer', fu
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
   if (researchSetUpBenefits == [] || researchSetUpBenefits == undefined)  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/you-cannot-get-proof-of-benefit-letter-no-benefits-recorded');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/you-cannot-use-this-service-no-benefits');
     return
 
   } else if (researchSetUpBenefits.length > 1)  {
-      res.redirect('/get-a-proof-of-benefit-letter/v2-research/select-benefits');
+      res.redirect('/get-a-proof-of-benefit-letter/v2-research/select-benefits-you-need-proof-of');
 
   } else {
-      res.redirect('/get-a-proof-of-benefit-letter/v2-research/do-you-want-a-letter-for');
+      res.redirect('/get-a-proof-of-benefit-letter/v2-research/do-you-need-proof-of-your-benefits');
     }  
   
 })
@@ -115,18 +112,18 @@ router.post('/get-a-proof-of-benefit-letter/v2-research/single-benefits-answer',
   
   } else if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
 
   } else if (researchSetUpAddress === "home" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to next single address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
 
   }  else if ((oOScope.length === 1 || uCBenefit == true) && doYouWantLetterFor == "yes") {
       res.redirect('/get-a-proof-of-benefit-letter/v2-research/you-cannot-get-proof-of-benefit-letter.html');
     
   } else if (doYouWantLetterFor == "no") {
         // Send user to can't get letter page
-        res.redirect('/get-a-proof-of-benefit-letter/v2-research/contact-us-for-different-benefit-letter');
+        res.redirect('/get-a-proof-of-benefit-letter/v2-research/contact-us');
   }
 
 })
@@ -141,7 +138,7 @@ router.post('/get-a-proof-of-benefit-letter/v2-research/send-letter-to-address-a
   // Check if user selected no on single address page
   if (confirmLetterSend == "no")  {
     // Send user to contact us page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/your-address-is-incorrect');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/you-cannot-use-this-service-incorrect-address');
   }
 
   else {
@@ -165,7 +162,7 @@ router.post('/get-a-proof-of-benefit-letter/v2-research/cant-get-proof-all-benef
   
   } else  {
     // Show home address
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
   } 
 
 })
@@ -220,17 +217,17 @@ router.post('/get-a-proof-of-benefit-letter/v2-research/multi-benefits-answer', 
     res.redirect('/get-a-proof-of-benefit-letter/v2-research/check-your-answers');
   
   } else if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
 
   } else if (researchSetUpAddress === "home" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
     
 
   } else if (inScope.length === 0)  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/you-cannot-get-proof-of-benefit-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/you-cannot-use-this-service-contact-us');
 
   } else if (inScope.length >= 1 && (oOScope.length >= 1 || uCBenefit == true)) {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/you-cannot-get-proof-of-all-your-benefits');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/getting-proof-of-your-benefits');
 
   }
 
@@ -260,7 +257,7 @@ router.post('/get-a-proof-of-benefit-letter/v2-research/multi-benefits-answer', 
 //   )
 //   // This is the URL the users will be redirected to once the email
 //   // has been sent
-//   res.redirect('/get-a-proof-of-benefit-letter/v2-research/confirmation');
+//   res.redirect('/get-a-proof-of-benefit-letter/v2-research/request-complete');
 
 // });
 
@@ -298,13 +295,10 @@ router.post('/get-a-proof-of-benefit-letter/v2-dev/how-did-you-find-out-about-th
 
 
   if (howDidYouFindOutAboutThisService === "letter-from-the-department-for-work-and-pensions")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/identity-check');
-
-  } else if (howDidYouFindOutAboutThisService === "family-or-friend")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/contact-family-or-friend');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/go-to-identity-check');
 
   } else {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/contact-somewhere-else');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/cannot-get-a-proof-of-benefit-letter');
   }
 })
 
@@ -314,14 +308,14 @@ router.all('/get-a-proof-of-benefit-letter/v2-dev/list-benefits-answer', functio
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
   if (researchSetUpBenefits == [] || researchSetUpBenefits == undefined)  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/you-cannot-get-proof-of-benefit-letter-no-benefits-recorded');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/you-cannot-use-this-service-no-benefits');
     return
 
   } else if (researchSetUpBenefits.length > 1)  {
-      res.redirect('/get-a-proof-of-benefit-letter/v2-dev/select-benefits');
+      res.redirect('/get-a-proof-of-benefit-letter/v2-dev/select-benefits-you-need-proof-of');
 
   } else {
-      res.redirect('/get-a-proof-of-benefit-letter/v2-dev/do-you-want-a-letter-for');
+      res.redirect('/get-a-proof-of-benefit-letter/v2-dev/do-you-need-proof-of-your-benefits');
     }  
   
 })
@@ -380,18 +374,18 @@ router.post('/get-a-proof-of-benefit-letter/v2-dev/single-benefits-answer', func
   
   } else if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
 
   } else if (researchSetUpAddress === "home" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to next single address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
 
   }  else if ((oOScope.length === 1 || uCBenefit == true) && doYouWantLetterFor == "yes") {
       res.redirect('/get-a-proof-of-benefit-letter/v2-dev/you-cannot-get-proof-of-benefit-letter.html');
     
   } else if (doYouWantLetterFor == "no") {
         // Send user to can't get letter page
-        res.redirect('/get-a-proof-of-benefit-letter/v2-dev/contact-us-for-different-benefit-letter');
+        res.redirect('/get-a-proof-of-benefit-letter/v2-dev/contact-us');
   }
 
 })
@@ -406,7 +400,7 @@ router.post('/get-a-proof-of-benefit-letter/v2-dev/send-letter-to-address-answer
   // Check if user selected no on single address page
   if (confirmLetterSend == "no")  {
     // Send user to contact us page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/your-address-is-incorrect');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/you-cannot-use-this-service-incorrect-address');
   }
 
   else {
@@ -430,7 +424,7 @@ router.post('/get-a-proof-of-benefit-letter/v2-dev/cant-get-proof-all-benefits-a
   
   } else  {
     // Show home address
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
   } 
 
 })
@@ -485,17 +479,17 @@ router.post('/get-a-proof-of-benefit-letter/v2-dev/multi-benefits-answer', funct
     res.redirect('/get-a-proof-of-benefit-letter/v2-dev/check-your-answers');
   
   } else if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
 
   } else if (researchSetUpAddress === "home" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
     
 
   } else if (inScope.length === 0)  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/you-cannot-get-proof-of-benefit-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/you-cannot-use-this-service-contact-us');
 
   } else if (inScope.length >= 1 && (oOScope.length >= 1 || uCBenefit == true)) {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/you-cannot-get-proof-of-all-your-benefits');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/getting-proof-of-your-benefits');
 
   }
 
@@ -525,7 +519,7 @@ router.post('/get-a-proof-of-benefit-letter/v2-dev/multi-benefits-answer', funct
 //   )
 //   // This is the URL the users will be redirected to once the email
 //   // has been sent
-//   res.redirect('/get-a-proof-of-benefit-letter/v2-dev/confirmation');
+//   res.redirect('/get-a-proof-of-benefit-letter/v2-dev/request-complete');
 
 // });
 
