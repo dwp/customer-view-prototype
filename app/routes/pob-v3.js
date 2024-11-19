@@ -83,7 +83,7 @@ router.post('/get-a-proof-of-benefit-letter/v3-research/how-did-you-find-out-abo
 
 
   if (howDidYouFindOutAboutThisService === "heard-about-on-phone" || howDidYouFindOutAboutThisService === "job-centre")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/account-home');
+    res.redirect('/get-a-proof-of-benefit-letter/v3-research/go-to-identity-check');
 
   } else {
     res.redirect('/get-a-proof-of-benefit-letter/v3-research/cannot-get-a-proof-of-benefit-letter');
@@ -96,11 +96,11 @@ router.all('/get-a-proof-of-benefit-letter/v3-research/list-benefits-answer', fu
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
   if (researchSetUpBenefits == [] || researchSetUpBenefits == undefined)  {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/you-cannot-get-proof-of-benefit-letter-no-benefits-recorded');
+    res.redirect('/get-a-proof-of-benefit-letter/v3-research/you-cannot-use-this-service-no-benefits');
     return
 
   } else if (researchSetUpBenefits.length > 1)  {
-      res.redirect('/get-a-proof-of-benefit-letter/v3-research/select-benefits');
+      res.redirect('/get-a-proof-of-benefit-letter/v3-research/select-benefits-you-need-proof-of');
 
   } else {
       res.redirect('/get-a-proof-of-benefit-letter/v3-research/do-you-want-a-letter-for');
@@ -222,14 +222,11 @@ router.post('/get-a-proof-of-benefit-letter/v3-dev/how-did-you-find-out-about-th
   var howDidYouFindOutAboutThisService = req.session.data['how-did-you-find-out-about-this-service']
 
 
-  if (howDidYouFindOutAboutThisService === "letter-from-the-department-for-work-and-pensions")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-dev/identity-check');
-
-  } else if (howDidYouFindOutAboutThisService === "family-or-friend")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-dev/contact-family-or-friend');
+  if (howDidYouFindOutAboutThisService === "heard-about-on-phone" || howDidYouFindOutAboutThisService === "job-centre") {
+    res.redirect('/get-a-proof-of-benefit-letter/v3-dev/go-to-identity-check');
 
   } else {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-dev/contact-somewhere-else');
+    res.redirect('/get-a-proof-of-benefit-letter/v3-dev/cannot-get-a-proof-of-benefit-letter');
   }
 })
 
@@ -239,11 +236,11 @@ router.all('/get-a-proof-of-benefit-letter/v3-dev/list-benefits-answer', functio
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
   if (researchSetUpBenefits == [] || researchSetUpBenefits == undefined)  {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-dev/you-cannot-get-proof-of-benefit-letter-no-benefits-recorded');
+    res.redirect('/get-a-proof-of-benefit-letter/v3-dev/you-cannot-use-this-service-no-benefits');
     return
 
   } else if (researchSetUpBenefits.length > 1)  {
-      res.redirect('/get-a-proof-of-benefit-letter/v3-dev/select-benefits');
+      res.redirect('/get-a-proof-of-benefit-letter/v3-dev/select-benefits-you-need-proof-of');
 
   } else {
       res.redirect('/get-a-proof-of-benefit-letter/v3-dev/do-you-want-a-letter-for');
