@@ -119,7 +119,7 @@ router.post('/get-a-proof-of-benefit-letter/v3-research/send-letter-to-address-a
   // Check if user selected no on single address page
   if (confirmLetterSend == "no")  {
     // Send user to contact us page
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/your-address-is-incorrect');
+    res.redirect('/get-a-proof-of-benefit-letter/v3-research/you-cannot-use-this-service-incorrect-address');
   }
 
   else {
@@ -328,7 +328,7 @@ router.post('/get-a-proof-of-benefit-letter/v3-dev/send-letter-to-address-answer
   // Check if user selected no on single address page
   if (confirmLetterSend == "no")  {
     // Send user to contact us page
-    res.redirect('/get-a-proof-of-benefit-letter/v3-dev/your-address-is-incorrect');
+    res.redirect('/get-a-proof-of-benefit-letter/v3-dev/you-cannot-use-this-service-incorrect-address');
   }
 
   else {
