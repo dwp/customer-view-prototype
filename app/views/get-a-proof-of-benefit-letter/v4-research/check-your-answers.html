@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Check your details before you send them
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+   
+    <h1 class="govuk-heading-l">Check your details before sending your request</h1>
+
+    <form class="form" action="request-complete" method="post" novalidate>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Your request
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="select-benefits">Change<span class="govuk-visually-hidden"> your request</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {% if data['which-benefits-need-proof'].length > 1 %}
+                Benefits
+                {% else %}
+                Benefit
+                </p>
+                {% endif %}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% for benefit in data['which-benefits-need-proof'] %}
+                <p class="govuk-body">{{ benefit }}<br>
+                {% else %}
+                <p>No benefit selected</p>
+                {% endfor %}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Address we send your proof of benefit letters to
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if (data['researchSetUpAddress'] === "post") %}
+                <p>12 Gregg Lane
+                  <br>London
+                  <br>SE12 6FH
+                </p>
+                {% else %}
+                <p>72 Guild Street
+                  <br>London
+                  <br>SE23 6FH
+                </p>
+                {% endif %}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      {{ govukButton({
+        text: "Confirm and send"
+      }) }}
+
+    </form>
+    
+    </div>
+  </div>
+
+{% endblock %}
