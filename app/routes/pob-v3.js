@@ -124,7 +124,7 @@ router.post('/get-a-proof-of-benefit-letter/v3-research/send-letter-to-address-a
 
   else {
     // Send user to check answers
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/check-your-answers-exp');
+    res.redirect('/get-a-proof-of-benefit-letter/v3-research/check-your-answers');
   }
 
 })
@@ -148,18 +148,18 @@ router.post('/get-a-proof-of-benefit-letter/v3-research/cant-get-proof-all-benef
 
 })
 
-router.post('/get-a-proof-of-benefit-letter/v3-research/multi-benefits-answer', function (req, res) {
+// router.post('/get-a-proof-of-benefit-letter/v3-research/multi-benefits-answer', function (req, res) {
 
-  var confirmLetterSend = req.session.data['confirmLetterSend']
+//   var confirmLetterSend = req.session.data['confirmLetterSend']
 
-  if (confirmLetterSend === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v3-research/check-your-answers-exp');
+//   if (confirmLetterSend === 'yes')   {
+//     res.redirect('/get-a-proof-of-benefit-letter/v3-research/check-your-answers-exp');
   
-  }  else {
-      res.redirect('/get-a-proof-of-benefit-letter/v3-research/where-we-send-your-letter');
-  }
+//   }  else {
+//       res.redirect('/get-a-proof-of-benefit-letter/v3-research/where-we-send-your-letter');
+//   }
 
-})
+// })
 
 // // The URL here needs to match the URL of the page that the user is on
 // // when they type in their email address

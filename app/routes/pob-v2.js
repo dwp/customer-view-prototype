@@ -112,11 +112,11 @@ router.post('/get-a-proof-of-benefit-letter/v2-research/single-benefits-answer',
   
   } else if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
 
   } else if (researchSetUpAddress === "home" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to next single address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
 
   }  else if ((oOScope.length === 1 || uCBenefit == true) && doYouWantLetterFor == "yes") {
       res.redirect('/get-a-proof-of-benefit-letter/v2-research/you-cannot-get-proof-of-benefit-letter.html');
@@ -162,7 +162,7 @@ router.post('/get-a-proof-of-benefit-letter/v2-research/cant-get-proof-all-benef
   
   } else  {
     // Show home address
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
   } 
 
 })
@@ -217,10 +217,10 @@ router.post('/get-a-proof-of-benefit-letter/v2-research/multi-benefits-answer', 
     res.redirect('/get-a-proof-of-benefit-letter/v2-research/check-your-answers');
   
   } else if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
 
   } else if (researchSetUpAddress === "home" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-research/where-we-send-your-letter');
     
 
   } else if (inScope.length === 0)  {
@@ -374,11 +374,11 @@ router.post('/get-a-proof-of-benefit-letter/v2-dev/single-benefits-answer', func
   
   } else if (researchSetUpAddress === "post" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to multi address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
 
   } else if (researchSetUpAddress === "home" && doYouWantLetterFor == "yes" && inScope.length === 1)  {
     // Send user to next single address page
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
 
   }  else if ((oOScope.length === 1 || uCBenefit == true) && doYouWantLetterFor == "yes") {
       res.redirect('/get-a-proof-of-benefit-letter/v2-dev/you-cannot-get-proof-of-benefit-letter.html');
@@ -424,7 +424,7 @@ router.post('/get-a-proof-of-benefit-letter/v2-dev/cant-get-proof-all-benefits-a
   
   } else  {
     // Show home address
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
   } 
 
 })
@@ -479,10 +479,10 @@ router.post('/get-a-proof-of-benefit-letter/v2-dev/multi-benefits-answer', funct
     res.redirect('/get-a-proof-of-benefit-letter/v2-dev/check-your-answers');
   
   } else if (researchSetUpAddress === "post" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
 
   } else if (researchSetUpAddress === "home" && (oOScope.length === 0 && uCBenefit == false))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letters');
+    res.redirect('/get-a-proof-of-benefit-letter/v2-dev/where-we-send-your-letter');
     
 
   } else if (inScope.length === 0)  {
