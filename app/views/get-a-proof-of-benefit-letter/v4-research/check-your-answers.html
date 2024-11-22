@@ -73,6 +73,20 @@ Check your details before you send them
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
+                {% if data['which-benefits-need-proof'].length > 1 %}
+                Email address we send your proof of benefit letters to
+                {% else %}
+                Email address we send your proof of benefit letter to
+                </p>
+                {% endif %}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p>sarahphillips@example.com</p>
+                
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
                 Address we send your proof of benefit letters to
               </dt>
               <dd class="govuk-summary-list__value">
@@ -93,9 +107,16 @@ Check your details before you send them
         </div>
       </div>
 
-      {{ govukButton({
-        text: "Confirm and send"
-      }) }}
+      <div>
+        {{ govukButton({
+          text: "Confirm and send"
+        }) }}  
+
+        {{ govukButton({
+          text: "Cancel  and go to account home",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
 
     </form>
     
