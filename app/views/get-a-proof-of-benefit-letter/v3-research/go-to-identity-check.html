@@ -36,7 +36,7 @@ We are taking you to our identity checking service
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="../OIDV/register/start" method="post">
+      <form class="form" action="account-home" method="post">
         
         <h1 class="govuk-heading-l">
           We are taking you to our identity checking service
@@ -61,9 +61,17 @@ We are taking you to our identity checking service
 
         <p>We will ask you security questions to confirm your identity before registering.</p>
 
+        <div>
         {{ govukButton({
           text: "Continue"
         }) }}
+
+        {{ govukButton({
+          text: "[Go to OIDV]",
+          classes: "govuk-button--secondary",
+          href: "../OIDV/register/start"
+        }) }}
+      </div>
         
       </form>
 
