@@ -71,6 +71,8 @@ Check your details before you send them
                 {% endfor %}
               </dd>
             </div>
+
+            {% if data['needEmail'] === "yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 {% if data['which-benefits-need-proof'].length > 1 %}
@@ -84,6 +86,8 @@ Check your details before you send them
                 <p>sarah.phillips@example.com</p>
               </dd>
             </div>
+            {% endif %}  
+
             {% if data['needLetter'] === "yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">

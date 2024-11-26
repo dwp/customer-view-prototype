@@ -26,10 +26,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/path/of/next/page" method="post">
+      <form class="form" action="how-to-send-letter-answer" method="post">
 
         {{ govukRadios({
-          name: "howToSendEmail",
+          name: "howToSendLetter",
           fieldset: {
             legend: {
               text: "Tell us how to send your letter",
@@ -53,7 +53,7 @@
               }
             },
             {
-              value: "email and post",
+              value: "both",
               text: "Email and post",
               hint: {
                 text: "Get both an instant email and a printed letter"

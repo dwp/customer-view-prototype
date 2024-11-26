@@ -33,7 +33,6 @@ Personal details
 
 {% block content %}
 
-  <form action="select-benefits-answer">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h1 class="govuk-heading-xl">
@@ -139,6 +138,7 @@ Personal details
                 <dd class="govuk-summary-list__value">
                   {% if data['emailInputs'] %}
                   <p>{{ data['emailInput'] }}</p>
+                  
                   {% else %}
                   <p class="govuk-body">We are missing these details. Contact your benefit office to add them.</p>
                   {% endif %}
@@ -190,7 +190,6 @@ Personal details
             href: "account-home"
           }) }}
 
-      </form>  
     </div>
   </div>
 

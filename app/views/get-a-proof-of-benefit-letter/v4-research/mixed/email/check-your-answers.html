@@ -71,6 +71,8 @@ Check your details before you send them
                 {% endfor %}
               </dd>
             </div>
+            
+            {% if data['howToSendLetter'] !== "post" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 {% if data['which-benefits-need-proof'].length > 1 %}
@@ -81,10 +83,12 @@ Check your details before you send them
                 {% endif %}
               </dt>
               <dd class="govuk-summary-list__value">
-                <p>EMAILGOESHERE</p>
+                <p>sarah.phillips@example.com</p>
               </dd>
             </div>
-            {% if data['needLetter'] === "yes" %}
+            {% endif %}
+
+            {% if data['howToSendLetter'] !== "email" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Address we send your proof of benefit letters to

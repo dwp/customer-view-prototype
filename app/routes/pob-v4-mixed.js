@@ -108,12 +108,40 @@ router.all('/get-a-proof-of-benefit-letter/v4-research/mixed/email/list-benefits
   
 })
 
+router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/how-to-send-letter-answer', function (req, res) {
+
+  var howToSendLetter = req.session.data['howToSendLetter']
+
+  if (howToSendLetter === 'post')   {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/where-we-send-your-letter');
+  }
+
+  else {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/email-address-we-send-letter-to');
+  }
+
+})
+
+
+router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/email-confirm-answer', function (req, res) {
+
+  var howToSendLetter = req.session.data['howToSendLetter']
+
+  if (howToSendLetter === 'both') {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/where-we-send-your-letter');
+  
+  }  else {
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/check-your-answers');
+  }
+
+})
+
+
 
 // Drop user if they state their address is incorrect
 router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/send-letter-to-address-answer', function (req, res) {
 
   var confirmLetterSend = req.session.data['confirmLetterSend']
-  var whereToSendLetter = req.session.data['whereToSendLetter']
 
 
   // Check if user selected no on single address page
@@ -130,36 +158,9 @@ router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/send-letter-
 })
 
 
-// Place user back into journey from you cant get a proof for all benefits
-router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/cant-get-proof-all-benefits-answer', function (req, res) {
 
-  var researchSetUpAddress = req.session.data['researchSetUpAddress']
-  var confirmLetterSend = req.session.data['confirmLetterSend']
 
-  // Check if correspondence address is available
-  
-  if (confirmLetterSend === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/check-your-answers');
-  
-  } else  {
-    // Show home address
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/where-we-send-your-letter');
-  } 
 
-})
-
-// router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/multi-benefits-answer', function (req, res) {
-
-//   var confirmLetterSend = req.session.data['confirmLetterSend']
-
-//   if (confirmLetterSend === 'yes')   {
-//     res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/check-your-answers-exp');
-  
-//   }  else {
-//       res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/where-we-send-your-letter');
-//   }
-
-// })
 
 // // The URL here needs to match the URL of the page that the user is on
 // // when they type in their email address
@@ -190,52 +191,7 @@ router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/cant-get-pro
 // });
 
 
-router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/do-you-need-email-answer', function (req, res) {
 
-  var notifyEmailAddress = req.session.data['notifyEmailAddress']
-  var needEmail = req.session.data['needEmail']
-
-  if (needEmail === 'no' ) {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/do-you-need-letter');
-  
-  }
-
-  else if (notifyEmailAddress === '' && needEmail === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/enter-email');
-  } 
-
-  else {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/email-address-we-send-letter-to');
-  }
-
-})
-
-
-router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/email-confirm-answer', function (req, res) {
-
-  var confirmEmailSend = req.session.data['confirmEmailSend']
-
-  if (confirmEmailSend === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/do-you-need-letter');
-  
-  }  else {
-      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/enter-email');
-  }
-
-})
-
-router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/letter-confirm-answer', function (req, res) {
-
-  var needLetter = req.session.data['needLetter']
-
-  if (needLetter === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/where-we-send-your-letter');
-  
-  }  else {
-      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/check-your-answers');
-  }
-
-})
 
 
 
@@ -346,6 +302,34 @@ router.all('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/list-benefi
   
 })
 
+router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/how-to-send-letter-answer', function (req, res) {
+
+  var howToSendLetter = req.session.data['howToSendLetter']
+
+  if (howToSendLetter === 'post')   {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/where-we-send-your-letter');
+  }
+
+  else {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/enter-email');
+  }
+
+})
+
+
+router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/enter-email-answer', function (req, res) {
+
+  var howToSendLetter = req.session.data['howToSendLetter']
+
+  if (howToSendLetter === 'both') {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/where-we-send-your-letter');
+  
+  }  else {
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/check-your-answers');
+  }
+
+})
+
 
 // Drop user if they state their address is incorrect
 router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/send-letter-to-address-answer', function (req, res) {
@@ -368,36 +352,7 @@ router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/send-lette
 })
 
 
-// Place user back into journey from you cant get a proof for all benefits
-router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/cant-get-proof-all-benefits-answer', function (req, res) {
 
-  var researchSetUpAddress = req.session.data['researchSetUpAddress']
-  var confirmLetterSend = req.session.data['confirmLetterSend']
-
-  // Check if correspondence address is available
-  
-  if (confirmLetterSend === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/check-your-answers');
-  
-  } else  {
-    // Show home address
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/where-we-send-your-letter');
-  } 
-
-})
-
-// router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/multi-benefits-answer', function (req, res) {
-
-//   var confirmLetterSend = req.session.data['confirmLetterSend']
-
-//   if (confirmLetterSend === 'yes')   {
-//     res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/check-your-answers-exp');
-  
-//   }  else {
-//       res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/where-we-send-your-letter');
-//   }
-
-// })
 
 // // The URL here needs to match the URL of the page that the user is on
 // // when they type in their email address
@@ -428,52 +383,7 @@ router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/cant-get-p
 // });
 
 
-router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/do-you-need-email-answer', function (req, res) {
 
-  var notifyEmailAddress = req.session.data['notifyEmailAddress']
-  var needEmail = req.session.data['needEmail']
-
-  if (needEmail === 'no' ) {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/do-you-need-letter');
-  
-  }
-
-  else if (notifyEmailAddress === '' && needEmail === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/enter-email');
-  } 
-
-  else {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/email-address-we-send-letter-to');
-  }
-
-})
-
-
-router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/email-confirm-answer', function (req, res) {
-
-  var confirmEmailSend = req.session.data['confirmEmailSend']
-
-  if (confirmEmailSend === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/do-you-need-letter');
-  
-  }  else {
-      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/enter-email');
-  }
-
-})
-
-router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/letter-confirm-answer', function (req, res) {
-
-  var needLetter = req.session.data['needLetter']
-
-  if (needLetter === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/where-we-send-your-letter');
-  
-  }  else {
-      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/check-your-answers');
-  }
-
-})
 
 
 module.exports = router;
