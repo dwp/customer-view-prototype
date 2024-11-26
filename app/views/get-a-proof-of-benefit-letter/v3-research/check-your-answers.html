@@ -93,9 +93,16 @@ Check your details before you send them
         </div>
       </div>
 
-      {{ govukButton({
-        text: "Confirm and send"
-      }) }}
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Confirm and send"
+        }) }}  
+
+        {{ govukButton({
+          text: "Cancel  and go to account home",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
 
     </form>
     

@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Contact us to get a proof of benefit letter
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Contact us to get a proof of benefit letter
+      </h1>
+
+        <p>
+          Our records show that you get {{ data['researchSetUpBenefits'] }}.
+        </p>
+
+        <p>
+          If you expect to see another benefit, you will need to contact them.
+        </p>
+
+        <p>
+          Find their contact details in a letter they’ve sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
+        </p>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Sign out",
+            href: "signout"
+          }) }}
+
+          {{ govukButton({
+            text: "Go back to account home",
+            href: "account-home",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+    </div>
+  </div>
+
+{% endblock %}

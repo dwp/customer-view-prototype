@@ -81,10 +81,10 @@ Check your details before you send them
                 {% endif %}
               </dt>
               <dd class="govuk-summary-list__value">
-                <p>sarahphillips@example.com</p>
-                
+                <p>sarah.phillips@example.com</p>
               </dd>
             </div>
+            {% if data['needLetter'] === "yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Address we send your proof of benefit letters to
@@ -103,6 +103,8 @@ Check your details before you send them
                 {% endif %}
               </dd>
             </div>
+            {% else %}
+            {% endif %}  
           </dl>
         </div>
       </div>
