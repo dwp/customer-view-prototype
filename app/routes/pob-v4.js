@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-// * Version 4 - Research
+// * Version 4 - Research - baseline
 
 var inScope = [];  
 var uCBenefit = false;
 var oOScope = [];
 
-router.all('/get-a-proof-of-benefit-letter/v4-research/research-set-up/PoB-clear-data', function (req, res) {
+router.all('/get-a-proof-of-benefit-letter/v4-research/baseline/research-set-up/PoB-clear-data', function (req, res) {
 
   req.session.data = {}
   inScope = [];
@@ -26,7 +26,7 @@ router.all('/get-a-proof-of-benefit-letter/v4-research/research-set-up/PoB-clear
   
   })
 
-  router.post('/get-a-proof-of-benefit-letter/v4-research/research-set-up/benefits-answer', function (req, res) {
+  router.post('/get-a-proof-of-benefit-letter/v4-research/baseline/research-set-up/benefits-answer', function (req, res) {
 
     var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
   
@@ -70,47 +70,47 @@ router.all('/get-a-proof-of-benefit-letter/v4-research/research-set-up/PoB-clear
     console.log(oOScope)
     console.log(uCBenefit)
   
-  res.redirect('/get-a-proof-of-benefit-letter/v4-research/research-set-up/address');
+  res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/research-set-up/address');
   
    })
 
   
 
 // Drop user if they were not invited to use the service
-router.post('/get-a-proof-of-benefit-letter/v4-research/how-did-you-find-out-about-this-service-answer', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/v4-research/baseline/how-did-you-find-out-about-this-service-answer', function (req, res) {
 
   var howDidYouFindOutAboutThisService = req.session.data['how-did-you-find-out-about-this-service']
 
 
   if (howDidYouFindOutAboutThisService === "heard-about-on-phone" || howDidYouFindOutAboutThisService === "job-centre")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/go-to-identity-check');
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/go-to-identity-check');
 
   } else {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/cannot-get-a-proof-of-benefit-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/cannot-get-a-proof-of-benefit-letter');
   }
 })
 
 // Select which benefit selection page to show based on number of benefits available for user.
-router.all('/get-a-proof-of-benefit-letter/v4-research/list-benefits-answer', function (req, res) {
+router.all('/get-a-proof-of-benefit-letter/v4-research/baseline/list-benefits-answer', function (req, res) {
 
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
   if (researchSetUpBenefits == [] || researchSetUpBenefits == undefined)  {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/you-cannot-use-this-service-no-benefits');
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/you-cannot-use-this-service-no-benefits');
     return
 
   } else if (researchSetUpBenefits.length > 1)  {
-      res.redirect('/get-a-proof-of-benefit-letter/v4-research/select-benefits-you-need-proof-of');
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/select-benefits-you-need-proof-of');
 
   } else {
-      res.redirect('/get-a-proof-of-benefit-letter/v4-research/do-you-want-a-letter-for');
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/do-you-want-a-letter-for');
     }  
   
 })
 
 
 // Drop user if they state their address is incorrect
-router.post('/get-a-proof-of-benefit-letter/v4-research/send-letter-to-address-answer', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/v4-research/baseline/send-letter-to-address-answer', function (req, res) {
 
   var confirmLetterSend = req.session.data['confirmLetterSend']
   var whereToSendLetter = req.session.data['whereToSendLetter']
@@ -119,19 +119,19 @@ router.post('/get-a-proof-of-benefit-letter/v4-research/send-letter-to-address-a
   // Check if user selected no on single address page
   if (confirmLetterSend == "no")  {
     // Send user to contact us page
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/you-cannot-use-this-service-incorrect-address');
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/you-cannot-use-this-service-incorrect-address');
   }
 
   else {
     // Send user to check answers
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/check-your-answers-exp');
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/check-your-answers-exp');
   }
 
 })
 
 
 // Place user back into journey from you cant get a proof for all benefits
-router.post('/get-a-proof-of-benefit-letter/v4-research/cant-get-proof-all-benefits-answer', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/v4-research/baseline/cant-get-proof-all-benefits-answer', function (req, res) {
 
   var researchSetUpAddress = req.session.data['researchSetUpAddress']
   var confirmLetterSend = req.session.data['confirmLetterSend']
@@ -139,31 +139,31 @@ router.post('/get-a-proof-of-benefit-letter/v4-research/cant-get-proof-all-benef
   // Check if correspondence address is available
   
   if (confirmLetterSend === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/check-your-answers');
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/check-your-answers');
   
   } else  {
     // Show home address
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/where-we-send-your-letter');
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/where-we-send-your-letter');
   } 
 
 })
 
-router.post('/get-a-proof-of-benefit-letter/v4-research/multi-benefits-answer', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/v4-research/baseline/multi-benefits-answer', function (req, res) {
 
   var confirmLetterSend = req.session.data['confirmLetterSend']
 
   if (confirmLetterSend === 'yes')   {
-    res.redirect('/get-a-proof-of-benefit-letter/v4-research/check-your-answers-exp');
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/check-your-answers-exp');
   
   }  else {
-      res.redirect('/get-a-proof-of-benefit-letter/v4-research/where-we-send-your-letter');
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/where-we-send-your-letter');
   }
 
 })
 
 // // The URL here needs to match the URL of the page that the user is on
 // // when they type in their email address
-// router.post('/get-a-proof-of-benefit-letter/v4-research/notify-info-answers', function (req, res) {
+// router.post('/get-a-proof-of-benefit-letter/v4-research/baseline/notify-info-answers', function (req, res) {
 
 //   var notifyEmailAddress = req.session.data['notifyEmailAddress']
 //   var notifyName = req.session.data['notifyName']
@@ -185,9 +185,379 @@ router.post('/get-a-proof-of-benefit-letter/v4-research/multi-benefits-answer', 
 //   )
 //   // This is the URL the users will be redirected to once the email
 //   // has been sent
-//   res.redirect('/get-a-proof-of-benefit-letter/v4-research/confirmation');
+//   res.redirect('/get-a-proof-of-benefit-letter/v4-research/baseline/confirmation');
 
 // });
+
+// * Version 4 - Research - digital
+
+outer.all('/get-a-proof-of-benefit-letter/v4-research/digital/research-set-up/PoB-clear-data', function (req, res) {
+
+  req.session.data = {}
+  inScope = [];
+  oOScope = [];
+  uCBenefit = false
+  req.session.data.inScope = inScope;
+  req.session.data.oOScope = oOScope;
+  // delete req.session.data['which-benefits-need-proof'];
+  delete inScope;
+  delete oOScope;
+
+  console.log(inScope);
+  console.log(oOScope);
+  
+  res.redirect("benefits");
+  
+  })
+
+  router.post('/get-a-proof-of-benefit-letter/v4-research/digital/research-set-up/benefits-answer', function (req, res) {
+
+    var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
+  
+    inScope = [];
+    oOScope = [];
+    uCBenefit = false
+    delete inScope;
+    delete oOScope;
+    delete uCBenefit
+  
+    for (var i=0; i < researchSetUpBenefits.length; i++) {
+  
+      if (researchSetUpBenefits[i] === 'Bereavement Benefit' ||
+            researchSetUpBenefits[i] === 'Bereavement Support Payment' ||
+            researchSetUpBenefits[i] === 'Carer’s Allowance' ||
+            researchSetUpBenefits[i] === 'Incapacity Benefit' ||
+            researchSetUpBenefits[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
+            researchSetUpBenefits[i] === 'Maternity Allowance' ||
+            researchSetUpBenefits[i] === 'Personal Independence Payment (PIP)' ||
+            researchSetUpBenefits[i] === 'Severe Disablement Allowance' ||
+            researchSetUpBenefits[i] === 'Widow’s Benefit'
+          ) {
+            oOScope.push(researchSetUpBenefits[i])
+          } 
+      
+      else if (researchSetUpBenefits[i] === 'Universal Credit') {
+              uCBenefit = true;
+      }
+      
+      else {
+        inScope.push(researchSetUpBenefits[i])
+      }
+    }
+  
+    req.session.data.inScope = inScope;
+    req.session.data.oOScope = oOScope;
+    req.session.data.uCBenefit = uCBenefit;
+  
+  
+    console.log(inScope)
+    console.log(oOScope)
+    console.log(uCBenefit)
+  
+  res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/research-set-up/address');
+  
+   })
+
+  
+
+// Drop user if they were not invited to use the service
+router.post('/get-a-proof-of-benefit-letter/v4-research/digital/how-did-you-find-out-about-this-service-answer', function (req, res) {
+
+  var howDidYouFindOutAboutThisService = req.session.data['how-did-you-find-out-about-this-service']
+
+
+  if (howDidYouFindOutAboutThisService === "heard-about-on-phone" || howDidYouFindOutAboutThisService === "job-centre")  {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/go-to-identity-check');
+
+  } else {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/cannot-get-a-proof-of-benefit-letter');
+  }
+})
+
+// Select which benefit selection page to show based on number of benefits available for user.
+router.all('/get-a-proof-of-benefit-letter/v4-research/digital/list-benefits-answer', function (req, res) {
+
+  var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
+
+  if (researchSetUpBenefits == [] || researchSetUpBenefits == undefined)  {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/you-cannot-use-this-service-no-benefits');
+    return
+
+  } else if (researchSetUpBenefits.length > 1)  {
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/select-benefits-you-need-proof-of');
+
+  } else {
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/do-you-want-a-letter-for');
+    }  
+  
+})
+
+
+// Drop user if they state their address is incorrect
+router.post('/get-a-proof-of-benefit-letter/v4-research/digital/send-letter-to-address-answer', function (req, res) {
+
+  var confirmLetterSend = req.session.data['confirmLetterSend']
+  var whereToSendLetter = req.session.data['whereToSendLetter']
+
+
+  // Check if user selected no on single address page
+  if (confirmLetterSend == "no")  {
+    // Send user to contact us page
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/you-cannot-use-this-service-incorrect-address');
+  }
+
+  else {
+    // Send user to check answers
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/check-your-answers-exp');
+  }
+
+})
+
+
+// Place user back into journey from you cant get a proof for all benefits
+router.post('/get-a-proof-of-benefit-letter/v4-research/digital/cant-get-proof-all-benefits-answer', function (req, res) {
+
+  var researchSetUpAddress = req.session.data['researchSetUpAddress']
+  var confirmLetterSend = req.session.data['confirmLetterSend']
+
+  // Check if correspondence address is available
+  
+  if (confirmLetterSend === 'yes')   {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/check-your-answers');
+  
+  } else  {
+    // Show home address
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/where-we-send-your-letter');
+  } 
+
+})
+
+router.post('/get-a-proof-of-benefit-letter/v4-research/digital/multi-benefits-answer', function (req, res) {
+
+  var confirmLetterSend = req.session.data['confirmLetterSend']
+
+  if (confirmLetterSend === 'yes')   {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/check-your-answers-exp');
+  
+  }  else {
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/where-we-send-your-letter');
+  }
+
+})
+
+// // The URL here needs to match the URL of the page that the user is on
+// // when they type in their email address
+// router.post('/get-a-proof-of-benefit-letter/v4-research/digital/notify-info-answers', function (req, res) {
+
+//   var notifyEmailAddress = req.session.data['notifyEmailAddress']
+//   var notifyName = req.session.data['notifyName']
+//   req.session.data.inScope = inScope;
+//   console.log(inScope)
+
+//   notify.sendEmail(
+//     // this long string is the template ID, copy it from the template
+//     // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
+//     // in your code.
+//     '84aa1288-3b44-4ce0-a278-ae54e833dfb4', notifyEmailAddress, 
+//     // `emailAddress` here needs to match the name of the form field in
+//     // your HTML page
+//     {
+//       personalisation: {
+//       'name': notifyName,
+//     }
+//   }
+//   )
+//   // This is the URL the users will be redirected to once the email
+//   // has been sent
+//   res.redirect('/get-a-proof-of-benefit-letter/v4-research/digital/confirmation');
+
+// });
+
+
+// * Version 4 - Research - mixed
+
+outer.all('/get-a-proof-of-benefit-letter//v4-research/mixed/research-set-up/PoB-clear-data', function (req, res) {
+
+  req.session.data = {}
+  inScope = [];
+  oOScope = [];
+  uCBenefit = false
+  req.session.data.inScope = inScope;
+  req.session.data.oOScope = oOScope;
+  // delete req.session.data['which-benefits-need-proof'];
+  delete inScope;
+  delete oOScope;
+
+  console.log(inScope);
+  console.log(oOScope);
+  
+  res.redirect("benefits");
+  
+  })
+
+  router.post('/get-a-proof-of-benefit-letter//v4-research/mixed/research-set-up/benefits-answer', function (req, res) {
+
+    var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
+  
+    inScope = [];
+    oOScope = [];
+    uCBenefit = false
+    delete inScope;
+    delete oOScope;
+    delete uCBenefit
+  
+    for (var i=0; i < researchSetUpBenefits.length; i++) {
+  
+      if (researchSetUpBenefits[i] === 'Bereavement Benefit' ||
+            researchSetUpBenefits[i] === 'Bereavement Support Payment' ||
+            researchSetUpBenefits[i] === 'Carer’s Allowance' ||
+            researchSetUpBenefits[i] === 'Incapacity Benefit' ||
+            researchSetUpBenefits[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
+            researchSetUpBenefits[i] === 'Maternity Allowance' ||
+            researchSetUpBenefits[i] === 'Personal Independence Payment (PIP)' ||
+            researchSetUpBenefits[i] === 'Severe Disablement Allowance' ||
+            researchSetUpBenefits[i] === 'Widow’s Benefit'
+          ) {
+            oOScope.push(researchSetUpBenefits[i])
+          } 
+      
+      else if (researchSetUpBenefits[i] === 'Universal Credit') {
+              uCBenefit = true;
+      }
+      
+      else {
+        inScope.push(researchSetUpBenefits[i])
+      }
+    }
+  
+    req.session.data.inScope = inScope;
+    req.session.data.oOScope = oOScope;
+    req.session.data.uCBenefit = uCBenefit;
+  
+  
+    console.log(inScope)
+    console.log(oOScope)
+    console.log(uCBenefit)
+  
+  res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/research-set-up/address');
+  
+   })
+
+  
+
+// Drop user if they were not invited to use the service
+router.post('/get-a-proof-of-benefit-letter//v4-research/mixed/how-did-you-find-out-about-this-service-answer', function (req, res) {
+
+  var howDidYouFindOutAboutThisService = req.session.data['how-did-you-find-out-about-this-service']
+
+
+  if (howDidYouFindOutAboutThisService === "heard-about-on-phone" || howDidYouFindOutAboutThisService === "job-centre")  {
+    res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/go-to-identity-check');
+
+  } else {
+    res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/cannot-get-a-proof-of-benefit-letter');
+  }
+})
+
+// Select which benefit selection page to show based on number of benefits available for user.
+router.all('/get-a-proof-of-benefit-letter//v4-research/mixed/list-benefits-answer', function (req, res) {
+
+  var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
+
+  if (researchSetUpBenefits == [] || researchSetUpBenefits == undefined)  {
+    res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/you-cannot-use-this-service-no-benefits');
+    return
+
+  } else if (researchSetUpBenefits.length > 1)  {
+      res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/select-benefits-you-need-proof-of');
+
+  } else {
+      res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/do-you-want-a-letter-for');
+    }  
+  
+})
+
+
+// Drop user if they state their address is incorrect
+router.post('/get-a-proof-of-benefit-letter//v4-research/mixed/send-letter-to-address-answer', function (req, res) {
+
+  var confirmLetterSend = req.session.data['confirmLetterSend']
+  var whereToSendLetter = req.session.data['whereToSendLetter']
+
+
+  // Check if user selected no on single address page
+  if (confirmLetterSend == "no")  {
+    // Send user to contact us page
+    res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/you-cannot-use-this-service-incorrect-address');
+  }
+
+  else {
+    // Send user to check answers
+    res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/check-your-answers-exp');
+  }
+
+})
+
+
+// Place user back into journey from you cant get a proof for all benefits
+router.post('/get-a-proof-of-benefit-letter//v4-research/mixed/cant-get-proof-all-benefits-answer', function (req, res) {
+
+  var researchSetUpAddress = req.session.data['researchSetUpAddress']
+  var confirmLetterSend = req.session.data['confirmLetterSend']
+
+  // Check if correspondence address is available
+  
+  if (confirmLetterSend === 'yes')   {
+    res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/check-your-answers');
+  
+  } else  {
+    // Show home address
+    res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/where-we-send-your-letter');
+  } 
+
+})
+
+router.post('/get-a-proof-of-benefit-letter//v4-research/mixed/multi-benefits-answer', function (req, res) {
+
+  var confirmLetterSend = req.session.data['confirmLetterSend']
+
+  if (confirmLetterSend === 'yes')   {
+    res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/check-your-answers-exp');
+  
+  }  else {
+      res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/where-we-send-your-letter');
+  }
+
+})
+
+// // The URL here needs to match the URL of the page that the user is on
+// // when they type in their email address
+// router.post('/get-a-proof-of-benefit-letter//v4-research/mixed/notify-info-answers', function (req, res) {
+
+//   var notifyEmailAddress = req.session.data['notifyEmailAddress']
+//   var notifyName = req.session.data['notifyName']
+//   req.session.data.inScope = inScope;
+//   console.log(inScope)
+
+//   notify.sendEmail(
+//     // this long string is the template ID, copy it from the template
+//     // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
+//     // in your code.
+//     '84aa1288-3b44-4ce0-a278-ae54e833dfb4', notifyEmailAddress, 
+//     // `emailAddress` here needs to match the name of the form field in
+//     // your HTML page
+//     {
+//       personalisation: {
+//       'name': notifyName,
+//     }
+//   }
+//   )
+//   // This is the URL the users will be redirected to once the email
+//   // has been sent
+//   res.redirect('/get-a-proof-of-benefit-letter//v4-research/mixed/confirmation');
+
+// });
+
 
 
 
