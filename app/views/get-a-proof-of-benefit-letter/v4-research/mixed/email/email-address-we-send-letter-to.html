@@ -38,13 +38,13 @@ Where we send your letters
 
       <form class="form" action="email-confirm-answer" method="post">
 
-        {% if data['inScope'].length > 0 %}
+        {% if data['inScope'].length > 1 %}
         <h1 class="govuk-heading-l" >Email address we will send your letters to</h1>
         {% else %}
         <h1 class="govuk-heading-l" >Email address we will send your letter to</h1>
         {% endif %}
 
-        <p>Your address is saved as:</p>
+        <p>Your email address is saved as:</p>
 
         <div class="govuk-inset-text">
           sarah.phillips@example.com

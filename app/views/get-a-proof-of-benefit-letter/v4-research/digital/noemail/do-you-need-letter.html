@@ -1,14 +1,34 @@
 {% extends "layouts/main.html" %}
 
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Do you need a letter
 {% endblock %}
 
 {% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
   {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
 {% endblock %}
 
 {% block content %}
@@ -18,30 +38,32 @@
 
       <form class="form" action="letter-confirm-answer" method="post">
 
-        {{ govukRadios({
-          classes: "govuk-radios",
-          name: "needLetter",
-          fieldset: {
-            legend: {
-              text: "Do you need proof of your benefits sent in the post?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          hint: {
-            text: "Proof of benefit letters can take one week to be delivered."
-          },
-          items: [
-            {
-              value: "yes",
-              text: "Yes"
-            },
-            {
-              value: "no",
-              text: "No"
-            }
-          ]
-        }) }}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="needLetter-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you need proof of your benefits sent as a letter in the post?
+              </h1>
+            </legend>
+            <div id="needLetter-hint" class="govuk-hint">
+              Letters can take up to one week to be delivered.
+            </div>
+            <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="needLetter" name="needLetter" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="needLetter">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="needLetter-2" name="needLetter" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="needLetter-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
         {{ govukButton({
           text: "Continue"

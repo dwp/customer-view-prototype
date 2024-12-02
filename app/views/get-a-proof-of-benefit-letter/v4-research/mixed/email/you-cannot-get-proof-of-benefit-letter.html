@@ -37,7 +37,7 @@ You cannot get a proof of benefit letter using this service
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        You cannot get a proof of benefit letter using this service
+        Your benefits are not available on this service yet.
       </h1>
 
         <p>
@@ -57,7 +57,7 @@ You cannot get a proof of benefit letter using this service
           <p>To get proof of {{ data['oOScope'] | formatList }}, you need to contact them.</p>
 
         {% elif data['oOScope'].length > 2 %}
-          <p>You cannot use this service to get a proof of benefit letter for:</p>
+          <p>You cannot use this service to get proof of:</p>
           <ul class="govuk-list govuk-list--bullet">
               {% for benefit in data['oOScope'] %}
                 <li>{{ benefit }}</li>
@@ -65,7 +65,7 @@ You cannot get a proof of benefit letter using this service
                 <p>No benefit selected</p>
               {% endfor %}    
           </ul>
-          <p>You will need to contact them to get a proof of benefit letter.</p>
+          <p>You will need to contact them to get proof of benefits.</p>
         
         {% endif %}
 

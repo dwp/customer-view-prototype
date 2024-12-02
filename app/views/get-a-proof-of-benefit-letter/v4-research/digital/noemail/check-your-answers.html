@@ -37,7 +37,7 @@ Check your details before you send them
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
    
-    <h1 class="govuk-heading-l">Check your details before sending your request</h1>
+    <h1 class="govuk-heading-l">Check your answers before sending your request</h1>
 
     <form class="form" action="request-complete" method="post" novalidate>
 
@@ -56,31 +56,28 @@ Check your details before you send them
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                {% if data['which-benefits-need-proof'].length > 1 %}
                 Benefits
-                {% else %}
-                Benefit
-                </p>
-                {% endif %}
-              </dt>
               <dd class="govuk-summary-list__value">
+                {% if data['inScope'].length > 1 %}
                 {% for benefit in data['which-benefits-need-proof'] %}
                 <p class="govuk-body">{{ benefit }}<br>
                 {% else %}
+
                 <p>No benefit selected</p>
                 {% endfor %}
+
+                {% else %}
+
+                <p>{{ data['inScope'] }}</p>
+
+                {% endif %}
               </dd>
             </div>
 
             {% if data['needEmail'] === "yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                {% if data['which-benefits-need-proof'].length > 1 %}
-                Email address we send your proof of benefit letters to
-                {% else %}
-                Email address we send your proof of benefit letter to
-                </p>
-                {% endif %}
+                Email address we send proof of your benefits to
               </dt>
               <dd class="govuk-summary-list__value">
                 <p>{{ data['emailInput'] }}</p>
@@ -91,7 +88,11 @@ Check your details before you send them
             {% if data['needLetter'] === "yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
+                {% if data['inScope'].length > 1 %}
                 Address we send your proof of benefit letters to
+                {% else %}
+                Address we send your proof of benefit letter to
+                {% endif %}
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if (data['researchSetUpAddress'] === "post") %}
@@ -119,7 +120,7 @@ Check your details before you send them
         }) }}  
 
         {{ govukButton({
-          text: "Cancel  and go to account home",
+          text: "Cancel and go to account home",
           classes: "govuk-button--secondary"
         }) }}
       </div>

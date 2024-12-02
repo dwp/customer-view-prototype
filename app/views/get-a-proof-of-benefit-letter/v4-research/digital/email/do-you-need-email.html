@@ -1,14 +1,34 @@
 {% extends "layouts/main.html" %}
 
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Do you need an email
 {% endblock %}
 
 {% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
   {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
 {% endblock %}
 
 {% block content %}
@@ -18,34 +38,40 @@
 
       <form class="form" action="do-you-need-email-answer" method="post">
 
-        {{ govukRadios({
-          classes: "govuk-radios",
-          name: "needEmail",
-          fieldset: {
-            legend: {
-              text: "Do you need proof of your benefits sent in an email?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          hint: {
-            text: "Emails will arrive within minutes of sending a request."
-          },
-          items: [
-            {
-              value: "yes",
-              text: "Yes"
-            },
-            {
-              value: "no",
-              text: "No"
-            }
-          ]
-        }) }}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="needEmail-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you need proof of your benefits sent in an email?
+              </h1>
+            </legend>
+            <div id="needEmail-hint" class="govuk-hint">
+              Emails will arrive within minutes of sending a request.
+            </div>
+            <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="needEmail" name="needEmail" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="needEmail">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="needEmail-2" name="needEmail" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="needEmail-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
 
         {{ govukButton({
           text: "Continue"
         }) }}
+
+
 
       </form>
 

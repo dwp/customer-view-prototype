@@ -102,11 +102,41 @@ router.all('/get-a-proof-of-benefit-letter/v4-research/mixed/email/list-benefits
   } else if (researchSetUpBenefits.length > 1)  {
       res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/select-benefits-you-need-proof-of');
 
+  } else if (inScope.length === 0 )  {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/you-cannot-get-proof-of-benefit-letter');
+
   } else {
       res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/do-you-want-proof-for');
     }  
   
 })
+
+router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/select-benefits-answer', function (req, res) {
+
+  var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
+
+  if (doYouWantLetterFor == "no" )  {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/contact-us-for-different-benefit-letter');
+
+  } else {
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/how-to-send-letter');
+    }  
+  
+})
+
+router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/single-benefit-answer', function (req, res) {
+
+  var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
+
+  if (doYouWantLetterFor == "no" )  {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/contact-us-for-different-benefit-letter');
+
+  } else {
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/email/how-to-send-letter');
+    }  
+  
+})
+
 
 router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/email/how-to-send-letter-answer', function (req, res) {
 
@@ -296,8 +326,37 @@ router.all('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/list-benefi
   } else if (researchSetUpBenefits.length > 1)  {
       res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/select-benefits-you-need-proof-of');
 
+  } else if (inScope.length === 0 )  {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/you-cannot-get-proof-of-benefit-letter');
+
   } else {
       res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/do-you-want-proof-for');
+    }  
+  
+})
+
+router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/select-benefits-answer', function (req, res) {
+
+  var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
+
+  if (doYouWantLetterFor == "no" )  {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/contact-us-for-different-benefit-letter');
+
+  } else {
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/how-to-send-letter');
+    }  
+  
+})
+
+router.post('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/single-benefit-answer', function (req, res) {
+
+  var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
+
+  if (doYouWantLetterFor == "no" )  {
+    res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/contact-us-for-different-benefit-letter');
+
+  } else {
+      res.redirect('/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/how-to-send-letter');
     }  
   
 })
