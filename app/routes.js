@@ -2067,3 +2067,6 @@ router.use('/', pobV4Digital)
 
 const pobV4Mixed = require('./routes/pob-v4-mixed')
 router.use('/', pobV4Mixed)
+
+const pobV5 = require('./routes/pob-v5')
+router.use('/', pobV5)
