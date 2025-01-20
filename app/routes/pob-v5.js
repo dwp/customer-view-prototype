@@ -272,26 +272,18 @@ router.all('/get-a-proof-of-benefit-letter/v5-research/no-pip/list-benefits-answ
   
 })
 
-router.post('/get-a-proof-of-benefit-letter/v5-research/pip/select-benefits-answer', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/v5-research/no-pip/select-benefits-answer', function (req, res) {
 
   var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
-  var whichBenefitsNeedProof = req.session.data['which-benefits-need-proof']
-
-  if (inScope.length === 1) {
 
     if (doYouWantLetterFor === 'no') {
-      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/contact-us-for-different-benefit-letter');
+      res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/contact-us-for-different-benefit-letter');
     } 
 
     else {
-      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/where-we-send-your-letter');
+      res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/where-we-send-your-letter');
     }
-  }
-
-  if (inScope.length > 1) {
-      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/pip-proof');
-  }
-
+    
 })
 
 

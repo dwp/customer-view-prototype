@@ -44,7 +44,7 @@ Which benefits do you need proof of?
 
         <h1 class="govuk-heading-l">Getting proof of your benefits</h1>
 
-        <p>You can get proof of some of your benefits using this service, but not all of them.</p>
+        <p>You can get proof of some of your benefits using this service, but not all of them. </p>
 
         {% if data['uCBenefit'] == false %}
 
@@ -115,37 +115,34 @@ Which benefits do you need proof of?
         {% if data['inScope'].length > 1 %}
 
         <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="which-benefits-need-proof-hint">
-
-            <!-- If the user only receives in scope benefits, this makes sure the page title is the question and not the h1 above -->
-            {% if data['oOScope'].length == 0 and data['uCBenefit'] == false %}
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Which benefits do you need proof of?
-              </h1>
-              {% else %}
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                <h2 class="govuk-fieldset__heading">
-                  Which benefits do you need proof of?
-                </h2>
-              {% endif %}
-              
-            </legend>
-            <div id="which-benefits-need-proof-hint" class="govuk-hint">
-              If you select more than one benefit, you will get separate letters for each benefit.
-            </div>
-            {% for benefit in data['inScope'] %}
-            <!-- <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="which-benefits-need-proof" name="which-benefits-need-proof" type="checkbox" value="{{ benefit }}" >
-                    <label class="govuk-label govuk-checkboxes__label" for="which-benefits-need-proof">
+            <fieldset class="govuk-fieldset" aria-describedby="which-benefits-need-proof-hint">
+              {% if data['oOScope'].length == 0 and data['uCBenefit'] == false %}
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    Which benefits do you need proof of?
+                  </h1>
+                  {% else %}
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h2 class="govuk-fieldset__heading">
+                      Which benefits do you need proof of?
+                    </h2>
+                  {% endif %}
+                </legend>
+                
+              <div id="which-benefits-need-proof-hint" class="govuk-hint">
+                If you select more than one benefit, you will get separate emails or letters for each benefit.
+              </div>
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                {% for benefit in data['inScope'] %}
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="which-benefits-need-proof{{benefit}}" name="which-benefits-need-proof" type="checkbox" value="{{ benefit }}">
+                    <label class="govuk-label govuk-checkboxes__label" for="which-benefits-need-proof{{benefit}}">
                       {{ benefit }}
                     </label>
-              </div> -->
-              <p> {{ benefit }} </p>
-              {% endfor %}
-            </div>
-          </fieldset>
+                </div>
+                {% endfor %}  
+              </div>
+            </fieldset>
         </div>
 
         {% endif %}
