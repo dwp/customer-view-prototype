@@ -98,15 +98,13 @@ router.all('/get-a-proof-of-benefit-letter/v5-research/pip/list-benefits-answer'
     res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/you-cannot-use-this-service-no-benefits');
     return
 
-  } else if (researchSetUpBenefits.length > 1)  {
+  } else if (researchSetUpBenefits.length > 0)  {
       res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/select-benefits-you-need-proof-of');
 
   } else if (inScope.length === 0 )  {
     res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/you-cannot-get-proof-of-benefit-letter');
 
-  } else {
-      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/do-you-want-proof-for');
-    }  
+  } 
   
 })
 
@@ -114,24 +112,36 @@ router.post('/get-a-proof-of-benefit-letter/v5-research/pip/select-benefits-answ
 
   var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
   var whichBenefitsNeedProof = req.session.data['which-benefits-need-proof']
-  req.session.data.inScope = inScope;
-  req.session.data.oOScope = oOScope;
-  req.session.data.uCBenefit = uCBenefit;
-  
 
-  if (doYouWantLetterFor == "no" )  {
-    res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/contact-us-for-different-benefit-letter');
+  if (inScope.length === 1) {
 
-  } if (doYouWantLetterFor == "yes")  {
-    res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/pip-proof');
-  
-  } if (whichBenefitsNeedProof.includes('Personal Independence Payment (PIP)'))  {
-    res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/pip-proof');
-  
-  } else {
+    if (doYouWantLetterFor === 'no') {
+      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/contact-us-for-different-benefit-letter');
+     
+      return
+    } 
+
+    if (inScope[0] === 'Personal Independence Payment (PIP)') {
+      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/pip-proof');
+    }
+
+    else {
       res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/where-we-send-your-letter');
-    }  
+
+    }
+  }
+
+  if (inScope.length > 1) {
+    if (whichBenefitsNeedProof.includes('Personal Independence Payment (PIP)')) {
+      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/pip-proof');
+    }
+    else {
+      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/where-we-send-your-letter');
+    }
+  }
+
 })
+
 
 
 // Drop user if they state their address is incorrect
@@ -252,44 +262,37 @@ router.all('/get-a-proof-of-benefit-letter/v5-research/no-pip/list-benefits-answ
     res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/you-cannot-use-this-service-no-benefits');
     return
 
-  } else if (researchSetUpBenefits.length > 1)  {
+  } else if (researchSetUpBenefits.length > 0)  {
       res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/select-benefits-you-need-proof-of');
 
   } else if (inScope.length === 0 )  {
     res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/you-cannot-get-proof-of-benefit-letter');
 
-  } else {
-      res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/do-you-want-proof-for');
-    }  
+  }
   
 })
 
-router.post('/get-a-proof-of-benefit-letter/v5-research/no-pip/select-benefits-answer', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/v5-research/pip/select-benefits-answer', function (req, res) {
 
   var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
+  var whichBenefitsNeedProof = req.session.data['which-benefits-need-proof']
 
-  if (doYouWantLetterFor == "no" )  {
-    res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/contact-us-for-different-benefit-letter');
+  if (inScope.length === 1) {
 
-  } else {
-      res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/where-we-send-your-letter');
-    }  
-  
+    if (doYouWantLetterFor === 'no') {
+      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/contact-us-for-different-benefit-letter');
+    } 
+
+    else {
+      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/where-we-send-your-letter');
+    }
+  }
+
+  if (inScope.length > 1) {
+      res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/pip-proof');
+  }
+
 })
-
-router.post('/get-a-proof-of-benefit-letter/v5-research/no-pip/single-benefit-answer', function (req, res) {
-
-  var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
-
-  if (doYouWantLetterFor == "no" )  {
-    res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/contact-us-for-different-benefit-letter');
-
-  } else {
-      res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/where-we-send-your-letter');
-    }  
-  
-})
-
 
 
 // Drop user if they state their address is incorrect
