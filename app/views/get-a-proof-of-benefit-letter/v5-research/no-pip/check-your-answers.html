@@ -74,19 +74,7 @@ Check your details before you send them
                 {% endif %}
               </dd>
             </div>
-            
-            {% if data['howToSendLetter'] !== "post" %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Email address we send proof of your benefits to
-              </dt>
-              <dd class="govuk-summary-list__value">
-                <p>sarah.phillips@example.com</p>
-              </dd>
-            </div>
-            {% endif %}
 
-            {% if data['howToSendLetter'] !== "email" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 {% if data['inScope'].length > 1 %}
@@ -109,8 +97,6 @@ Check your details before you send them
                 {% endif %}
               </dd>
             </div>
-            {% else %}
-            {% endif %}  
           </dl>
         </div>
       </div>
