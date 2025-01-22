@@ -208,7 +208,6 @@ router.all('/get-a-proof-of-benefit-letter/v5-research/no-pip/research-set-up/Po
             researchSetUpBenefits[i] === 'Incapacity Benefit' ||
             researchSetUpBenefits[i] === 'Industrial Injuries Disablement Benefit (IIDB)' ||
             researchSetUpBenefits[i] === 'Maternity Allowance' ||
-            researchSetUpBenefits[i] === 'Personal Independence Payment (PIP)' ||
             researchSetUpBenefits[i] === 'Severe Disablement Allowance' ||
             researchSetUpBenefits[i] === 'Widow’s Benefit'
           ) {
@@ -283,7 +282,7 @@ router.post('/get-a-proof-of-benefit-letter/v5-research/no-pip/select-benefits-a
     else {
       res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/where-we-send-your-letter');
     }
-    
+
 })
 
 
