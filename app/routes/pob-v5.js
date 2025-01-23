@@ -98,7 +98,7 @@ router.all('/get-a-proof-of-benefit-letter/v5-research/pip/list-benefits-answer'
     res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/you-cannot-use-this-service-no-benefits');
     return
 
-  } else if (researchSetUpBenefits.length > 0)  {
+  } else if ((researchSetUpBenefits.length > 0) && (inScope.length > 0 ))   {
       res.redirect('/get-a-proof-of-benefit-letter/v5-research/pip/select-benefits-you-need-proof-of');
 
   } else if (inScope.length === 0 )  {
@@ -261,13 +261,13 @@ router.all('/get-a-proof-of-benefit-letter/v5-research/no-pip/list-benefits-answ
     res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/you-cannot-use-this-service-no-benefits');
     return
 
-  } else if (researchSetUpBenefits.length > 0)  {
+  } else if ((researchSetUpBenefits.length > 0) && (inScope.length > 0 ))   {
       res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/select-benefits-you-need-proof-of');
 
   } else if (inScope.length === 0 )  {
     res.redirect('/get-a-proof-of-benefit-letter/v5-research/no-pip/you-cannot-get-proof-of-benefit-letter');
 
-  }
+  } 
   
 })
 

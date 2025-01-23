@@ -37,18 +37,22 @@ You cannot get a proof of benefit letter using this service
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Your benefits are not available on this service yet.
+        You cannot get proof of your benefits using this service
       </h1>
 
         <p>
-          You can get proof of some benefits using this service, but not all of them.
-        </p>
-
-        <p>
-          This is because not all benefits are online yet.
+          Your benefits are not available on this service yet. 
         </p>
 
         <h2 class="govuk-heading-m">How to get proof of your benefits</h2>
+
+        <!-- If a user gets Universal credit, we just show this line instead of it being in the dynamic list above -->
+
+        {% if data['uCBenefit'] == true %}
+        <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+        {% endif %}
+
+        <!-- Dynamic copy depending on how many out of scope benefits a user has -->
 
         {% if data['oOScope'].length === 1 %}
           <p>To get proof of {{ data['oOScope'][0] }}, you need to contact them.</p>
@@ -63,18 +67,13 @@ You cannot get a proof of benefit letter using this service
                 <li>{{ benefit }}</li>
               {% else %}
                 <p>No benefit selected</p>
-              {% endfor %}    
+              {% endfor %}
           </ul>
-          <p>You will need to contact them to get proof of benefits.</p>
-        
+          <p>You will need to contact them to get proof of your benefits.</p>
         {% endif %}
 
-        {% if data['oOScope'].length > 1 %}
-        <p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
-        {% endif %}
-
-        {% if data['uCBenefit'] == true %}
-          <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+        {% if data['oOScope'].length > 0 %}
+        <p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
         {% endif %}
 
         <div class="govuk-button-group">
