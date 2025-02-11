@@ -2070,3 +2070,6 @@ router.use('/', pobV4Mixed)
 
 const pobV5 = require('./routes/pob-v5')
 router.use('/', pobV5)
+
+const release2 = require('./routes/release-2')
+router.use('/', release2)
