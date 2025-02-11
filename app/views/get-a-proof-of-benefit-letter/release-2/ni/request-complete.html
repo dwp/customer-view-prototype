@@ -62,7 +62,8 @@ Request complete
         </ul>
 
         <p>Your letter should arrive within one week.</p>
-      {% else %}
+      
+        {% else %}
       <p>Failed!</p>
       {% endif %}
 
@@ -71,20 +72,20 @@ Request complete
           How to get proof of your other benefits
         </h2>
 
-        <p>Find the contact details for {{ data['oOScope'][0] }} in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+        <p>Find the contact details for {{ data['oOScope'][0] }} in a letter they have sent to you, or in <a href="https://www.nidirect.gov.uk/information-and-services/benefits-and-money/benefits-and-financial-support" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on nidirect (opens in a new tab)</a>.</p>
 
       {% elif data['oOScope'].length === 2 %}
         <h2 class="govuk-heading-m">
           How to get proof of your other benefits
         </h2>
 
-        <p>Find the contact details for {{ data['oOScope'] | formatList }} in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+        <p>Find the contact details for {{ data['oOScope'] | formatList }} in a letter they have sent to you, or in <a href="https://www.nidirect.gov.uk/information-and-services/benefits-and-money/benefits-and-financial-support" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on nidirect (opens in a new tab)</a>.</p>
 
 
       {% elif data['oOScope'].length > 2 %}
         <h2 class="govuk-heading-m">
           How to get proof of your other benefits
-        </h2>
+        </h2> 
 
         <p>You will need to contact each benefit to get proof of benefit letters for:</p>
         <ul class="govuk-list govuk-list--bullet">
@@ -95,7 +96,7 @@ Request complete
             {% endfor %}    
         </ul>
         
-        <p>Find their contact details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+        <p>Find their contact details in a letter they have sent to you, or in <a href="https://www.nidirect.gov.uk/information-and-services/benefits-and-money/benefits-and-financial-support" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on nidirect (opens in a new tab)</a>.</p>
 
       {% endif %}
 
