@@ -43,7 +43,7 @@ You cannot get a proof of benefit letter using this service
       {% if data['researchSetUpBenefits'].length === 1 and data['researchSetUpBenefits'].includes("State Pension") %}
       <p>Before you can get proof of your State Pension, you need to <a href="https://www.gov.uk/contact-pension-service/report-changes" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service to correct your address (opens in a new tab)</a>.</p>
   
-      {% elif data['researchSetUpBenefits'].length > 1 and data['researchSetUpBenefits'].includes("State Pension") %}
+      {% elif data['which-benefits-need-proof'].length > 1 and data['which-benefits-need-proof'].includes("State Pension") %}
       <p>Before you can get proof of your benefits, you need to <a href="https://www.gov.uk/report-benefits-change-circumstances#:~:text=How%20to%20report%20changes" class="govuk-link" rel="noreferrer noopener" target="_blank">contact each benefit to correct your address (opens in a new tab)</a>.</p>
   
       <p>To get proof of your State Pension, you also need to <a href="https://www.gov.uk/contact-pension-service/report-changes" class="govuk-link" rel="noreferrer noopener" target="_blank">tell the Pension Service your correct address (opens in a new tab)</a>.</p>
