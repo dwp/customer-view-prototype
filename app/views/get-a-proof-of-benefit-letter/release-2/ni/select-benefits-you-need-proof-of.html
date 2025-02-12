@@ -38,6 +38,15 @@ Which benefits do you need proof of?
 
       <form class="form" action="select-benefits-answer" method="post">
 
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text" style="color:red">
+            <span class="govuk-visually-hidden">Warning</span>
+            This page contains Northern Ireland specific copy
+          </strong>
+        </div>
+        
+
         <!-- This section tells the user if they have out of scope benefits that they can't use the service for -->
 
         {% if data['oOScope'].length > 0 or data['uCBenefit'] == true %}

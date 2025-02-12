@@ -40,6 +40,15 @@ You cannot get a proof of benefit letter using this service
         You cannot get proof of your benefits using this service
       </h1>
 
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text" style="color:red">
+          <span class="govuk-visually-hidden">Warning</span>
+          This page contains Northern Ireland specific copy
+        </strong>
+      </div>
+      
+
       {% if data['researchSetUpBenefits'].length === 1 and data['researchSetUpBenefits'].includes("State Pension") %}
       <p class="govuk-body">
         Before you can get proof of your State Pension, you need to <a class="govuk-link" href="https://www.nidirect.gov.uk/articles/benefits-report-change-your-circumstances">contact the Northern Ireland Pension Centre to correct your address (opens in a new tab)</a>.
