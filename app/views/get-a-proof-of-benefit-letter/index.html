@@ -27,9 +27,11 @@
       <!-- ------------- Release 2 ------------- -->
 
       <span class="govuk-caption-m">Feb 2025 - Now</span>
-      <h2 class="govuk-heading-l">Release 2 - Personal Independence Payment (PIP)</h2>
+      <h2 class="govuk-heading-l">Release 2 - PIP and NI</h2>
 
-      <p>This iteration contains work from v3-v5 of the prototype. It is meant to be released as part of v1.08 (CHANGE). </p>
+      <p>Release 2 is an exact replica of iteration 5A, with the addition of State Pension signposting.</p>
+      
+      <p>We have also included the Northern Ireland design, which signposts users in NI to nidrect instead of GOV.UK. The changes impact the URLs and the hyperlink content. NI will use their own start page on nidirect and not use ours on GOV.UK.</p>
 
       <details class="govuk-details">
         <summary class="govuk-details__summary">
@@ -38,6 +40,19 @@
           </span>
         </summary>
         <div class="govuk-details__text">
+          <p>New dynamic State Pension content included:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>in the ‘tell us about a change’ section on the personal details page</li>
+            <li>when a user’s address is incorrect, we signpost them to SP change of circs on the address signpost page</li>
+          </ul>
+
+          <p>Links that have been updated with NI content:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>beta signposting pages when people have not been invited to service</li>
+            <li>benefits in and out of scope pages when a user is in the service and their benefits are not in scope</li>
+            <li>if the user’s address is incorrect, they get signposted to nidirect</li>
+          </ul>
+            
           <p>Since release 1:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>iterated the service name to ‘Get proof of your benefits’ so there are options to include more ways to get letters in future</li>
@@ -50,6 +65,9 @@
             <li>designed a ‘check your answers’ page for a person with one benefit</li>
             <li>corrected phase banner so that content matches guidelines</li>
             <li>made headings on personal details table plural if user receives multiple benefits</li>
+            <li>Changed how we refer to getting proof of benefits across the journey - with the exception of the service name, removing ‘letter’ in many cases since users are getting an email</li>
+            <li>added signposting for users who get one in scope benefit and any amount of out of scope benefits, when they select ‘no’ - these are unhappy paths following the main changes in iteration 3</li>
+            <li>Iterated confirmation page to include what happens next for users who are getting proof in an email</li>
           </ul>
         </div>
       </details>
@@ -331,7 +349,17 @@
          <div class="govuk-details__text">
            <p>Since version 3, we have:</p>
            <ul class="govuk-list govuk-list--bullet">
-             <li></li>
+            <li>Changed how we refer to getting proof of benefits across the journey - with the exception of the service name, removing ‘letter’ in many cases since users are getting an email</li>
+            <li>Included that users can get proof of their benefits sent in an email on the start page, and timelines</li>
+            <li>added signposting for users who get one in scope benefit and any amount of out of scope benefits, when they select ‘no’ - these are unhappy paths following the main changes in iteration 3</li>
+            <li>Created two variant journeys that allow users to get an email</li>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Journey A lets users choose whether to get email, letter, or both up front</li>
+                <li>Journey B is a digital-first journey asking users whether they need an email first and then a letter second</li>
+              </ul>
+              <li>Iterated address signposting to encourage users to tell us their address if it is wrong</li>
+              <li>Added email address in check your answers page</li>
+              <li>Iterated confirmation page to include what happens next for users who are getting proof in an email</li>
            </ul>
          </div>
        </details>
