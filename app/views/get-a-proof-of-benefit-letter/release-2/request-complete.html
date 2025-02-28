@@ -41,6 +41,10 @@ Request complete
         What happens next
       </h2>
 
+      <!-- Shows different messages based on number of benefits requested:
+           - Single benefit: Shows simple message
+           - Two benefits: Uses formatList filter to show both
+           - Three or more: Shows as bullet points -->
       {% if data['inScope'].length === 1 %}
         <p>You have requested proof of {{ data['inScope'][0] }}.</p>
 
@@ -66,6 +70,10 @@ Request complete
       <p>Failed!</p>
       {% endif %}
 
+      <!-- Shows different messages and layouts based on number of out-of-scope benefits:
+           - Single benefit: Simple message with link
+           - Two benefits: Uses formatList filter to show both
+           - Three or more: Bullet point list -->
       {% if data['oOScope'].length === 1 %}
         <h2 class="govuk-heading-m">
           How to get proof of your other benefits
@@ -99,7 +107,9 @@ Request complete
 
       {% endif %}
 
-
+      <!-- Special handling for Universal Credit (uCBenefit flag)
+           Shows UC guidance either with or without a heading depending on
+           whether there are other out-of-scope benefits -->
       {% if data['uCBenefit'] == true %}
         {% if data['oOScope'].length === 0 %}
         <h2 class="govuk-heading-m">

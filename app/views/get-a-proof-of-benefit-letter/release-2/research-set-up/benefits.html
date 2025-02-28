@@ -43,6 +43,23 @@ Before we start the user research scenario - benefits
           Your answers will determine what content appears during user testing.
         </div>
         
+        <!-- 
+          Checkbox group for benefit selection. 
+          We do this so research participants see only the benefits they actually receive in the test.
+          Selected benefits are categorized into three groups:
+
+          1. inScope array:
+             - Benefits that we can provide proof of to users through this service
+
+          2. oOScope array (out of scope):
+             - Benefits that we cannot provide proof of through this service
+             - Users will need to contact relevant departments for these benefits
+
+          3. uCBenefit boolean (Universal Credit):
+             - Technically an out of scope benefit but handled separately
+             - Tracked independently because it requires specific messaging to users
+             - Users are directed to their UC portal instead
+        -->
         {{ govukCheckboxes({
           name: "researchSetUpBenefits",
           value: data['researchSetUpBenefits'],

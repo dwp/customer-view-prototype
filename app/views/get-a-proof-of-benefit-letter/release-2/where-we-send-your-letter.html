@@ -40,6 +40,11 @@ Where we send your letters
 
         <h1 class="govuk-heading-l" >Where we send your letters</h1>
 
+        <!-- Different text shown based on research setup address type:
+             - If researchSetUpAddress is 'home', shows "Your address is saved as:"
+             - If researchSetUpAddress is anything else, shows "The address we send your letters to is saved as:"
+             This allows us to test  different content variations during research sessions -->
+
         {% if data.researchSetUpAddress === 'home' %}
           <p>Your address is saved as:</p>
         {% else %}
@@ -60,6 +65,9 @@ Where we send your letters
           {% endif %}
         </div>
 
+        <!-- Radio button group to confirm if address is correct
+             If user selects 'No', they will be redirected to cannot-use-service page
+             If user selects 'Yes', they will proceed to check-your-answers page -->
         {{ govukRadios({
           name: "confirmLetterSend",
           fieldset: {

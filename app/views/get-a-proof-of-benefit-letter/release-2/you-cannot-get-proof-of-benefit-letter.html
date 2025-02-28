@@ -52,16 +52,19 @@ You cannot get a proof of benefit letter using this service
         <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
         {% endif %}
 
-        <!-- Dynamic copy depending on how many out of scope benefits a user has -->
-
+        <!-- Dynamic content section based on number of out-of-scope benefits -->
+        <!-- Case 1: Single out-of-scope benefit -->
         {% if data['oOScope'].length === 1 %}
           <p>To get proof of {{ data['oOScope'][0] }}, you need to contact them.</p>
 
+        <!-- Case 2: Two out-of-scope benefits -->
         {% elif data['oOScope'].length === 2 %}
           <p>To get proof of {{ data['oOScope'] | formatList }}, you need to contact them.</p>
 
+        <!-- Case 3: Three or more out-of-scope benefits -->
         {% elif data['oOScope'].length > 2 %}
           <p>You cannot use this service to get proof of:</p>
+          <!-- List all out-of-scope benefits -->
           <ul class="govuk-list govuk-list--bullet">
               {% for benefit in data['oOScope'] %}
                 <li>{{ benefit }}</li>
@@ -72,6 +75,7 @@ You cannot get a proof of benefit letter using this service
           <p>You will need to contact them to get proof of your benefits.</p>
         {% endif %}
 
+        <!-- Show GOV.UK guidance link if user has any out-of-scope benefits -->
         {% if data['oOScope'].length > 0 %}
         <p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
         {% endif %}

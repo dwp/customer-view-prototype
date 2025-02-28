@@ -33,6 +33,8 @@ You cannot get a proof of benefit letter using this service
 
 {% block content %}
 
+  <!-- This page is shown when a user indicates their address is incorrect by selecting "No" 
+       on the address confirmation page (handled by send-letter-to-address-answer route) -->
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -40,6 +42,10 @@ You cannot get a proof of benefit letter using this service
         You cannot get proof of your benefits using this service
       </h1>
 
+      <!-- Conditional content based on benefit selection:
+           1. If only State Pension is selected, show Pension Service specific message
+           2. If multiple benefits including State Pension, show both general and Pension Service messages
+           3. If other benefits (no State Pension), show general message -->
       {% if data['researchSetUpBenefits'].length === 1 and data['researchSetUpBenefits'].includes("State Pension") %}
       <p>Before you can get proof of your State Pension, you need to <a href="https://www.gov.uk/contact-pension-service/report-changes" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service to correct your address (opens in a new tab)</a>.</p>
   
