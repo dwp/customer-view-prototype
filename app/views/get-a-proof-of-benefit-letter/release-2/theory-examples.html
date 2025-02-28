@@ -41,7 +41,7 @@
         {% set score = 7 %}
 
         <div class="govuk-inset-text">
-          <p>We'll use these simple examples:</p>
+          <p>We'll use these simple examples when looking at if statements and for loops:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>isHappy = {{ isHappy }} (this is true/false, like a light switch that's on or off)</li>
             <li>weather = "{{ weather }}" (this is text, like writing a word)</li>
@@ -236,6 +236,182 @@
   {% endfor %}
 {% endif %}{% endraw %}</code></pre>"
       }) }}
+
+      </section>
+
+      // ... previous content remains the same ...
+
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <!-- SECTION 4: PROJECT-SPECIFIC EXAMPLES -->
+      <section class="govuk-section">
+        <h2 class="govuk-heading-l">4. Real Examples from Our Benefits Service</h2>
+
+        <p class="govuk-body">Let's look at how we use these concepts in our Proof of Benefits service. These examples come directly from our project code.</p>
+
+        <!-- Example 1: Benefit Categories -->
+        <h3 class="govuk-heading-m">Example 1: Sorting Benefits</h3>
+        <p class="govuk-body">In our service, we sort benefits into three categories:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Benefits we can handle (inScope)</li>
+          <li>Universal Credit (special case)</li>
+          <li>Benefits we can't handle (outOfScope)</li>
+        </ul>
+
+        <div class="govuk-inset-text">
+          {% set demoResearchBenefits = ['State Pension', 'Universal Credit', 'Carer's Allowance'] %}
+          
+          <p>Example with these benefits: {{ demoResearchBenefits | dump }}</p>
+          <pre><code>
+{# This is similar to our actual benefit sorting logic #}
+{% raw %}{% set inScope = [] %}
+{% set outOfScope = [] %}
+{% set hasUniversalCredit = false %}
+
+{% for benefit in benefits %}
+    {% if benefit === "Universal Credit" %}
+        {% set hasUniversalCredit = true %}
+    {% elif benefit === "Carer's Allowance" %}
+        {% set outOfScope = (outOfScope.push(benefit), outOfScope) %}
+    {% else %}
+        {% set inScope = (inScope.push(benefit), inScope) %}
+    {% endif %}
+{% endfor %}{% endraw %}
+          </code></pre>
+
+          <p class="govuk-body-s">How we use this: This helps us show different messages and options based on which benefits someone has.</p>
+        </div>
+
+        <!-- Example 2: Service Access Check -->
+        <h3 class="govuk-heading-m">Example 2: Checking Service Access</h3>
+        <p class="govuk-body">We need to check if people can use our service based on how they found out about it.</p>
+
+        <div class="govuk-inset-text">
+          <pre><code>
+{# This matches our service access logic #}
+{% raw %}{% if howDidYouFindOut === "heard-about-on-phone" or howDidYouFindOut === "job-centre" %}
+    <div class="govuk-panel govuk-panel--confirmation">
+        <h2 class="govuk-panel__title">You can use this service</h2>
+    </div>
+{% else %}
+    <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+            Sorry, this service is currently only available if you were invited
+        </strong>
+    </div>
+{% endif %}{% endraw %}
+          </code></pre>
+
+          <p class="govuk-body-s">How we use this: This helps us manage access to the beta service.</p>
+        </div>
+
+        <!-- Example 3: Address Handling -->
+        <h3 class="govuk-heading-m">Example 3: Address Confirmation</h3>
+        <p class="govuk-body">We check if the user's address is correct before sending their letter.</p>
+
+        <div class="govuk-inset-text">
+          <pre><code>
+{# This matches our address confirmation logic #}
+{% raw %}{% if confirmLetterSend === "no" %}
+    <p>You cannot use this service if your address is incorrect</p>
+    <p>You need to update your address first</p>
+{% else %}
+    <h2>Your letter will be sent to:</h2>
+    <p>{{ address.line1 }}</p>
+    <p>{{ address.postcode }}</p>
+{% endif %}{% endraw %}
+          </code></pre>
+
+          <p class="govuk-body-s">How we use this: This ensures letters are sent to the correct address.</p>
+        </div>
+
+        <!-- Example 4: Benefit Selection Display -->
+        <h3 class="govuk-heading-m">Example 4: Showing Available Benefits</h3>
+        <p class="govuk-body">We show different messages based on how many benefits someone can get proof of.</p>
+
+        <div class="govuk-inset-text">
+          <pre><code>
+{# This matches our benefit display logic #}
+{% raw %}{% if data['inScope'].length === 1 %}
+    <p>If you continue, you can request proof of {{ data['inScope'][0] }}</p>
+{% elif data['inScope'].length === 2 %}
+    <p>If you continue, you can request proof of {{ data['inScope'] | formatList }}</p>
+{% elif data['inScope'].length > 2 %}
+    <p>If you continue, you can request proof of:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        {% for benefit in data['inScope'] %}
+            <li>{{ benefit }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}{% endraw %}
+          </code></pre>
+
+          <p class="govuk-body-s">How we use this: This creates a clear list of benefits the user can get proof of.</p>
+        </div>
+
+        <!-- Project Practice Section -->
+        <h3 class="govuk-heading-m">Try Project-Specific Examples!</h3>
+
+        {% set projectExample = {
+          benefits: ['State Pension', 'PIP', 'Universal Credit'],
+          findOutMethod: 'job-centre',
+          address: {
+            isCorrect: true,
+            postcode: 'SW1A 1AA'
+          }
+        } %}
+
+        <div class="govuk-inset-text">
+          <p>Practice with our project variables:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>benefits = {{ projectExample.benefits | dump }}</li>
+            <li>findOutMethod = "{{ projectExample.findOutMethod }}"</li>
+            <li>address.isCorrect = {{ projectExample.address.isCorrect }}</li>
+          </ul>
+        </div>
+
+        {{ govukDetails({
+          summaryText: "Project Tasks to Try",
+          text: "1. Sort the benefits into inScope and outOfScope arrays
+2. Check if the user can access the service based on findOutMethod
+3. Show different messages based on how many benefits they have
+4. Create an address confirmation check"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "See Project Solutions",
+          html: "<pre><code>{# Project-specific solutions #}
+{% raw %}{# 1. Sort benefits #}
+{% set inScope = [] %}
+{% set outOfScope = [] %}
+{% for benefit in benefits %}
+    {% if benefit === 'Universal Credit' %}
+        {# Handle UC separately #}
+    {% else %}
+        {% set inScope = (inScope.push(benefit), inScope) %}
+    {% endif %}
+{% endfor %}
+
+{# 2. Check access #}
+{% if findOutMethod === 'job-centre' %}
+    <p>Access granted</p>
+{% endif %}
+
+{# 3. Benefit count messages #}
+{% if inScope.length === 1 %}
+    <p>One benefit available</p>
+{% elif inScope.length > 1 %}
+    <p>Multiple benefits available</p>
+{% endif %}
+
+{# 4. Address check #}
+{% if address.isCorrect %}
+    <p>Letter will be sent to {{ address.postcode }}</p>
+{% endif %}{% endraw %}</code></pre>"
+        }) }}
 
       </section>
     </div>
