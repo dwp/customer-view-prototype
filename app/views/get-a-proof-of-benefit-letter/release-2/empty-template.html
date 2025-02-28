@@ -1,0 +1,189 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Learning Nunjucks - A Beginner's Guide
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Learning Nunjucks - The Basics</h1>
+
+      <!-- SECTION 1: IF STATEMENTS -->
+      <section class="govuk-section">
+        <h2 class="govuk-heading-l">1. If Statements</h2>
+        
+        <!-- Setting up simple variables we can use in our examples -->
+        {% set isHappy = true %}
+        {% set weather = "sunny" %}
+        {% set score = 7 %}
+
+        <div class="govuk-inset-text">
+          <p>We'll use these simple examples:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>isHappy = {{ isHappy }} (this is true/false)</li>
+            <li>weather = "{{ weather }}" (this is text)</li>
+            <li>score = {{ score }} (this is a number)</li>
+          </ul>
+        </div>
+
+        <!-- Example 1: Simple Yes/No check -->
+        <h3 class="govuk-heading-m">Example 1: Simple Yes/No Check</h3>
+        <div class="govuk-inset-text">
+          <p>This code checks if isHappy is true:</p>
+          <pre><code>
+{# This is the simplest type of if statement #}
+{% raw %}{% if isHappy %}
+  <p>😊 Yay! We're happy!</p>
+{% endif %}{% endraw %}
+          </code></pre>
+
+          <p>Result:</p>
+          {% if isHappy %}
+            <p>😊 Yay! We're happy!</p>
+          {% endif %}
+        </div>
+
+        <!-- Example 2: If-Else with text -->
+        <h3 class="govuk-heading-m">Example 2: If-Else (Two Options)</h3>
+        <div class="govuk-inset-text">
+          <p>This code checks what the weather is:</p>
+          <pre><code>
+{# If-else lets us do one thing or another #}
+{% raw %}{% if weather == "sunny" %}
+  <p>☀️ Bring sunglasses!</p>
+{% else %}
+  <p>🌧️ Bring an umbrella!</p>
+{% endif %}{% endraw %}
+          </code></pre>
+
+          <p>Result:</p>
+          {% if weather == "sunny" %}
+            <p>☀️ Bring sunglasses!</p>
+          {% else %}
+            <p>🌧️ Bring an umbrella!</p>
+          {% endif %}
+        </div>
+
+        <!-- Example 3: Simple number comparison -->
+        <h3 class="govuk-heading-m">Example 3: Checking Numbers</h3>
+        <div class="govuk-inset-text">
+          <p>This code checks if score is higher than 5:</p>
+          <pre><code>
+{# We can compare numbers using > (greater than) or < (less than) #}
+{% raw %}{% if score > 5 %}
+  <p>🌟 High score!</p>
+{% else %}
+  <p>Keep trying!</p>
+{% endif %}{% endraw %}
+          </code></pre>
+
+          <p>Result:</p>
+          {% if score > 5 %}
+            <p>🌟 High score!</p>
+          {% else %}
+            <p>Keep trying!</p>
+          {% endif %}
+        </div>
+
+      <!-- SECTION 2: FOR LOOPS -->
+      <h2 class="govuk-heading-l">2. For Loops</h2>
+
+      <!-- Setting up a simple array for our examples -->
+      {% set pets = ['Dog', 'Cat', 'Fish'] %}
+
+      <div class="govuk-inset-text">
+        <p>We'll use this simple list of pets:</p>
+        <p>pets = {{ pets | dump }} (this is a list)</p>
+      </div>
+
+      <!-- Example 1: Simple List -->
+      <h3 class="govuk-heading-m">Example 1: Simple List</h3>
+      <div class="govuk-inset-text">
+        <p>This code shows all pets in a list:</p>
+        <pre><code>
+{# This loop goes through each pet in our list #}
+{% raw %}{% for pet in pets %}
+  <li>{{ pet }}</li>
+{% endfor %}{% endraw %}
+        </code></pre>
+
+        <p>Result:</p>
+        <ul class="govuk-list">
+          {% for pet in pets %}
+            <li>{{ pet }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Example 2: Loop with Numbers -->
+      <h3 class="govuk-heading-m">Example 2: Numbered List</h3>
+      <div class="govuk-inset-text">
+        <p>This code shows pets with numbers:</p>
+        <pre><code>
+{# We can use loop.index to get the current number #}
+{% raw %}{% for pet in pets %}
+  <li>Pet #{{ loop.index }}: {{ pet }}</li>
+{% endfor %}{% endraw %}
+        </code></pre>
+
+        <p>Result:</p>
+        <ul class="govuk-list">
+          {% for pet in pets %}
+            <li>Pet #{{ loop.index }}: {{ pet }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- PRACTICE SECTION -->
+      <h2 class="govuk-heading-l">Try It Yourself!</h2>
+      
+      {% set practice = {
+        name: "Alex",
+        points: 10,
+        favorites: ['Pizza', 'Ice Cream']
+      } %}
+
+      <div class="govuk-inset-text">
+        <p>Here are some simple things to try with:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>name = "{{ practice.name }}"</li>
+          <li>points = {{ practice.points }}</li>
+          <li>favorites = {{ practice.favorites | dump }}</li>
+        </ul>
+      </div>
+
+      {{ govukDetails({
+        summaryText: "Practice Ideas (Click to see)",
+        text: "1. Make an if statement that checks if points is more than 5
+2. Make a loop that shows the favorite foods
+3. Try combining them: only show favorites if points is more than 5"
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "See the answers",
+        html: "<pre><code>{# Example answer #}
+{% raw %}{% if practice.points > 5 %}
+  <p>{{ practice.name }} has enough points!</p>
+  <p>Favorite foods:</p>
+  {% for food in practice.favorites %}
+    <li>{{ food }}</li>
+  {% endfor %}
+{% endif %}{% endraw %}</code></pre>"
+      }) }}
+
+      </section>
+    </div>
+  </div>
+{% endblock %}
