@@ -1,0 +1,392 @@
+{% extends "layouts/main.html" %} {% block pageTitle %} Learning Nunjucks -
+Snacks Practice Guide {% endblock %} {% block header %} {{ govukHeader() }} {%
+endblock %} {% block beforeContent %} {{ govukBackLink({ text: "Back", href:
+"javascript:window.history.back()" }) }} {% endblock %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Understanding Core Programming Concepts</h1>
+
+    <!-- CORE CONCEPTS -->
+    <section>
+      <h2 class="govuk-heading-l">Essential Programming Concepts</h2>
+
+      <h3 class="govuk-heading-m">Variables</h3>
+      <p class="govuk-body">
+        Variables are containers for storing data values. Think of them like
+        labeled boxes where you can store information:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>They can hold different types of data (numbers, text, lists)</li>
+        <li>Their values can change during program execution</li>
+        <li>They help us track and manage data throughout our code</li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--m" />
+
+      <h3 class="govuk-heading-m">If Statements</h3>
+      <p class="govuk-body">
+        If statements are decision-making tools in programming:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>They let your code make yes/no decisions</li>
+        <li>Can have multiple conditions using else if</li>
+        <li>Always evaluate to true or false</li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--m" />
+
+      <h3 class="govuk-heading-m">For Loops</h3>
+      <p class="govuk-body">For loops are used to repeat actions:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Perfect for processing lists or collections</li>
+        <li>Helps avoid writing repetitive code</li>
+        <li>Can count, iterate, or process data systematically</li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--m" />
+
+      <h3 class="govuk-heading-m">Arrays (Lists)</h3>
+      <p class="govuk-body">Arrays store collections of items:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Can hold multiple values in a single variable</li>
+        <li>Items can be accessed by their position (index)</li>
+        <li>Common methods: includes(), length, push()</li>
+      </ul>
+
+      <hr
+        class="govuk-section-break govuk-section-break--l govuk-section-break--visible"
+      />
+
+      <!-- PRACTICAL SOLUTIONS -->
+      <h2 class="govuk-heading-l">Practical Solutions</h2>
+
+      <h2 class="govuk-heading-m">Counting Selected Snacks</h2>
+      <p class="govuk-body">Get length of snacks array:</p>
+      <div
+        style="
+          background-color: #f3f2f1;
+          padding: 1.5rem;
+          border: 2px solid #505a5f;
+          border-radius: 5px;
+          margin: 1rem 0;
+        "
+      >
+        <pre
+          class="govuk-body"
+          style="
+            margin: 0;
+            background: none;
+            border: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          "
+        ><code>&lt;p&gt;You've selected &lt;strong&gt;{{ data.snacks.length }}&lt;/strong&gt; number of snacks&lt;/p&gt;</code></pre>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Understanding the snack counter
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>
+            This solution uses the array's length property to count selected
+            items:
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>data.snacks is an array containing all selected snacks</li>
+            <li>.length returns the total number of items in the array</li>
+          </ul>
+        </div>
+      </details>
+
+      <hr
+        class="govuk-section-break govuk-section-break--l govuk-section-break--visible"
+      />
+
+      <h2 class="govuk-heading-m">Listing Selected Snacks</h2>
+      <p class="govuk-body">Loop through snacks array:</p>
+      <div
+        style="
+          background-color: #f3f2f1;
+          padding: 1.5rem;
+          border: 2px solid #505a5f;
+          border-radius: 5px;
+          margin: 1rem 0;
+        "
+      >
+        <pre
+          class="govuk-body"
+          style="
+            margin: 0;
+            background: none;
+            border: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          "
+        ><code>&lt;ul class="govuk-list govuk-list--bullet"&gt;
+  {% raw %}{% for snack in data.snacks %}
+    &lt;li&gt;{{ snack }}&lt;/li&gt;
+  {% endfor %}{% endraw %}
+&lt;/ul&gt;</code></pre>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Understanding the snack list
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>
+            This solution uses a Nunjucks for loop to display all selected
+            snacks:
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              {% raw %}{% for snack in data.snacks %}{% endraw %} iterates
+              through each item in the array
+            </li>
+            <li>Each snack is displayed as a list item</li>
+            <li>
+              The GOV.UK bullet list styling is applied for consistent design
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <hr
+        class="govuk-section-break govuk-section-break--l govuk-section-break--visible"
+      />
+
+      <h2 class="govuk-heading-m">Chocolate Warning</h2>
+      <p class="govuk-body">Check for multiple chocolate selections:</p>
+      <div
+        style="
+          background-color: #f3f2f1;
+          padding: 1.5rem;
+          border: 2px solid #505a5f;
+          border-radius: 5px;
+          margin: 1rem 0;
+        "
+      >
+        <pre
+          class="govuk-body"
+          style="
+            margin: 0;
+            background: none;
+            border: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          "
+        ><code>{% raw %}{% if data.snacks.includes('Kit Kat') and data.snacks.includes('Twix') %}
+    &lt;p&gt;You've selected two chocolate bars. We recommend you eat 1 chocolate bar per day.&lt;/p&gt;
+{% else %}
+    &lt;p&gt;You've made some healthy choices today. Keep it up!&lt;/p&gt;
+{% endif %}{% endraw %}</code></pre>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Understanding the warning logic
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>This solution checks for multiple chocolate selections:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              Uses .includes() to check if specific items are in the array
+            </li>
+            <li>
+              Combines two conditions with 'and' to check for both chocolate
+              bars
+            </li>
+            <li>Provides different messages based on the selection</li>
+          </ul>
+        </div>
+      </details>
+
+      <hr
+        class="govuk-section-break govuk-section-break--l govuk-section-break--visible"
+      />
+
+      <h2 class="govuk-heading-m">Calorie Calculator and Display</h2>
+      <p class="govuk-body">Display total calories from session data:</p>
+      <div
+        style="
+          background-color: #f3f2f1;
+          padding: 1.5rem;
+          border: 2px solid #505a5f;
+          border-radius: 5px;
+          margin: 1rem 0;
+        "
+      >
+        <pre
+          class="govuk-body"
+          style="
+            margin: 0;
+            background: none;
+            border: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          "
+        ><code>{% raw %}<!-- Calorie display container -->
+<div style="background-color: #f3f2f1; border: 1px solid #4e4e4e; border-radius: .5em; padding: 20px;">
+  <h2 class="govuk-heading-m">
+    Calorie Count
+  </h2>
+
+  <p class="govuk-heading-xl govuk-!-margin-bottom-2">
+    {{ data.totalCalories }}
+  </p>
+
+  {% if data.totalCalories > 350 %}
+    <strong class="govuk-tag govuk-tag--red">
+      Over calorie limit
+    </strong>
+  {% else %}
+    <strong class="govuk-tag govuk-tag--green">
+      Under calorie limit
+    </strong>
+  {% endif %}
+</div>{% endraw %}</code></pre>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Understanding the calorie display
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>This solution creates a styled calorie counter display:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Uses custom styling to create a prominent display box</li>
+            <li>Shows the total calories in large text</li>
+            <li>
+              Implements conditional color-coded tags based on calorie threshold
+            </li>
+            <li>Uses GOV.UK tag components for status indicators</li>
+          </ul>
+        </div>
+      </details>
+
+      <hr
+        class="govuk-section-break govuk-section-break--l govuk-section-break--visible"
+      />
+
+      <h2 class="govuk-heading-m">Confirm Page Solution</h2>
+      <p class="govuk-body">List selected snacks and show calorie message:</p>
+      <div
+        style="
+          background-color: #f3f2f1;
+          padding: 1.5rem;
+          border: 2px solid #505a5f;
+          border-radius: 5px;
+          margin: 1rem 0;
+        "
+      >
+        <pre
+          class="govuk-body"
+          style="
+            margin: 0;
+            background: none;
+            border: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          "
+        ><code>{% raw %}{% for snack in data.snacks %}
+    &lt;p&gt;{{ snack }}&lt;/p&gt;
+{% endfor %}
+
+{% if data.totalCalories > 350 %}
+    &lt;p&gt;Your snacks were over the recommended daily limit. Try not to eat them in one go.&lt;/p&gt;
+{% else %}
+    &lt;p&gt;You've selected a balanced combination of snacks. Enjoy!&lt;/p&gt;
+{% endif %}{% endraw %}</code></pre>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Understanding the confirmation display
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>This solution combines listing and conditional messaging:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Lists all selected snacks for review using a for loop</li>
+            <li>Uses the greater than operator (>) to compare calorie values:
+              <ul class="govuk-list govuk-list--bullet">
+                <li>data.totalCalories > 350 checks if calories exceed 350</li>
+                <li>The > operator returns true if left side is greater than right side</li>
+              </ul>
+            </li>
+        </div>
+      </details>
+
+      <hr
+        class="govuk-section-break govuk-section-break--l govuk-section-break--visible"
+      />
+
+      <h2 class="govuk-heading-m">Route Logic Solution</h2>
+      <p class="govuk-body">Handle page routing based on snack selections:</p>
+      <div
+        style="
+          background-color: #f3f2f1;
+          padding: 1.5rem;
+          border: 2px solid #505a5f;
+          border-radius: 5px;
+          margin: 1rem 0;
+        "
+      >
+        <pre
+          class="govuk-body"
+          style="
+            margin: 0;
+            background: none;
+            border: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          "
+        ><code>// Store total calories in session data
+req.session.data['totalCalories'] = totalCalories
+
+// If they selected any chocolate bars, send to report page
+if (snacks.includes("Kit Kat") || snacks.includes("Twix")) {
+    res.redirect('/practice/report')
+} else {
+    res.redirect('/practice/confirm')
+}</code></pre>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Understanding the routing logic
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>This solution handles page routing based on snack selections:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              Stores calculated calories in session data for use across pages
+            </li>
+            <li>Uses OR operator (||) to check for any chocolate selection</li>
+            <li>Routes to report page if any chocolate is selected</li>
+            <li>Routes to confirm page for healthy selections only</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+  </div>
+</div>
+{% endblock %}

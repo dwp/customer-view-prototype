@@ -268,7 +268,7 @@ router.post('/get-a-proof-of-benefit-letter/release-2/ni/select-benefits-answer'
 
 
 // Drop user if they state their address is incorrect
-router.post('/get-a-proof-of-benefit-letter/release-2/ni/send-letter-to-address-answer', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/practice/snacks-answer', function (req, res) {
 
   var confirmLetterSend = req.session.data['confirmLetterSend']
 

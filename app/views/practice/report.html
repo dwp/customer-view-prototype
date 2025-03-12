@@ -1,0 +1,154 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="report-answer" method="post">
+
+        <h1 class="govuk-heading-l">
+          Calorie report
+        </h1>
+
+        <!-- Practice 1: Easy -->
+
+        <h2 class="govuk-heading-m">Snack count</h2>
+
+        <p style="color: rgb(150, 0, 0);">Replace X with the number of snacks selected</p>
+
+        <p>You've selected <strong>X</strong> number of snacks</p>
+
+        <p>We recommend you eat 1-2 snacks per day</p>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <!-- Practice 2: Medium -->
+
+        <h2 class="govuk-heading-m">Snack List</h2>
+        
+        <p>
+          You've selected the following snacks:
+        </p>
+
+        <div style="border: 1px solid #4e4e4e; border-radius: .5rem;" class="govuk-!-padding-3 govuk-!-margin-bottom-6">
+          
+          <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-0" style="color: rgb(150, 0, 0);">
+            Replace me me the list of your selected snacks here.
+          </p>
+        
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+        <!-- Practice 3: Medium -->
+
+        <h2 class="govuk-heading-m">Healthy choices</h2>
+
+        {% if data.snacks.includes('Kit Kat') and data.snacks.includes('Twix') %}
+
+        <p>Show the following message if the user has selected two chocolate bars:</p>
+        
+        <p>You've selected two chocolate bars. We recommend you eat 1 chocolate bar per day.</p>
+
+        <p>Otherwise, show the following message:</p>
+
+        <p>You've made some healthy choices today. Keep it up!</p>
+
+        
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        {% endif %}
+
+
+        <!-- Practice 4: Hard -->
+
+        <h2 class="govuk-heading-m">Calorie calculator</h2>
+
+        <p>
+          Here is the calories reference table:
+        </p>
+
+        <div style="border: 1px solid #4e4e4e; border-radius: .5rem;" class="govuk-!-padding-3 govuk-!-margin-bottom-6">
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Calories</p>
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+          <p class="govuk-body">Kit Kat bar - 210 calories</p>
+          <p class="govuk-body">Twix bar - 250 calories</p>
+          <p class="govuk-body">Apple - 95 calories</p>
+          <p class="govuk-body govuk-!-margin-bottom-0">Protein bar - 150 calories</p>
+        </div>
+
+        <p style="color: rgb(150, 0, 0);">
+          Based on the user's selected snacks, calculate the total calories and display it here.
+        </p>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        
+        
+        <!-- Practice 5: Hard -->
+
+        <h2 class="govuk-heading-m">Calorie calculator</h2>
+
+        <p style="color: rgb(150, 0, 0);">
+          Dynamically change the tile below to match the user's selected snacks. It should show the total calories and a tag that says "Over calorie limit" or "Under calorie limit" based on the total calories.
+        </p>
+
+        <div style="background-color: #f3f2f1; border: 1px solid #4e4e4e; border-radius: .5em; padding: 20px;">
+          <h2 class="govuk-heading-m">Calorie Count</h2>
+        
+          <h3 class="govuk-heading-l govuk-!-margin-bottom-2">Total Calories Go Here</h3>
+        
+ 
+            <strong class="govuk-tag govuk-tag--red">Over calorie limit</strong>
+
+            <strong class="govuk-tag govuk-tag--green">Under calorie limit</strong>
+
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "confirmOrder",
+          fieldset: {
+            legend: {
+              text: "Would you like to confirm your order?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

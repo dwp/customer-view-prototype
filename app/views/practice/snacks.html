@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        
+        <form action="snacks-answer" method="post">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                    Select some snacks for us to send you
+                    </h1>
+                </legend>
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="snack-1" name="snacks" type="checkbox" value="Kit Kat">
+                    <label class="govuk-label govuk-checkboxes__label" for="snack-1">
+                        Kit Kat
+                    </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="snack-2" name="snacks" type="checkbox" value="Twix">
+                    <label class="govuk-label govuk-checkboxes__label" for="snack-1">
+                        Twix
+                    </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="snack-3" name="snacks" type="checkbox" value="Apple">
+                    <label class="govuk-label govuk-checkboxes__label" for="snack-3">
+                        Apple
+                    </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="snack-5" name="snacks" type="checkbox" value="Protein Bar">
+                        <label class="govuk-label govuk-checkboxes__label" for="snack-5">
+                        Protein Bar
+                        </label>
+                    </div>
+                </div>
+                </fieldset>
+            </div>
+
+    <button class="govuk-button" data-module="govuk-button">
+        Continue
+    </button>
+
+</form>
+
+    </div>
+  </div>
+
+{% endblock %}

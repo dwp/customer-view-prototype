@@ -1,0 +1,34 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Snack order cancelled
+      </h1>
+
+      <p>
+       No snacks for the champ.
+      </p>
+
+      <a href="/practice/snacks" class="govuk-button">
+        Back to snack selection
+      </a>
+
+    </div>
+  </div>
+
+{% endblock %}

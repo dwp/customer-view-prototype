@@ -1,0 +1,45 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Good Snackage",
+        html: "We're packing your snacks and sending them your way"
+      }) }}
+
+      <p>
+        We're sending you the following snacks:
+      </p>
+        
+      <p class="govuk-!-font-weight-bold" style="color: rgb(150, 0, 0);">
+        Replace me me the list of your selected snacks here.
+      </p>
+
+      <p>
+        Your snacks will arrive within 3-5 working days.
+      </p>
+
+
+      <h2 class="govuk-heading-m">
+        Snackulator Results
+      </h2>
+
+      <p class="govuk-!-font-weight-bold" style="color: rgb(150, 0, 0);">
+        Show the one of the sentences below based on whether the calories were above or below the recommended daily limit.
+      </p>
+
+      <p>Your snacks were over the recommended daily limit. Try not to eat them in one go.</p>
+
+      <p>You've selected a balanced combination of snacks. Enjoy!</p>
+
+    </div>
+  </div>
+
+{% endblock %}

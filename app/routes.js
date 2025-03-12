@@ -2073,3 +2073,7 @@ router.use('/', pobV5)
 
 const release2 = require('./routes/release-2')
 router.use('/', release2)
+
+const practice = require('./routes/practice')
+router.use('/', practice)
+
