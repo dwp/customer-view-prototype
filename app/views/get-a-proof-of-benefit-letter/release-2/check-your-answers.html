@@ -114,6 +114,8 @@ Check your details before you send them
         </div>
       </div>
 
+      {% if data['which-benefits-need-proof'].length === 1 %}
+
       <div class="govuk-button-group">
         {{ govukButton({
           text: "Confirm and send"
@@ -123,8 +125,16 @@ Check your details before you send them
           text: "Cancel and go to account home",
           classes: "govuk-button--secondary"
         }) }}
+
       </div>
 
+      {% else %}
+
+        {{ govukButton({
+          text: "Confirm and send"
+        }) }}  
+
+      {% endif %}
     </form>
     
     </div>

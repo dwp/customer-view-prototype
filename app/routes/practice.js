@@ -29,9 +29,9 @@ router.post('/practice/snacks-answer', function (req, res) {
     // REPLACE THIS WITH THE COMMENTED OUT CODE BELOW
     res.redirect('/practice/report')
     
-    // // THE BELOW DOES NOT WORK. FIGURE OUT WHY AND FIX IT. 
+    // THE BELOW DOES NOT WORK. FIGURE OUT WHY AND FIX IT. 
 
-    // // If the user selects any combination of apple or protein bar, send them to the confirm page.
+    // If the user selects any combination of apple or protein bar, send them to the confirm page.
     // if (snacks.includes("Apple") || snacks.includes("Protein Bar")) {
     //     res.redirect('/practice/confirm')
     // } else {
