@@ -1,12 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Calorie Report - Practice
-{% endblock %}
-
-{% block header %}
-  <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,7 +27,7 @@
 
         <p style="color: rgb(150, 0, 0);">Replace X with the number of snacks selected</p>
 
-        <p>You've selected <strong>X</strong> number of snacks</p>
+        <p>You've selected <strong>XX/strong> number of snacks</p>
 
         <p>We recommend you eat 1-2 snacks per day</p>
 
@@ -49,7 +44,7 @@
         <div style="border: 1px solid #4e4e4e; border-radius: .5rem;" class="govuk-!-padding-3 govuk-!-margin-bottom-6">
           
           <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-0" style="color: rgb(150, 0, 0);">
-            Replace me me the list of your selected snacks here.
+             Replace me me the list of your selected snacks here.
           </p>
         
         </div>
@@ -61,8 +56,6 @@
 
         <h2 class="govuk-heading-m">Healthy choices</h2>
 
-        {% if data.snacks.includes('Kit Kat') and data.snacks.includes('Twix') %}
-
         <p>Show the following message if the user has selected two chocolate bars:</p>
         
         <p>You've selected two chocolate bars. We recommend you eat 1 chocolate bar per day.</p>
@@ -71,11 +64,8 @@
 
         <p>You've made some healthy choices today. Keep it up!</p>
 
-        
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-        {% endif %}
 
 
         <!-- Practice 4: Hard -->
@@ -108,8 +98,7 @@
         <h2 class="govuk-heading-m">Calorie calculator</h2>
 
         <p style="color: rgb(150, 0, 0);">
-          Dynamically change the tile below to match the user's selected snacks. It should show the total calories and a tag that says "Over calorie limit" or "Under calorie limit" based on the total calories. Calorie limit could be like 360.
-        </p>
+          Dynamically change the tile below to match the user's selected snacks. It should show the total calories and a tag that says "Over calorie limit" or "Under calorie limit" based on the total calories. Calorie limit could be like 360.</p>
 
         <div style="background-color: #f3f2f1; border: 1px solid #4e4e4e; border-radius: .5em; padding: 20px;">
           <h2 class="govuk-heading-m">Calorie Count</h2>
@@ -119,7 +108,7 @@
  
             <strong class="govuk-tag govuk-tag--red">Over calorie limit</strong>
 
-            <strong class="govuk-tag govuk-tag--green">Under calorie limit</strong>
+            <strong class="govuk-tag govuk-tag--green">Under calorie limit</strong> 
 
         </div>
 
