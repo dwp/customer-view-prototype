@@ -29,10 +29,24 @@ Sign in - GOV.UK
       classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
       isStartButton: FALSE
     }) }}
-    {{ govukDetails({
-      summaryText: "Problems completing registration",
-      html: '<p>[INSERT SUPPORT INSTRUCTIONS]</p>'
-  }) }}
+
+    <details class="govuk-details govuk-!margin-top-6" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Problems completing registration
+          </span>
+      </summary>
+
+      <div class="govuk-details__text">
+          <p>To get a proof of benefit letter, contact your benefit office by phone or by post.</p>
+
+          <p>Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link">guidance about the benefit on GOV.UK</a>.</p>
+  
+          <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+  
+          <p>For State Pension, <a href="https://www.gov.uk/contact-pension-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service (opens in a new tab)</a>.</p> 
+      </div>
+  </details>
   
   </div>
 </div>

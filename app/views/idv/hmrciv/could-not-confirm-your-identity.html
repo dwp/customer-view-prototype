@@ -1,0 +1,39 @@
+{% set isHMRCPage = false %}
+{% set serviceName = "Confirm who you are" %}
+{% extends "layouts/main.html" %}
+
+{% set pageHeading = 'We cannot confirm your identity' %}
+
+{% block pageTitle %}
+  {{pageHeading}} - GOV.UK 
+{% endblock %}
+
+{% block serviceName %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+{% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            We could not confirm your identity
+        </h1>
+
+
+        <p>To get a proof of benefit letter, contact your benefit office by phone or by post.</p>
+
+        <p>Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link">guidance about the benefit on GOV.UK</a>.</p>
+
+        <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+
+        <p>For State Pension, <a href="https://www.gov.uk/contact-pension-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service (opens in a new tab)</a>.</p> 
+        
+    </div>
+</div>
+
+{% endblock %}
