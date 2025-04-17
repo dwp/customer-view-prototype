@@ -1,0 +1,121 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Get a proof of benefit letter
+{% endblock %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get proof of your benefits",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+     <!-- {{ govukPanel({
+        titleText: "Download your proof of benefits"
+ 
+      }) }}-->
+     
+
+      <h1 class="govuk-heading-l">Your files</h1>
+    
+      {% if data['inScope'].length === 1 %}
+      <p>View and save proof of your {{ data['inScope'][0] }} to your device.</p>
+
+
+
+    {% elif data['inScope'].length === 2 %}
+      <p>View and save proof of your {{ data['inScope'] | formatList }} to your device.</p>
+
+
+    {% elif data['inScope'].length > 2 %}
+      <p>ou can now view and save proof of your:</p>
+      <ul class="govuk-list govuk-list--bullet">
+          {% for benefit in data['inScope'] %}
+            <li>{{ benefit }}</li>
+        {% else %}
+            <p>No benefit selected</p>
+        {% endfor %}    
+      </ul>
+
+  
+    {% else %}
+    <p>Failed!</p>
+    {% endif %}
+      
+
+
+
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+
+<div class="ds_file-download">
+  <div class="ds_file-download__thumbnail">
+      <a class="ds_file-download__thumbnail-link" aria-hidden="true" tabindex="-1" href="#">
+          <span class="visually-hidden">Document cover image</span>
+          <img class="ds_file-download__thumbnail-image" src="/public/images/pdf.svg" alt="" />
+      </a>
+  </div>
+
+  <div class="ds_file-download__content">
+      <a href="#" class="ds_file-download__title" aria-describedby="file-download-1">Your proof of benefits</a>
+
+      <div id="file-download-1" class="ds_file-download__details">
+          <dl class="ds_metadata  ds_metadata--inline">
+              <div class="ds_metadata__item">
+                  <dt class="ds_metadata__key  visually-hidden">File type</dt>
+                  <dd class="ds_metadata__value">8 page PDF<span class="visually-hidden">,</span></dd>
+              </div>
+
+              <div class="ds_metadata__item">
+                  <dt class="ds_metadata__key  visually-hidden">File size</dt>
+                  <dd class="ds_metadata__value">7.2 MB</dd>
+              </div>
+          </dl>
+          
+      </div>
+  </div>
+</div>
+
+
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    href: "request-complete"
+  }) }}
+
+  {{ govukButton({
+    text: "Go back to account home",
+    href: "account-home",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+<!--
+      {{ govukButton({
+        text: "Start",
+        href: "how-did-you-find-out-about-this-service",
+        isStartButton: true
+      }) }}-->
+
+    </div>
+  </div>
+
+{% endblock %}

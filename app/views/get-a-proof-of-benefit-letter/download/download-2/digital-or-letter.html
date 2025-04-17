@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="check-your-answers" method="post">
+
+        {{ govukRadios({
+          name: "digitalOrLetter",
+          fieldset: {
+            legend: {
+              text: "Tell us how to send you proof of your benefits",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Online file",
+              text: "Online file",
+              hint: {
+                text: "Arrives within minutes of requesting it."
+              }
+            },
+            {
+              value: "Posted letter",
+              text: "Posted letter",
+              hint: {
+                text: "Arrives within one week of requesting it."
+              }
+            },
+            {
+              value: "Online file and posted letter",
+              text: "Online file and posted letter",
+              hint: {
+                text: "Get an email within minutes and a letter within one week."
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -2077,3 +2077,8 @@ router.use('/', release2)
 const practice = require('./routes/practice')
 router.use('/', practice)
 
+const download1 = require('./routes/download-1')
+router.use('/', download1)
+
+
+
