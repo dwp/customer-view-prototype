@@ -1,0 +1,158 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Check your details before you send them
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+   
+    <h1 class="govuk-heading-l">Check your answers before sending your request</h1>
+
+    <form class="form" action="check-your-answers-answer" method="post" novalidate>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Your request
+          </h2>
+          <!-- Show 'Change' link only if user has selected multiple benefits -->
+          {% if data['which-benefits-need-proof'].length > 1 %}
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="select-benefits-you-need-proof-of">Change<span class="govuk-visually-hidden"> your request</span></a>
+            </li>
+          </ul>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <!-- Benefits section - displays differently based on number of benefits selected -->
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Benefits
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <!-- 
+                    This section displays the benefits the user wants proof of:
+                    - When user picks multiple benefits: Shows each benefit on a new line
+                    - When user picks one benefit: Shows just that benefit
+                    - When nothing is picked: Shows "No benefit selected"
+                -->
+                {% if data['inScope'].length > 1 %}
+                {% for benefit in data['which-benefits-need-proof'] %}
+                <p class="govuk-body">{{ benefit }}<br>
+                {% else %}
+                <!-- Show message if no benefits selected -->
+                <p>No benefit selected</p>
+                {% endfor %}
+
+                {% else %}
+                <!-- Show single benefit -->
+                <p>{{ data['inScope'] }}</p>
+
+                {% endif %}
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                How you want to get proof of your benefits
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <!-- Display address based on research setup value -->
+                {{ data['digitalOrLetter'] }}
+              </dd>
+            </div>
+
+
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                <!-- Conditional text based on number of benefits -->
+                {% if data['inScope'].length > 1 %}
+                Address we send your proof of benefit letters to
+                {% else %}
+                Address we send your proof of benefit letter to
+                {% endif %}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <!-- Display address based on research setup value -->
+                {% if (data['researchSetUpAddress'] === "post") %}
+                <p>12 Gregg Lane
+                  <br>London
+                  <br>SE12 6FH
+                </p>
+                {% else %}
+                <p>72 Guild Street
+                  <br>London
+                  <br>SE23 6FH
+                </p>
+                {% endif %}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      {% if data['digitalOrLetter'] === "Posted letter" %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Confirm and send"
+        }) }}  
+
+        {{ govukButton({
+          text: "Cancel and go to account home",
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+
+      {% else %}
+
+        {{ govukButton({
+          text: "Confirm",
+          href: "request-complete"
+        }) }}  
+
+
+
+      {% endif %}
+    </form>
+    
+    </div>
+  </div>
+
+{% endblock %}

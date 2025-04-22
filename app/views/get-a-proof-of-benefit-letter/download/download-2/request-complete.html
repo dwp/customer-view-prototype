@@ -53,11 +53,10 @@ Request complete
          {% if (data['digitalOrLetter'] == "Posted letter")%}
             <p>Your letter should arrive within one week.</p>  
 
-            {% elseif (data['digitalOrLetter'] == "Online file")%}
-            <p>You should have now saved a copy to your device.</p>
+            <!--{% elseif (data['digitalOrLetter'] == "Online file")%}
+            <p>You should have now saved a copy to your device.</p>-->
             
             {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
-            <p>You should have now saved a copy to your device.</p>
             <p>Your letter should arrive within one week.</p>
             {% endif %}
         
@@ -66,13 +65,12 @@ Request complete
         <p>You have requested proof of {{ data['inScope'] | formatList }}.</p>
 
         {% if (data['digitalOrLetter'] == "Posted letter")%}
-            <p>You will get separate letters for each benefit, which should arrive within one week..</p>  
+            <p>You will get separate letters for each benefit, which should arrive within one week.</p>  
 
-            {% elseif (data['digitalOrLetter'] == "Online file")%}
-            <p>You should have now saved copies to your device.</p>
+            <!--{% elseif (data['digitalOrLetter'] == "Online file")%}
+            <p>You should have now saved copies to your device.</p>-->
             
             {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
-            <p>You should have now saved copies to your device.</p>
             <p>You will get separate letters for each benefit, which should arrive within one week.</p>
             {% endif %}
 
@@ -90,15 +88,14 @@ Request complete
         {% if (data['digitalOrLetter'] == "Posted letter")%}
         <p>You will get separate letters for each benefit, which should arrive within one week.</p>  
 
-        {% elseif (data['digitalOrLetter'] == "Online file")%}
-        <p>You should have now saved copies to your device.</p>
+        <!--{% elseif (data['digitalOrLetter'] == "Online file")%}
+        <p>You should have now saved copies to your device.</p>-->
         
         {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
-        <p>You should have now saved copies to your device.</p>
         <p>You will get separate letters for each benefit, which should arrive within one week.</p>
         {% endif %}
 
-        <p>You will get separate letters for each benefit, which should arrive within one week.</p>
+        <!--<p>You will get separate letters for each benefit, which should arrive within one week.</p>
       {% else %}
       <p>Failed!</p>
       {% endif %}
@@ -106,7 +103,7 @@ Request complete
       
  
 
-      <!--
+      
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
@@ -152,6 +149,36 @@ Request complete
           </dd>
         </div>
       </dl>-->
+
+
+      <h2 class="govuk-heading-m">
+        You can now view and save your online files to your device
+      </h2>
+
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% if (data['digitalOrLetter'] == "Online file" or data['digitalOrLetter'] ==  "Online file and posted letter")%}
+      
+        {% for benefit in data['inScope'] %}
+        {% if benefit in data['which-benefits-need-proof'] %}
+        <div class="govuk-summary-list" data-module="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">{{ benefit }}</dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">PDF</p>
+            <p class="govuk-body">4.2MB</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <button type="submit" class="govuk-button dwp-button--blue-solid" data-module="govuk-button">   Download </button>
+            </dd>
+        </div>
+      </div>
+      {% endif %}  
+      {% endfor %}  
+      {% endif %} 
+
+
+
 
 
 
@@ -212,7 +239,8 @@ Request complete
       <div class="govuk-button-group">
         {{ govukButton({
           text: "Sign out",
-          href: "signout"
+          href: "signout",
+          classes: "govuk-button--secondary"
         }) }}
 
         {{ govukButton({

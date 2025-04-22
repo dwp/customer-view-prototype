@@ -381,3 +381,12 @@ color: #0b0c0c;
       padding: 24px;
   }
 }
+
+.dwp-button--blue-solid {   
+  $dwp-button-blue-solid-colour: govuk-colour("blue");
+  $dwp-button-blue-solid-text-colour: govuk-colour("white");
+  $dwp-button-blue-solid-hover-colour: govuk-shade($dwp-button-blue-solid-colour, 10%);
+  $dwp-button-blue-solid-shadow-colour: govuk-shade($dwp-button-blue-solid-colour, 40%);
+  background-color: $dwp-button-blue-solid-colour;
+  
+}

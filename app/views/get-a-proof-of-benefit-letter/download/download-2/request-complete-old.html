@@ -66,14 +66,14 @@ Request complete
         <p>You have requested proof of {{ data['inScope'] | formatList }}.</p>
 
         {% if (data['digitalOrLetter'] == "Posted letter")%}
-            <p>You will get separate letters for each benefit, which should arrive within one week..</p>  
+            <p>Your letters should arrive within one week.</p>  
 
             {% elseif (data['digitalOrLetter'] == "Online file")%}
             <p>You should have now saved copies to your device.</p>
             
             {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
             <p>You should have now saved copies to your device.</p>
-            <p>You will get separate letters for each benefit, which should arrive within one week.</p>
+            <p>Your letters should arrive within one week.</p>
             {% endif %}
 
 <!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
@@ -88,72 +88,21 @@ Request complete
         </ul>
 
         {% if (data['digitalOrLetter'] == "Posted letter")%}
-        <p>You will get separate letters for each benefit, which should arrive within one week.</p>  
+        <p>Your letters should arrive within one week.</p>  
 
         {% elseif (data['digitalOrLetter'] == "Online file")%}
         <p>You should have now saved copies to your device.</p>
         
         {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
         <p>You should have now saved copies to your device.</p>
-        <p>You will get separate letters for each benefit, which should arrive within one week.</p>
+        <p>Your letters should arrive within one week.</p>
         {% endif %}
 
         <p>You will get separate letters for each benefit, which should arrive within one week.</p>
       {% else %}
       <p>Failed!</p>
       {% endif %}
-
-      
  
-
-      <!--
-
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Attendance Allowance
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">PDF</p>
-            <p class="govuk-body">4.2MB</p>
-          </dd>
-            <dd class="govuk-summary-list__actions">
-              <button type="submit" class="govuk-button" data-module="govuk-button">
-                Download
-              </button>
-            </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Income Support
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">PDF</p>
-            <p class="govuk-body">3.6MB</p>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-              Download
-            </button>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Pension Credit
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">PDF</p>
-            <p class="govuk-body">2.1MB</p>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-              Download
-            </button>
-          </dd>
-        </div>
-      </dl>-->
-
-
 
       <!-- Shows different messages and layouts based on number of out-of-scope benefits:
            - Single benefit: Simple message with link

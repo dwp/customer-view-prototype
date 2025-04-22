@@ -2080,5 +2080,7 @@ router.use('/', practice)
 const download1 = require('./routes/download-1')
 router.use('/', download1)
 
+const download2 = require('./routes/download-2')
+router.use('/', download2)
 
 
