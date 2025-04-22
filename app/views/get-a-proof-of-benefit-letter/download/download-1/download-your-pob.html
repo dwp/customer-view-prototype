@@ -63,7 +63,6 @@
 
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
-      
       {% if (data['digitalOrLetter'] == "Online file" or data['digitalOrLetter'] ==  "Online file and posted letter")%}
       
         {% for benefit in data['inScope'] %}
@@ -85,7 +84,7 @@
       {% endif %}  
       {% endfor %}  
       {% endif %}  
-
+   
 <!--
 <div class="ds_file-download">
   <div class="ds_file-download__thumbnail">
@@ -119,7 +118,7 @@
 
 <div class="govuk-button-group">
   {{ govukButton({
-    text: "Continue",
+    text: "Confirm",
     href: "request-complete"
   }) }}
 

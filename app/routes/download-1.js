@@ -123,6 +123,7 @@ router.post('/get-a-proof-of-benefit-letter/download/download-1/select-benefits-
 })
 
 
+
 // Drop user if they state their address is incorrect
 router.post('/get-a-proof-of-benefit-letter/download/download-1/send-letter-to-address-answer', function (req, res) {
 
