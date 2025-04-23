@@ -53,8 +53,7 @@ Request complete
          {% if (data['digitalOrLetter'] == "Posted letter")%}
             <p>Your letter should arrive within one week.</p>  
 
-            <!--{% elseif (data['digitalOrLetter'] == "Online file")%}
-            <p>You should have now saved a copy to your device.</p>-->
+         
             
             {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
             <p>Your letter should arrive within one week.</p>
@@ -67,8 +66,7 @@ Request complete
         {% if (data['digitalOrLetter'] == "Posted letter")%}
             <p>You will get separate letters for each benefit, which should arrive within one week.</p>  
 
-            <!--{% elseif (data['digitalOrLetter'] == "Online file")%}
-            <p>You should have now saved copies to your device.</p>-->
+         
             
             {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
             <p>You will get separate letters for each benefit, which should arrive within one week.</p>
@@ -92,9 +90,7 @@ Request complete
         <p>You will get separate letters for each benefit, which should arrive within one week.</p>
         {% endif %}
 
-        <!--<p>You will get separate letters for each benefit, which should arrive within one week.</p>
-      {% else %}
-      <p>Failed!</p>
+  
       {% endif %}
 
       
@@ -102,50 +98,6 @@ Request complete
 
       
 
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Attendance Allowance
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">PDF</p>
-            <p class="govuk-body">4.2MB</p>
-          </dd>
-            <dd class="govuk-summary-list__actions">
-              <button type="submit" class="govuk-button" data-module="govuk-button">
-                Download
-              </button>
-            </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Income Support
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">PDF</p>
-            <p class="govuk-body">3.6MB</p>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-              Download
-            </button>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Pension Credit
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">PDF</p>
-            <p class="govuk-body">2.1MB</p>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-              Download
-            </button>
-          </dd>
-        </div>
-      </dl>-->
 
 
       <h2 class="govuk-heading-m">
@@ -166,7 +118,9 @@ Request complete
             <p class="govuk-body">4.2MB</p>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <button type="submit" class="govuk-button dwp-button--blue-solid" data-module="govuk-button">   Download </button>
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Download
+              </button>
             </dd>
         </div>
       </div>
