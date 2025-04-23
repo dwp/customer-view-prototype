@@ -34,17 +34,17 @@
         <h1 class="govuk-panel__title">
          Request complete
         </h1>
-     <div class="govuk-panel__body">
+    <!-- <div class="govuk-panel__body">
           <strong>You can now view and save proof of your benefits</strong>
-        </div>
+        </div>-->
       </div>
 
       <h2 class="govuk-heading-m">What happens next</h2>
-      <p>You have requested proof of [benefit A].</p>
+      <p>You have requested proof of Attendance allowance and State pension.</p>
    
       
 
-  <h2 class="govuk-heading-m">Your online file</h2>
+  <h2 class="govuk-heading-m">Your online files</h2>
 
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -60,7 +60,7 @@
   </div>
 
   <div class="ds_file-download__content">
-      <a href="#" class="ds_file-download__title" aria-describedby="file-download-1">Your proof of benefits</a>
+      <a href="#" class="ds_file-download__title" aria-describedby="file-download-1">Attendance allowance</a>
 
       <div id="file-download-1" class="ds_file-download__details">
           <dl class="ds_metadata  ds_metadata--inline">
@@ -79,8 +79,38 @@
   </div>
 </div>
 
+<div class="ds_file-download">
+  <div class="ds_file-download__thumbnail">
+      <a class="ds_file-download__thumbnail-link" aria-hidden="true" tabindex="-1" href="#">
+          <span class="visually-hidden">Document cover image</span>
+          <img class="ds_file-download__thumbnail-image" src="/public/images/pdf.svg" alt="" />
+      </a>
+  </div>
 
+  <div class="ds_file-download__content">
+      <a href="#" class="ds_file-download__title" aria-describedby="file-download-1">State pension</a>
 
+      <div id="file-download-1" class="ds_file-download__details">
+          <dl class="ds_metadata  ds_metadata--inline">
+              <div class="ds_metadata__item">
+                  <dt class="ds_metadata__key  visually-hidden">File type</dt>
+                  <dd class="ds_metadata__value">8 page PDF<span class="visually-hidden">,</span></dd>
+              </div>
+
+              <div class="ds_metadata__item">
+                  <dt class="ds_metadata__key  visually-hidden">File size</dt>
+                  <dd class="ds_metadata__value">7.2 MB</dd>
+              </div>
+          </dl>
+          
+      </div>
+  </div>
+</div>
+
+<h2 class="govuk-heading-m">
+  How to get proof of your other benefits
+</h2>
+<p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
 <div class="govuk-button-group">
   {{ govukButton({
     text: "Sign out",
