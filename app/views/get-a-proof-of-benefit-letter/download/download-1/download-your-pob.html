@@ -33,21 +33,25 @@
      
 
       <h1 class="govuk-heading-l">Your files</h1>
-    
-      {% if data['inScope'].length === 1 %}
+
+      
+
+      {% if data['which-benefits-need-proof'].length === 1 %}
       <p>View and save proof of your {{ data['inScope'][0] }} to your device.</p>
 
+   
+     
+      {% elif data['which-benefits-need-proof'].length === 2 %}
+    
+     
+      <p>View and save proof of your {{ data['which-benefits-need-proof'] | formatList }} to your device.</p>
+     
 
-
-    {% elif data['inScope'].length === 2 %}
-      <p>View and save proof of your {{ data['inScope'] | formatList }} to your device.</p>
-
-
-    {% elif data['inScope'].length > 2 %}
+    {% elif data['which-benefits-need-proof'].length > 2 %}
       <p>You can now view and save proof of your:</p>
       <ul class="govuk-list govuk-list--bullet">
-          {% for benefit in data['inScope'] %}
-            <li>{{ benefit }}</li>
+          {% for benefit in data['which-benefits-need-proof'] %}
+            <li>{{ benefit}}</li>
         {% else %}
             <p>No benefit selected</p>
         {% endfor %}    
@@ -57,6 +61,8 @@
     {% else %}
     <p>Failed!</p>
     {% endif %}
+
+    
       
 
 
@@ -67,6 +73,7 @@
 
 
       {% if data['inScope'].length == 1 %}
+
       <div class="govuk-summary-list" data-module="govuk-summary-list">
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">{{ data['inScope'] }}</dt>
