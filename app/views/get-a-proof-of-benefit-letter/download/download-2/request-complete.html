@@ -61,7 +61,7 @@ Request complete
         
 <!-- If user has two in scope benefits, and has chosen letter / digital or both-->
       {% elif data['which-benefits-need-proof'].length === 2 %}
-        <p>You have requested proof of {{ data['inScope'] | formatList }}.</p>
+        <p>You have requested proof of {{ data['which-benefits-need-proof'] | formatList }}.</p>
 
         {% if (data['digitalOrLetter'] == "Posted letter")%}
             <p>You will get separate letters for each benefit, which should arrive within one week.</p>  
