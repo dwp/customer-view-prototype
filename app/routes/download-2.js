@@ -143,18 +143,18 @@ router.post('/get-a-proof-of-benefit-letter/download/download-2/send-letter-to-a
 
 })
 //On check answers page, if selected letter, send to conf, if not, send to download 
-//router.post('/get-a-proof-of-benefit-letter/download/download-2/check-your-answers-answer', function (req, res) {
+router.post('/get-a-proof-of-benefit-letter/download/download-2/check-your-answers-answer', function (req, res) {
 
- // var digitalOrLetter = req.session.data['digitalOrLetter']
+  var digitalOrLetter = req.session.data['digitalOrLetter']
 
- // if (digitalOrLetter === 'Posted letter') {
-    //res.redirect('/get-a-proof-of-benefit-letter/download/download-2/request-complete');
+  if (digitalOrLetter === 'Posted letter') {
+    res.redirect('/get-a-proof-of-benefit-letter/download/download-2/request-complete');
   
- //}  else {
-      //res.redirect('/get-a-proof-of-benefit-letter/download/download-2/download-your-pob');
- //}
+ }  else {
+      res.redirect('/get-a-proof-of-benefit-letter/download/download-2/request-complete');
+ }
 
-//})
+})
 
 
 
