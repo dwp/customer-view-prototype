@@ -60,7 +60,7 @@ Request complete
             {% endif %}
         
 <!-- If user has two in scope benefits, and has chosen letter / digital or both-->
-      {% elif data['inScope'].length === 2 %}
+      {% elif data['which-benefits-need-proof'].length === 2 %}
         <p>You have requested proof of {{ data['inScope'] | formatList }}.</p>
 
         {% if (data['digitalOrLetter'] == "Posted letter")%}
@@ -73,10 +73,10 @@ Request complete
             {% endif %}
 
 <!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
-      {% elif data['inScope'].length > 2 %}
+      {% elif data['which-benefits-need-proof'].length > 2 %}
         <p>You have requested proof of:</p>
         <ul class="govuk-list govuk-list--bullet">
-            {% for benefit in data['inScope'] %}
+            {% for benefit in data['which-benefits-need-proof'] %}
               <li>{{ benefit }}</li>
           {% else %}
               <p>No benefit selected</p>
