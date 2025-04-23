@@ -104,15 +104,14 @@ Request complete
         You can now view and save your online files to your device
       </h2>
 
-
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {% if (data['digitalOrLetter'] == "Online file" or data['digitalOrLetter'] ==  "Online file and posted letter")%}
-      
-        {% for benefit in data['inScope'] %}
-        {% if benefit in data['which-benefits-need-proof'] %}
-        <div class="govuk-summary-list" data-module="govuk-summary-list">
+
+
+      {% if data['inScope'].length == 1 %}
+      <div class="govuk-summary-list" data-module="govuk-summary-list">
         <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">{{ benefit }}</dt>
+            <dt class="govuk-summary-list__key">{{ data['inScope'] }}</dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">PDF</p>
             <p class="govuk-body">4.2MB</p>
@@ -125,8 +124,32 @@ Request complete
         </div>
       </div>
       {% endif %}  
-      {% endfor %}  
+
+      {% if data['inScope'].length > 1 %}
+
+      {% for benefit in data['inScope'] %}
+      {% if benefit in data['which-benefits-need-proof'] %}
+      <div class="govuk-summary-list" data-module="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">{{ benefit }}</dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">PDF</p>
+          <p class="govuk-body">4.2MB</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Download
+            </button>
+          </dd>
+      </div>
+    </div>
+    {% endif %}  
+    {% endfor %} 
+
       {% endif %} 
+
+ 
+      {% endif %}  
 
 
 
