@@ -38,7 +38,7 @@ Where we send your letters
 
       <form class="form" action="send-letter-to-address-answer" method="post">
 
-        <h1 class="govuk-heading-l" >Where we send your letters</h1>
+        
 
         <!-- Different text shown based on research setup address type:
              - If researchSetUpAddress is 'home', shows "Your address is saved as:"
@@ -46,9 +46,11 @@ Where we send your letters
              This allows us to test  different content variations during research sessions -->
 
         {% if data.researchSetUpAddress === 'home' %}
-          <p>Your address is saved as:</p>
+        <h1 class="govuk-heading-l" >Your home address</h1>
+          <p>It is saved as:</p>
         {% else %}
-          <p>The address we send your letters to is saved as:</p>
+        <h1 class="govuk-heading-l" >Where we send your letters</h1>
+          <p>Your address for post is saved as:</p>
         {% endif %}
 
         <div class="govuk-inset-text">
