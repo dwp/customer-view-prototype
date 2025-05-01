@@ -43,59 +43,21 @@ Request complete
       </h2>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
-      {% if (data['digitalOrLetter'] == "Online file" or data['digitalOrLetter'] ==  "Online file and posted letter")%}
+      
+      {% if (data['digitalOrLetter'] == "Download a file" or data['digitalOrLetter'] ==  "Download a file and get a letter in the post")%}
 
-
-      {% if data['inScope'].length == 1 %}
-      <div class="govuk-summary-list" data-module="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">{{ data['inScope'] }}</dt>
-            <dd class="govuk-summary-list__value">
-              <p class="govuk-body">PDF</p>
-            <p class="govuk-body">4.2MB</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <button type="submit" class="govuk-button" data-module="govuk-button">
-                Download
-              </button>
-            </dd>
-        </div>
-      </div>
-      {% endif %}  
-
-      {% if data['inScope'].length > 1 %}
-
-      {% for benefit in data['inScope'] %}
-      {% if benefit in data['which-benefits-need-proof'] %}
-      <div class="govuk-summary-list" data-module="govuk-summary-list">
-      <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">{{ benefit }}</dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">PDF</p>
-          <p class="govuk-body">4.2MB</p>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-              Download
-            </button>
-          </dd>
-      </div>
-    </div>
-    {% endif %}  
-    {% endfor %} 
-
-      {% endif %} 
-
+    
+       {% for benefit in data['which-benefits-need-proof'] %}
+         <p><a href="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
+         {% endfor %}
+    
+       {% endif %}  
  
-      {% endif %}  
-
-
-
-
-
       <h2 class="govuk-heading-m">
         What happens next
       </h2>
+     
+
 
       <!-- Shows different messages based on number of benefits requested:
            - Single benefit: Shows simple message
@@ -106,12 +68,10 @@ Request complete
       {% if data['inScope'].length === 1 %}
         <p>You have requested proof of {{ data['inScope'][0] }}.</p>
 
-         {% if (data['digitalOrLetter'] == "Posted letter")%}
+         {% if (data['digitalOrLetter'] == "Letter in the post")%}
             <p>Your letter should arrive within one week.</p>  
 
-         
-            
-            {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
+            {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
             <p>Your letter should arrive within one week.</p>
             {% endif %}
         
@@ -119,12 +79,12 @@ Request complete
       {% elif data['which-benefits-need-proof'].length === 2 %}
         <p>You have requested proof of {{ data['which-benefits-need-proof'] | formatList }}.</p>
 
-        {% if (data['digitalOrLetter'] == "Posted letter")%}
+        {% if (data['digitalOrLetter'] == "Letter in the post")%}
             <p>Separate letters should arrive within one week.</p>  
 
          
             
-            {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
+            {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
             <p>Separate letters should arrive within one week.</p>
             {% endif %}
 
@@ -139,23 +99,15 @@ Request complete
           {% endfor %}    
         </ul>
 
-        {% if (data['digitalOrLetter'] == "Posted letter")%}
+        {% if (data['digitalOrLetter'] == "Letter in the post")%}
         <p>Separate letters should arrive within one week.</p>  
         
-        {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
+        {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
         <p>Separate letters should arrive within one week.</p>
         {% endif %}
 
   
       {% endif %}
-
-      
- 
-
-      
-
-
-
 
 
       <!-- Shows different messages and layouts based on number of out-of-scope benefits:
@@ -167,14 +119,14 @@ Request complete
           How to get proof of your other benefits
         </h2>
 
-        <p>Find the contact details for {{ data['oOScope'][0] }} in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+        <p>Find their details for {{ data['oOScope'][0] }} in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
 
       {% elif data['oOScope'].length === 2 %}
         <h2 class="govuk-heading-m">
           How to get proof of your other benefits
         </h2>
 
-        <p>Find the contact details for {{ data['oOScope'] | formatList }} in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+        <p>Find their details for {{ data['oOScope'] | formatList }} in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
 
 
       {% elif data['oOScope'].length > 2 %}
@@ -216,7 +168,7 @@ Request complete
         {{ govukButton({
           text: "Sign out",
           href: "signout",
-          classes: "govuk-button--secondary"
+          classes: "govuk-button"
         }) }}
 
         {{ govukButton({

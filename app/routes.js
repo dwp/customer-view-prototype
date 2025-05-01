@@ -2083,4 +2083,7 @@ router.use('/', download1)
 const download2 = require('./routes/download-2')
 router.use('/', download2)
 
+const download3 = require('./routes/download-3')
+router.use('/', download3)
+
 

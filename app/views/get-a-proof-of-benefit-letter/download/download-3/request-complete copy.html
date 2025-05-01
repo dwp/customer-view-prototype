@@ -37,9 +37,71 @@ Request complete
         </h1>
       </div>
 
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <!-- Shows different messages based on number of benefits requested:
+           - Single benefit: Shows simple message
+           - Two benefits: Uses formatList filter to show both
+           - Three or more: Shows as bullet points -->
+
+           <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
+      {% if data['inScope'].length === 1 %}
+        <p>You have requested proof of {{ data['inScope'][0] }}.</p>
+
+         {% if (data['digitalOrLetter'] == "Posted letter")%}
+            <p>Your letter should arrive within one week.</p>  
+
+         
+            
+            {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
+            <p>Your letter should arrive within one week.</p>
+            {% endif %}
+        
+<!-- If user has two in scope benefits, and has chosen letter / digital or both-->
+      {% elif data['which-benefits-need-proof'].length === 2 %}
+        <p>You have requested proof of {{ data['which-benefits-need-proof'] | formatList }}.</p>
+
+        {% if (data['digitalOrLetter'] == "Posted letter")%}
+            <p>You will get separate letters for each benefit, which should arrive within one week.</p>  
+
+         
+            
+            {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
+            <p>You will get separate letters for each benefit, which should arrive within one week.</p>
+            {% endif %}
+
+<!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
+      {% elif data['which-benefits-need-proof'].length > 2 %}
+        <p>You have requested proof of:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            {% for benefit in data['which-benefits-need-proof'] %}
+              <li>{{ benefit }}</li>
+          {% else %}
+              <p>No benefit selected</p>
+          {% endfor %}    
+        </ul>
+
+        {% if (data['digitalOrLetter'] == "Posted letter")%}
+        <p>You will get separate letters for each benefit, which should arrive within one week.</p>  
+        
+        {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
+        <p>You will get separate letters for each benefit, which should arrive within one week.</p>
+        {% endif %}
+
+  
+      {% endif %}
+
+      
+ 
+
+      
+
+
 
       <h2 class="govuk-heading-m">
-        Download proof of your benefits
+        You can now view and save your online files to your device
       </h2>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -89,70 +151,6 @@ Request complete
  
       {% endif %}  
 
-
-
-
-
-      <h2 class="govuk-heading-m">
-        What happens next
-      </h2>
-
-      <!-- Shows different messages based on number of benefits requested:
-           - Single benefit: Shows simple message
-           - Two benefits: Uses formatList filter to show both
-           - Three or more: Shows as bullet points -->
-
-           <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
-      {% if data['inScope'].length === 1 %}
-        <p>You have requested proof of {{ data['inScope'][0] }}.</p>
-
-         {% if (data['digitalOrLetter'] == "Posted letter")%}
-            <p>Your letter should arrive within one week.</p>  
-
-         
-            
-            {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
-            <p>Your letter should arrive within one week.</p>
-            {% endif %}
-        
-<!-- If user has two in scope benefits, and has chosen letter / digital or both-->
-      {% elif data['which-benefits-need-proof'].length === 2 %}
-        <p>You have requested proof of {{ data['which-benefits-need-proof'] | formatList }}.</p>
-
-        {% if (data['digitalOrLetter'] == "Posted letter")%}
-            <p>Separate letters should arrive within one week.</p>  
-
-         
-            
-            {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
-            <p>Separate letters should arrive within one week.</p>
-            {% endif %}
-
-<!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
-      {% elif data['which-benefits-need-proof'].length > 2 %}
-        <p>You have requested proof of:</p>
-        <ul class="govuk-list govuk-list--bullet">
-            {% for benefit in data['which-benefits-need-proof'] %}
-              <li>{{ benefit }}</li>
-          {% else %}
-              <p>No benefit selected</p>
-          {% endfor %}    
-        </ul>
-
-        {% if (data['digitalOrLetter'] == "Posted letter")%}
-        <p>Separate letters should arrive within one week.</p>  
-        
-        {% elseif (data['digitalOrLetter'] == "Online file and posted letter")%}
-        <p>Separate letters should arrive within one week.</p>
-        {% endif %}
-
-  
-      {% endif %}
-
-      
- 
-
-      
 
 
 

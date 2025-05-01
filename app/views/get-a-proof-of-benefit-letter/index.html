@@ -19,40 +19,134 @@
       </h1>
 
       <p class="govuk-body-l">This journey lets people get a proof of benefit letter sent in the post.</p>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <span class="govuk-caption-m">April 2025</span>
+      <h2 class="govuk-heading-l">Version 8 - release 3 - Download</h2>
+
+      {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+      {{ govukWarningText({
+        text: "The dynamic content in this design is for user testing only.",
+        iconFallbackText: "Warning"
+      }) }}
+      <p>This design lets users save a copy of their letter to their device.</p>
+      <p>This design is an iteration after user testing round 30 and based on best practice.</p>
+    
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Change log
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Since version 7, we have:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>refined the content across the journey</li>
+            <li>decided on design B, which lets users save their files on the confirmation page</li>
+            <ul>
+              <li>this page includes descriptive links instead of the designs from version 7 because they are the most accessible</li>
+            </ul>
+            <li>added Universal Credit signposting to the personal details page</li>
+          
+          </ul>
+          
+        </div>
+      </details>
+
+     
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      <div class="govuk-button-group">
+   
+   
+        {{ govukButton({
+          text: "View design B: files are located on the confirmation page              ",
+          href: "../get-a-proof-of-benefit-letter/download/download-3/research-set-up/intro"
+        }) }}
+
+      </div>
+
+      <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+        <p>The Online Identity and Verification (OIDV) service is not included in this 
+          design</p>
+      </div>
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-      <span class="govuk-caption-m">March 2025 - now</span>
-      <h2 class="govuk-heading-l">Download</h2>
+      <span class="govuk-caption-m">March 2025 - April</span>
+      <h2 class="govuk-heading-l">Version 7: Download</h2>
 
+      {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
+      {{ govukWarningText({
+        text: "The dynamic content in this design is for user testing only.",
+        iconFallbackText: "Warning"
+      }) }}
+      <p>This design lets users save a copy of their letter to their device.</p>
+      <p>We tested this in April 2025 in user testing round 30.</p>
     
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Change log
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Since version 6, we have:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>iterated content on the start page to let users know they can now view and save an online proof of benefits file</li>
+            <li>moved the check address page earlier so that users are signposted out of the service sooner if their address is wrong</li>
+            <li>added a page that asks users whether they want an online file, posted letter or both</li>
+            <li>iterated the check your answers page to include the new question that asks users how they want to get their proof</li>
+            <li>designed two ways users can download proof of their benefits
+              <ul>
+              <li>design A lets users save their files on one page before they get to the confirmation page</li>
+              <li>design B lets users save their files on the confirmation page</li>
+            </li></ul>
+          </ul>
+          
+        </div>
+      </details>
 
+     
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      <div class="govuk-button-group">
         {{ govukButton({
-          text: "Start version 1",
+          text: "Design A: files are located on a page before the confirmation page",
           href: "../get-a-proof-of-benefit-letter/download/download-1/research-set-up/intro"
         }) }}
+      
 
+   
         {{ govukButton({
-          text: "Start version 2",
+          text: "Design B: files are located on the confirmation page              ",
           href: "../get-a-proof-of-benefit-letter/download/download-2/research-set-up/intro"
         }) }}
 
 
+   
         {{ govukButton({
-          text: "PDF component",
+          text: "PDF component: visual example of confirmation page",
           classes: "govuk-button--secondary",
           href: "../get-a-proof-of-benefit-letter/download/download-2/download-your-pob-pdf-blue"
         }) }}
+      </div>
 
+      <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+        <p>The Online Identity and Verification (OIDV) service is not included in this 
+          design</p>
+      </div>
 
-
+      <!-- First iteration of download - used for UR-->
+    
       
 
       <!-- ------------- Release 2 ------------- -->
 
       <span class="govuk-caption-m">Feb 2025 - March 2025</span>
-      <h2 class="govuk-heading-l">Release 2 - PIP and NI</h2>
+      <h2 class="govuk-heading-l">Version 6: release 2  - PIP and NI</h2>
 
       <p>Release 2 is an exact replica of iteration 5A, with the addition of State Pension signposting.</p>
       
