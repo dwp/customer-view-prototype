@@ -38,13 +38,14 @@ Request complete
       </div>
 
 
-      <h2 class="govuk-heading-m">
-        Save proof of your benefits to your device
-      </h2>
+   
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
       
       {% if (data['digitalOrLetter'] == "Download a file" or data['digitalOrLetter'] ==  "Download a file and get a letter in the post")%}
+      <h2 class="govuk-heading-m">
+        Save proof of your benefits to your device
+      </h2>
 
     
        {% for benefit in data['which-benefits-need-proof'] %}
