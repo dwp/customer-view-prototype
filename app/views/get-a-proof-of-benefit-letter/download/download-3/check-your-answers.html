@@ -3,7 +3,7 @@
 {% block header %}
 
   {{ hmrcHeader({
-    serviceName: "Get a proof of benefit letter",
+    serviceName: "Get proof of your benefits",
     serviceUrl : "/",
     signOutHref : "signout",
     useTudorCrown: "true"
@@ -110,9 +110,9 @@ Check your details before you send them
               <dt class="govuk-summary-list__key">
                 <!-- Conditional text based on number of benefits -->
                 {% if data['inScope'].length > 1 %}
-                Address we send your proof of benefit letters to
+                Address we send letters to
                 {% else %}
-                Address we send your proof of benefit letter to
+                Address we send letters to
                 {% endif %}
               </dt>
               <dd class="govuk-summary-list__value">

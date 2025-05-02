@@ -4,6 +4,19 @@
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get proof of your benefits",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+
+
 {% block beforeContent %}
 
   {{ govukPhaseBanner({
