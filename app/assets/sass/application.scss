@@ -392,20 +392,6 @@ color: #0b0c0c;
 }
 
 
-.dwp-button--white-solid {   
-  $dwp-button-white-solid-colour: govuk-colour("bright-purple");
-  $dwp-button-white-solid-text-colour: govuk-colour("black");
-  $dwp-button-white-solid-hover-colour: govuk-shade($dwp-button-white-solid-colour, 10%);
-  $dwp-button-white-solid-shadow-colour: govuk-shade($dwp-button-white-solid-colour, 40%);
-  background-color: $dwp-button-white-solid-colour;
-  
-}
-
-.dwp-button--white-solid {   
-  $dwp-button-white-solid-colour: govuk-colour("white");
-  $dwp-button-white-solid-text-colour: govuk-colour("black");
-  $dwp-button-white-solid-hover-colour: govuk-shade($dwp-button-white-solid-colour, 10%);
-  $dwp-button-white-solid-shadow-colour: govuk-shade($dwp-button-white-solid-colour, 40%);
-  background-color: $dwp-button-white-solid-colour;
-  
-}
+.govuk-body-dev-change {
+  color: #f47738;
+  }
