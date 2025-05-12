@@ -2086,4 +2086,7 @@ router.use('/', download2)
 const download3 = require('./routes/download-3')
 router.use('/', download3)
 
+const downloadNotifications = require('./routes/download-notifications')
+router.use('/', downloadNotifications)
+
 

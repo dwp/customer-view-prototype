@@ -1,0 +1,89 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get proof of your benefits",
+    serviceUrl : "/",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+How did you find out about this service?
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="how-did-you-find-out-about-this-service-answer" method="post">
+
+
+        {{ govukRadios({
+          name: "how-did-you-find-out-about-this-service",
+          value: data['how-did-you-find-out-about-this-service'],
+          fieldset: {
+            legend: {
+              text: "How did you find out about this service?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+         
+            {
+              value: "heard-about-on-phone",
+          
+              text : "When I called my benefit office on the phone",
+              visuallyHiddenText: "When I called my benefit office on the phone"
+            },
+            {
+              value: "job-centre",
+              text : "An invite from The Job Centre Plus",
+              visuallyHiddenText: "An invite from The Job Centre Plus"
+            },
+            {
+              value: "family-or-friend",
+              text: "From a friend or family member",
+              visuallyHiddenText: "From a friend or family member"
+            },
+            {
+              value: "somewhere-else",
+              text: "Somewhere else",
+              visuallyHiddenText: "Somewhere else"
+            }
+          ]
+        }) }} 
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

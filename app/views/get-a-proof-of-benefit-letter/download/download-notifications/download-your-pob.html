@@ -1,0 +1,112 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Get a proof of benefit letter
+{% endblock %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get proof of your benefits",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+     <!-- {{ govukPanel({
+        titleText: "Download your proof of benefits"
+ 
+      }) }}-->
+     
+
+      <h1 class="govuk-heading-l">Your files</h1>
+    
+      {% if data['inScope'].length === 1 %}
+      <p>View and save proof of your {{ data['inScope'][0] }} to your device.</p>
+
+
+
+    {% elif data['inScope'].length === 2 %}
+      <p>View and save proof of your {{ data['inScope'] | formatList }} to your device.</p>
+
+
+    {% elif data['inScope'].length > 2 %}
+      <p>ou can now view and save proof of your:</p>
+      <ul class="govuk-list govuk-list--bullet">
+          {% for benefit in data['inScope'] %}
+            <li>{{ benefit }}</li>
+        {% else %}
+            <p>No benefit selected</p>
+        {% endfor %}    
+      </ul>
+
+  
+    {% else %}
+    <p>Failed!</p>
+    {% endif %}
+      
+
+
+
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% if (data['digitalOrLetter'] == "Online file" or data['digitalOrLetter'] ==  "Online file and posted letter")%}
+      
+        {% for benefit in data['inScope'] %}
+        {% if benefit in data['which-benefits-need-proof'] %}
+        <div class="govuk-summary-list" data-module="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">{{ benefit }}</dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">PDF</p>
+            <p class="govuk-body">4.2MB</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Download
+              </button>
+            </dd>
+        </div>
+      </div>
+      {% endif %}  
+      {% endfor %}  
+      {% endif %}  
+
+
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Confirm",
+    href: "request-complete"
+  }) }}
+
+  {{ govukButton({
+    text: "Go back to account home",
+    href: "account-home",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+<!--
+      {{ govukButton({
+        text: "Start",
+        href: "how-did-you-find-out-about-this-service",
+        isStartButton: true
+      }) }}-->
+
+    </div>
+  </div>
+
+{% endblock %}

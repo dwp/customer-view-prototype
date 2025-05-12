@@ -1,0 +1,194 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get proof of your benefits",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Request complete
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+          Request complete
+        </h1>
+      </div>
+
+
+   
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      
+      {% if (data['digitalOrLetter'] == "Download a file" or data['digitalOrLetter'] ==  "Download a file and get a letter in the post")%}
+      <h2 class="govuk-heading-m">
+        Save proof of your benefits to your device
+      </h2>
+
+      <a href="/images/pdf.svg" download>test</a>
+       {% for benefit in data['which-benefits-need-proof'] %}
+         <p><a href="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
+         {% endfor %}
+    
+       {% endif %}  
+ 
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+     
+
+
+      <!-- Shows different messages based on number of benefits requested:
+           - Single benefit: Shows simple message
+           - Two benefits: Uses formatList filter to show both
+           - Three or more: Shows as bullet points -->
+
+           <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
+      {% if data['inScope'].length === 1 %}
+        <p>You have requested proof of {{ data['inScope'][0] }}.</p>
+
+         {% if (data['digitalOrLetter'] == "Letter in the post")%}
+            <p>Your letter should arrive within one week.</p>  
+
+            {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
+            <p>Your letter should arrive within one week.</p>
+            {% endif %}
+        
+<!-- If user has two in scope benefits, and has chosen letter / digital or both-->
+      {% elif data['which-benefits-need-proof'].length === 2 %}
+        <p>You have requested proof of {{ data['which-benefits-need-proof'] | formatList }}.</p>
+
+        {% if (data['digitalOrLetter'] == "Letter in the post")%}
+            <p>Separate letters should arrive within one week.</p>  
+
+         
+            
+            {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
+            <p>Separate letters should arrive within one week.</p>
+
+            <p>View your proof of beenfit files in <a href="../download-notifications/notifications-draft/ideas/13.njk">your notifications</a>.</p>
+            {% endif %}
+
+<!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
+      {% elif data['which-benefits-need-proof'].length > 2 %}
+        <p>You have requested proof of:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            {% for benefit in data['which-benefits-need-proof'] %}
+              <li>{{ benefit }}</li>
+          {% else %}
+              <p>No benefit selected</p>
+          {% endfor %}    
+        </ul>
+
+        {% if (data['digitalOrLetter'] == "Letter in the post")%}
+        <p>Separate letters should arrive within one week.</p>  
+        
+        {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
+        <p>Separate letters should arrive within one week.</p>
+        <p>View your proof of benefit files in <a href="../download-notifications/notifications-draft/ideas/14/my-notifications-pob.njk">your notifications</a>.</p>
+        {% endif %}
+
+  
+      {% endif %}
+
+
+      <!-- Shows different messages and layouts based on number of out-of-scope benefits:
+           - Single benefit: Simple message with link
+           - Two benefits: Uses formatList filter to show both
+           - Three or more: Bullet point list -->
+      {% if data['oOScope'].length === 1 %}
+        <h2 class="govuk-heading-m">
+          How to get proof of your other benefits
+        </h2>
+
+        <p>To get proof of {{ data['oOScope'][0] }}, you need to contact them.</p>
+
+
+        <p>Find their details for in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+
+      {% elif data['oOScope'].length === 2 %}
+        <h2 class="govuk-heading-m">
+          How to get proof of your other benefits
+        </h2>
+
+
+        <p>To get proof of  {{ data['oOScope'] | formatList }}, you need to contact them.</p>
+
+        <p>Find their details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+
+
+      {% elif data['oOScope'].length > 2 %}
+        <h2 class="govuk-heading-m">
+          How to get proof of your other benefits
+        </h2>
+
+        <p>You will need to contact each benefit to get proof of benefit letters for:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            {% for benefit in data['oOScope'] %}
+              <li>{{ benefit }}</li>
+            {% else %}
+              <p>No benefit selected</p>
+            {% endfor %}    
+        </ul>
+        
+        <p>Find their contact details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+
+      {% endif %}
+
+      <!-- Special handling for Universal Credit (uCBenefit flag)
+           Shows UC guidance either with or without a heading depending on
+           whether there are other out-of-scope benefits -->
+      {% if data['uCBenefit'] == true %}
+        {% if data['oOScope'].length === 0 %}
+        <h2 class="govuk-heading-m">
+          How to get proof of your other benefits
+        </h2>
+        
+        <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+
+        {% else %}
+        <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+        {% endif %}
+      {% endif %}
+
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Sign out",
+          href: "signout",
+          classes: "govuk-button"
+        }) }}
+
+        {{ govukButton({
+          text: "Go back to account home",
+          href: "account-home",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+
+  </div>
+</div>
+
+{% endblock %}
