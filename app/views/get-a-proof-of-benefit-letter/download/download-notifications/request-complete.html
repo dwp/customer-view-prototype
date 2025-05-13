@@ -77,9 +77,10 @@ Request complete
            - Three or more: Shows as bullet points -->
 
            <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
-      {% if data['which-benefits-need-proof'].length === 1 %}
+      {% if data['inScope'].length === 1 %}
         <p>You have requested proof of {{ data['inScope'][0] }}.</p>
         <p>View your proof of benefit files in <a href="../download-notifications/notifications-draft/ideas/14/my-notifications-pob">your notifications</a>.</p>
+       
 
          {% if (data['digitalOrLetter'] == "Letter in the post")%}
             <p>Your letter should arrive within one week.</p>  

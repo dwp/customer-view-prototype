@@ -75,7 +75,7 @@ Request complete
            - Three or more: Shows as bullet points -->
 
            <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
-      {% if data['which-benefits-need-proof'].length === 1 %}
+      {% if data['inScope'].length === 1 %}
         <p>You have requested proof of {{ data['inScope'][0] }}.</p>
 
          {% if (data['digitalOrLetter'] == "Letter in the post")%}
