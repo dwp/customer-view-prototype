@@ -41,6 +41,19 @@
 
       <form class="form" action="check-your-answers" method="post">
 
+        {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+
+    {
+      text: "Select how you want to get proof of your benefits",
+      href: "#"
+    }
+  ]
+}) }}
+
         {{ govukRadios({
           name: "digitalOrLetter",
           fieldset: {
@@ -49,6 +62,9 @@
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
+          },
+          errorMessage: {
+            text: "Select  how you want to get proof of your benefits"
           },
           items: [
             {
