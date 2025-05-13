@@ -79,7 +79,7 @@ Request complete
            <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
       {% if data['inScope'].length === 1 %}
         <p>You have requested proof of {{ data['inScope'][0] }}.</p>
-        <p>View your proof of benefit files in <a href="../download-notifications/notifications-draft/ideas/14/my-notifications-pob">your notifications</a>.</p>
+        <p>View your proof of benefit files in <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications</a>.</p>
        
 
          {% if (data['digitalOrLetter'] == "Letter in the post")%}
@@ -101,7 +101,7 @@ Request complete
             {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
             <p>Separate letters should arrive within one week.</p>
 
-            <p>View your proof of benefit files in <a href="../download-notifications/notifications-draft/my-notifications-pob">your notifications</a>.</p>
+            <p>View your proof of benefit files in <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications</a>.</p>
             {% endif %}
 
 <!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
@@ -115,14 +115,14 @@ Request complete
               <p>No benefit selected</p>
           {% endfor %}    
         </ul>
-        <p>View your proof of benefit files in <a href="../download-notifications/notifications-draft/my-notifications-pob">your notifications</a>.</p>
+        <p>View your proof of benefit files in <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications</a>.</p>
 
         {% if (data['digitalOrLetter'] == "Letter in the post")%}
         <p>Separate letters should arrive within one week.</p>  
         
         {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
         <p>Separate letters should arrive within one week.</p>
-        <p>View your proof of benefit files in <a href="../download-notifications/notifications-draft/my-notifications-pob.njk">your notifications</a>.</p>
+        <p>View your proof of benefit files in <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob.njk">your notifications</a>.</p>
         {% endif %}
 
   
