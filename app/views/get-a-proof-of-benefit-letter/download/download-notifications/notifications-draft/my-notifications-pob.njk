@@ -32,15 +32,8 @@ My notifications
       {% endif %}  
 
      {% if data['inScope'].length > 1 %}
-       {% for benefit in data['inScope'] %}
-       {% if data['which-benefits-need-proof'] %}
-       {{ ['benefit'].length }}
-       {% endif %} 
-         {% endfor %}
+       {{ data['which-benefits-need-proof'].length }}
          {% endif %} 
-   
-     {{ data.snacks.length }}
-
         </span></p>
 
    
