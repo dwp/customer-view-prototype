@@ -47,10 +47,19 @@ Request complete
         Save proof of your benefits to your device
       </h2>
 
-    
+
+      {% if data['inScope'].length == 1 %}
+      <p><a href="">Download proof of {{ data['inScope'][0] }} (PDF, 4.2KB)</a></p>
+      {% endif %} 
+
+      {% if data['inScope'].length > 1 %}
        {% for benefit in data['which-benefits-need-proof'] %}
+       {% if benefit in data['which-benefits-need-proof'] %}
          <p><a href="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
+         {% endif %}  
          {% endfor %}
+         {% endif %}  
+    
     
        {% endif %}  
  
@@ -66,7 +75,7 @@ Request complete
            - Three or more: Shows as bullet points -->
 
            <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
-      {% if data['inScope'].length === 1 %}
+      {% if data['which-benefits-need-proof'].length === 1 %}
         <p>You have requested proof of {{ data['inScope'][0] }}.</p>
 
          {% if (data['digitalOrLetter'] == "Letter in the post")%}

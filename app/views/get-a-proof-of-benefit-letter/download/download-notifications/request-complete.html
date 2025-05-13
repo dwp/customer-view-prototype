@@ -38,7 +38,9 @@ Request complete
       </div>
 
 
+
    
+     
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
       
@@ -47,10 +49,19 @@ Request complete
         Save proof of your benefits to your device
       </h2>
 
-      <a href="/images/pdf.svg" download>test</a>
+
+      {% if data['inScope'].length == 1 %}
+      <p><a href="/public/images/pdf.svg" download="">Download proof of {{ data['inScope'][0] }} (PDF, 4.2KB)</a></p>
+      {% endif %} 
+
+      {% if data['inScope'].length > 1 %}
        {% for benefit in data['which-benefits-need-proof'] %}
-         <p><a href="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
+       {% if benefit in data['which-benefits-need-proof'] %}
+         <p><a href="/public/images/pdf.svg" download="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
+         {% endif %}  
          {% endfor %}
+         {% endif %} 
+    
     
        {% endif %}  
  
@@ -66,8 +77,9 @@ Request complete
            - Three or more: Shows as bullet points -->
 
            <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
-      {% if data['inScope'].length === 1 %}
+      {% if data['which-benefits-need-proof'].length === 1 %}
         <p>You have requested proof of {{ data['inScope'][0] }}.</p>
+        <p>View your proof of benefit files in <a href="../download-notifications/notifications-draft/ideas/14/my-notifications-pob">your notifications</a>.</p>
 
          {% if (data['digitalOrLetter'] == "Letter in the post")%}
             <p>Your letter should arrive within one week.</p>  
@@ -88,7 +100,7 @@ Request complete
             {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
             <p>Separate letters should arrive within one week.</p>
 
-            <p>View your proof of beenfit files in <a href="../download-notifications/notifications-draft/ideas/13.njk">your notifications</a>.</p>
+            <p>View your proof of benefit files in <a href="../download-notifications/notifications-draft/ideas/14/my-notifications-pob">your notifications</a>.</p>
             {% endif %}
 
 <!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
@@ -97,10 +109,12 @@ Request complete
         <ul class="govuk-list govuk-list--bullet">
             {% for benefit in data['which-benefits-need-proof'] %}
               <li>{{ benefit }}</li>
+              
           {% else %}
               <p>No benefit selected</p>
           {% endfor %}    
         </ul>
+        <p>View your proof of benefit files in <a href="../download-notifications/notifications-draft/ideas/14/my-notifications-pob">your notifications</a>.</p>
 
         {% if (data['digitalOrLetter'] == "Letter in the post")%}
         <p>Separate letters should arrive within one week.</p>  

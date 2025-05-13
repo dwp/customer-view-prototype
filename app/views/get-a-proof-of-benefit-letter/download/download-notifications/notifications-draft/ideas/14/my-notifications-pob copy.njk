@@ -23,29 +23,7 @@ My notifications
 
         <p>This service does not show notifications for Universal Credit or Scottish devolved benefits.</p>
 
-        <p>You have unread notifications&nbsp<span id="notifications" class="moj-notification-badge">
-        
-       {% if data['inScope'].length == 1 %}
-       {{ 1 }}
-
-   
-      {% endif %}  
-
-      {% if data['inScope'].length > 1 %}
-     
-      
-         {% for benefit in data['which-benefits-need-proof']%}
-         {{benefit.length}}
-          
-         {% endfor %}
-         {% endif %}  
-   
-     
-
-        </span></p>
-
-   
-
+        <p>You have unread notifications&nbsp<span id="notifications" class="moj-notification-badge">3</span></p>
 
         <div class="govuk-!-padding-bottom-2"></div>
       
@@ -218,14 +196,7 @@ My notifications
 </div>
 </div>
 
-
-
-
-
-     
-
 <table class="govuk-table">
-
   <thead class="govuk-table__head">
       <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header" style="padding-left:10px;">Date</th>
@@ -234,59 +205,41 @@ My notifications
           <th scope="col" class="govuk-table__header" style="padding-right:10px;">Status</th>
       </tr>
   </thead>
-
-
-
-
-  {% if data['inScope'].length == 1 %}
-      
-  <div
   <tbody class="govuk-table__body" id="table-body">
-
     <tr class="govuk-table__row"  style="background-color:#f3f2f1">
       <th scope="row" class="govuk-table__header date-column" id="date-column">
       </th>
-      
-      <td class="govuk-table__cell" >{{ data['inScope'][0]}}</td>
-      <td class="govuk-table__cell"><a href="/download-notifications/notifications-draft/ideas/messages/test-html-3" class="govuk-link">Proof of Benefit letter</a>
+      <td class="govuk-table__cell" data-benefit="Personal Independece Payment (PIP)">Personal Independece Payment (PIP)</td>
+      <td class="govuk-table__cell"><a href="../messages/proof-of-benefit" class="govuk-link">Proof of Benefit letter</a>
         <td class="govuk-table__cell" style="padding-right:10px;" data-status="unread">
         <strong class="govuk-tag custom-unread-tag">
         Unread
       </strong>
     </td>
-      </tr>
-  </tbody>
-  </div>
-
-      {% endif %}
-
-
-  {% if data['which-benefits-need-proof'].length > 1 %}
-      {% for benefit in data['which-benefits-need-proof'] %}
-  <div
-  <tbody class="govuk-table__body" id="table-body">
-
     <tr class="govuk-table__row"  style="background-color:#f3f2f1">
       <th scope="row" class="govuk-table__header date-column" id="date-column">
       </th>
-      
-      <td class="govuk-table__cell" >{{benefit}}</td>
-      <td class="govuk-table__cell"><a href="/download-notifications/notifications-draft/ideas/messages/test-html-3" class="govuk-link">Proof of Benefit letter</a>
+      <td class="govuk-table__cell" data-benefit="Employment Support Allowance (ESA)">Employment Support Allowance (ESA)</td>
+      <td class="govuk-table__cell"><a href="../messages/proof-of-benefit" class="govuk-link">Proof of Benefit letter</a>
         <td class="govuk-table__cell" style="padding-right:10px;" data-status="unread">
         <strong class="govuk-tag custom-unread-tag">
         Unread
       </strong>
     </td>
+    </tr>
+      <tr class="govuk-table__row"  style="background-color:#f3f2f1">
+        <th scope="row" class="govuk-table__header date-column" id="date-column">
+        </th>
+        <td class="govuk-table__cell" data-benefit="Department for Work and Pensions">Department for Work and Pensions</td>
+        <td class="govuk-table__cell"><a href="messages/round-2" class="govuk-link">About your notifications</a>
+          <td class="govuk-table__cell" style="padding-right:10px;" data-status="unread">
+          <strong class="govuk-tag custom-unread-tag">
+          Unread
+        </strong>
+      </td>
       </tr>
   </tbody>
-  </div>
-   {% endfor %}  
-   
-
-      {% endif %}
 </table>
-
- 
 
   <div class="govuk-!-padding-bottom-4"></div>
 
