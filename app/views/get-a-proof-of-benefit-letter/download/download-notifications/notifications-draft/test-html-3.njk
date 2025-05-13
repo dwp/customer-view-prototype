@@ -42,16 +42,8 @@ AB000000A</p><br>
 <p>Please find the information you requested below.</p>
 
 <h2 class="govuk-heading-m">Your entitlement details</h2>
-<p>You were awarded:</p>
-
- {% if data['inScope'].length > 1 %}
-                {% for benefit in data['which-benefits-need-proof'] %}
-                <ul>
-                <li><p class="govuk-body">{{ benefit }}<br>
-                </ul>
-                {% endfor %}
-                {% endif %}
-
+{% set benefit = data['which-benefits-need-proof'][0] %}
+<p>You were awarded {{ benefit }}.</p>
 
 <p>Your partner is also included on this claim. 
 Partner's name: Boatina McBoatface
