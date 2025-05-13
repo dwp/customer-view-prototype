@@ -11,7 +11,7 @@ My notifications
 {% endblock %}
 
 {% block content %}
-
+ 
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
 
@@ -31,16 +31,15 @@ My notifications
    
       {% endif %}  
 
-      {% if data['inScope'].length > 1 %}
-     
-      
-         {% for benefit in data['which-benefits-need-proof']%}
-         {{benefit.length}}
-          
+     {% if data['inScope'].length > 1 %}
+       {% for benefit in data['inScope'] %}
+       {% if data['which-benefits-need-proof'] %}
+       {{ ['benefit'].length }}
+       {% endif %} 
          {% endfor %}
-         {% endif %}  
+         {% endif %} 
    
-     
+     {{ data.snacks.length }}
 
         </span></p>
 
