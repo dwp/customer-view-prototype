@@ -82,11 +82,13 @@ Request complete
         
        
 
-         {% if (data['digitalOrLetter'] == "Letter in the post")%}
+         {% if (data['digitalOrLetter'] == "Letter in the post" or  "Download a file and get a letter in the post")%}
             <p>Your letter should arrive within one week.</p>  
+            
+            {% endif %}
 
-            {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
-            <p>Your letter should arrive within one week.</p>
+            {% if (data['digitalOrLetter'] == "Download a file and get a letter in the post" or "Download a file")%}
+      
             <p>A copy has been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
             {% endif %}
         
@@ -94,14 +96,12 @@ Request complete
       {% elif data['which-benefits-need-proof'].length === 2 %}
         <p>You have requested proof of {{ data['which-benefits-need-proof'] | formatList }}.</p>
 
-        {% if (data['digitalOrLetter'] == "Letter in the post")%}
+        {% if (data['digitalOrLetter'] == "Letter in the post" or  "Download a file and get a letter in the post")%}
             <p>Separate letters should arrive within one week.</p>  
-
+            {% endif %}
          
             
-            {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
-            <p>Separate letters should arrive within one week.</p>
-
+            {% if (data['digitalOrLetter'] == "Download a file and get a letter in the post" or "Download a file")%}
             <p>Copies have been been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
             {% endif %}
 
@@ -117,11 +117,12 @@ Request complete
           {% endfor %}    
         </ul>
 
-        {% if (data['digitalOrLetter'] == "Letter in the post")%}
+        {% if (data['digitalOrLetter'] == "Letter in the post" or  "Download a file and get a letter in the post")%}
         <p>Separate letters should arrive within one week.</p>  
-        
-        {% elseif (data['digitalOrLetter'] == "Download a file and get a letter in the post")%}
-        <p>Separate letters should arrive within one week.</p>
+        {% endif %}
+       
+        {% if (data['digitalOrLetter'] == "Download a file and get a letter in the post" or "Download a file")%}
+    
         <p>Copies have been been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
         {% endif %}
 
@@ -198,7 +199,7 @@ Request complete
 
         {{ govukButton({
           text: "Go back to account home",
-          href: "/get-a-proof-of-benefit-letter/download/download-notifications/account-home-plus-notifications.html",
+          href: "/get-a-proof-of-benefit-letter/download/download-notifications/account-home",
           classes: "govuk-button--secondary"
         }) }}
       </div>
