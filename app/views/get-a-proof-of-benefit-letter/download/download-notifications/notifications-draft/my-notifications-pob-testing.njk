@@ -261,58 +261,6 @@ My notifications
   </tr>
 {% endfor %}
 
-
-
-  {% if data['inScope'].length == 1 %}
-
-
-      
-  <div
-  
-  <tbody class="govuk-table__body" id="table-body">
-  
-
-    <tr class="govuk-table__row"  style="background-color:#f3f2f1">
-      <th scope="row" class="govuk-table__header date-column" id="date-column">
-      </th>
-      <td class="govuk-table__cell" >{{ data['inScope'][0]}}</td>
-      <td class="govuk-table__cell"><a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/test-html-3" class="govuk-link">Proof of Benefit letter</a>
- 
-        <td class="govuk-table__cell" style="padding-right:10px;" data-status="unread">
-         <strong class="govuk-tag custom-unread-tag">
-        Unread
-      </strong>
-    </td>
-      </tr>
-  </tbody>
-  </div>
-
-      {% endif %}
-
-
-  {% if data['which-benefits-need-proof'].length > 1 %}
-      {% for benefit in data['which-benefits-need-proof'] %}
-  <div
-  <tbody class="govuk-table__body" id="table-body">
-
-    <tr class="govuk-table__row"  style="background-color:#f3f2f1">
-      <th scope="row" class="govuk-table__header date-column" id="date-column">
-      </th>
-      
-      <td class="govuk-table__cell" >{{benefit}}</td>
-      <td class="govuk-table__cell"><a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/test-html-3" class="govuk-link">Proof of Benefit letter</a>
-        <td class="govuk-table__cell" style="padding-right:10px;" data-status="unread">
-        <strong class="govuk-tag custom-unread-tag">
-        Unread
-      </strong>
-    </td>
-      </tr>
-  </tbody>
-  </div>
-   {% endfor %}  
-   
-
-      {% endif %}
 </table>
 
  

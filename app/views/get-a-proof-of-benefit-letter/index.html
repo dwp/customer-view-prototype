@@ -21,11 +21,71 @@
       <p class="govuk-body-l">This journey lets people get a proof of benefit letter sent in the post.</p>
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+      <span class="govuk-caption-m">May 2025</span>
+      <h2 class="govuk-heading-l">Version 9 - integrating DID testing</h2>
 
-      {{ govukButton({
-        text: "Design test button for DID combo             ",
-        href: "../get-a-proof-of-benefit-letter/download/download-notifications/research-set-up/intro"
+
+      {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+      {{ govukWarningText({
+        text: "The dynamic content in this design is for user testing only.",
+        iconFallbackText: "Warning"
       }) }}
+      <p>This design lets users save a copy of their letter to their device.</p>
+      <p>It also stores a copy of their letter on the service using the Digital Interface Design (DID) team’s notifications feature - ‘notifications’ is a working title and based upon a message centre concept, similar to an inbox.
+      <p>This design is an iteration after user testing round 30 and based on best practise.</p>
+    
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Change log
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Since version 8, we have:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>removed the beta invite page as it’s a distraction for user testing</li>
+            <li>Iterated the ‘where we send your letters’ page so that it makes more sense for digital download</li>
+            <li>removed the ‘your home address’ variant of ‘where we send your letters’</li>
+            <li>Iterated the confirmation page to include signposting to DID’s notifications journey. </li>
+          </ul>
+        </div>
+      </details>
+
+      <h3 class="govuk-heading-m">User journeys</h3>
+      <p><a href="../get-a-proof-of-benefit-letter/release-2/ni/research-set-up/intro.html" class="govuk-link--no-visited-state">
+        View design A: Customer View download journey only
+      </a></p>
+
+      <p><a href="../get-a-proof-of-benefit-letter/download/download-notifications/research-set-up/intro" class="govuk-link--no-visited-state">
+        View design B: Customer View download journey plus signposting to DID’s notifications journey
+      </a></p>
+
+
+      <h3 class="govuk-heading-m">Static homepages</h3>
+      <p>We’re testing three static homepages to understand where DID’s notifications inbox sits on the homepage.</p>
+
+      <p><a href="../get-a-proof-of-benefit-letter/release-2/ni/research-set-up/intro.html" class="govuk-link--no-visited-state">
+        Homepage A: DID link in service nav
+      </a></p>
+
+      <p><a href="../get-a-proof-of-benefit-letter/release-2/ni/research-set-up/intro.html" class="govuk-link--no-visited-state">
+        Homepage B: DID link in page body
+      </a></p>
+
+      <p><a href="../get-a-proof-of-benefit-letter/release-2/ni/research-set-up/intro.html" class="govuk-link--no-visited-state">
+        Homepage C: DID link in service nav and page body
+      </a></p>
+     
+      <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+        <p>The Online Identity and Verification (OIDV) service is not included in this 
+          design</p>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      
+
 
 
       <span class="govuk-caption-m">April 2025</span>
