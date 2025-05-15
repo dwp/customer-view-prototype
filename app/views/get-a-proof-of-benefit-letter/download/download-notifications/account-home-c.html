@@ -20,16 +20,8 @@
         <ul class="govuk-service-navigation__list" id="navigation">
           <li class="govuk-service-navigation__item">
             <a class="govuk-service-navigation__link" href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">
-              Notifications inbox <span id="notifications" class="moj-notification-badge">
-              {% if data['inScope'].length == 1 %}
-              {{ 1 }}
-          
-          
-             {% endif %}  
-          
-            {% if data['inScope'].length > 1 %}
-              {{ data['which-benefits-need-proof'].length }}
-                {% endif %} 
+              Inbox <span id="notifications" class="moj-notification-badge">
+             1
               </span>
             </a>
           </li>
@@ -73,6 +65,9 @@ Account home
       <p class="govuk-body">
         <a href="personal-details" class="govuk-link">View your personal details</a>
       </p>
+
+      <p class="govuk-body">
+        <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob" class="govuk-link">View your notifications inbox
 
 </div>
 </div>
