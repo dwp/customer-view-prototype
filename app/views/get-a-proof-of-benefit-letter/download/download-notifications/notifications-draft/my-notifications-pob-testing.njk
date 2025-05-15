@@ -244,19 +244,42 @@ My notifications
 
 
 
+
+{% for benefit in data['which-benefits-need-proof'] %}
+  <tr class="govuk-table__row" style="background-color:#f3f2f1">
+    <th scope="row" class="govuk-table__header date-column" id="date-column"></th>
+    <td class="govuk-table__cell">{{ benefit['date'] }}</td>
+    <td class="govuk-table__cell">
+      <a href="/your-link-here" class="govuk-link">Proof of Benefit letter</a>
+    </td>
+    <td class="govuk-table__cell" style="padding-right:10px;"
+        data-status="{{ 'unread' if loop.first else 'read' }}">
+      <strong class="govuk-tag custom-{{ 'unread' if loop.first else 'read' }}-tag">
+        {{ 'Unread' if loop.first else 'Read' }}
+      </strong>
+    </td>
+  </tr>
+{% endfor %}
+
+
+
   {% if data['inScope'].length == 1 %}
+
+
       
   <div
+  
   <tbody class="govuk-table__body" id="table-body">
+  
 
     <tr class="govuk-table__row"  style="background-color:#f3f2f1">
       <th scope="row" class="govuk-table__header date-column" id="date-column">
       </th>
-      
       <td class="govuk-table__cell" >{{ data['inScope'][0]}}</td>
       <td class="govuk-table__cell"><a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/test-html-3" class="govuk-link">Proof of Benefit letter</a>
+ 
         <td class="govuk-table__cell" style="padding-right:10px;" data-status="unread">
-        <strong class="govuk-tag custom-unread-tag">
+         <strong class="govuk-tag custom-unread-tag">
         Unread
       </strong>
     </td>

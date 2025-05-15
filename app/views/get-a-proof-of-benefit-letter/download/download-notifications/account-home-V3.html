@@ -9,6 +9,36 @@
     useTudorCrown: "true"
   }) }}
 
+  <div class="govuk-service-navigation"
+  data-module="govuk-service-navigation">
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+      <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+        <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
+          Menu
+        </button>
+        <ul class="govuk-service-navigation__list" id="navigation">
+          <li class="govuk-service-navigation__item">
+            <a class="govuk-service-navigation__link" href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">
+              Inbox <span id="notifications" class="moj-notification-badge">
+              {% if data['inScope'].length == 1 %}
+              {{ 1 }}
+          
+          
+             {% endif %}  
+          
+            {% if data['inScope'].length > 1 %}
+              {{ data['which-benefits-need-proof'].length }}
+                {% endif %} 
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
 
 {% block pageTitle %}
@@ -46,7 +76,6 @@ Account home
 
       <p class="govuk-body">
         <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob" class="govuk-link">View your notifications inbox
-      </p>
 
 </div>
 </div>
