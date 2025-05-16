@@ -51,13 +51,13 @@ Request complete
 
 
       {% if data['inScope'].length == 1 %}
-      <p><a href="/public/images/pdf.svg" download="">Download proof of {{ data['inScope'][0] }} (PDF, 4.2KB)</a></p>
+      <p><a href="/public/images/example-pdf.pdf" download="">Download proof of {{ data['inScope'][0] }} (PDF, 4.2KB)</a></p>
       {% endif %} 
 
       {% if data['inScope'].length > 1 %}
        {% for benefit in data['which-benefits-need-proof'] %}
        {% if benefit in data['which-benefits-need-proof'] %}
-         <p><a href="/public/images/pdf.svg" download="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
+         <p><a href="/public/images/example-pdf.pdf" download="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
          {% endif %}  
          {% endfor %}
          {% endif %} 
