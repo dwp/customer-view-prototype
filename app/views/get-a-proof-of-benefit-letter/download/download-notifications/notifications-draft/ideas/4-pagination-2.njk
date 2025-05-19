@@ -1,5 +1,14 @@
 {% extends "layouts/main.html" %}
+{% block header %}
 
+  {{ hmrcHeader({
+    serviceName: "View your notifications",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
 {% block pageTitle %}
 My notifications
 {% endblock %}
