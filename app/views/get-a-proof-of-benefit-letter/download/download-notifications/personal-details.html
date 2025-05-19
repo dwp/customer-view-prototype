@@ -185,9 +185,13 @@ href: "javascript:window.history.back()"
     {% else %}
     <p>To change your details, like your address, <a href="https://www.gov.uk/report-benefits-change-circumstances#:~:text=How%20to%20report%20changes" class="govuk-link" rel="noreferrer noopener" target="_blank">contact your benefit office (opens in a new tab)</a>.</p>
     {% endif %}
-    
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
   
     {{ govukButton({
+    classes: "govuk-button--secondary",
     text: "Go back to account home",
     href: "account-home"
     }) }}
