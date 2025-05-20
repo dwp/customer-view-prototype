@@ -51,13 +51,13 @@ Request complete
 
 
       {% if data['inScope'].length == 1 %}
-      <p><a href="/public/images/example-pdf.pdf" download="">Download proof of {{ data['inScope'][0] }} (PDF, 4.2KB)</a></p>
+      <p><a href="/public/images/Proof of Benefit.pdf" download="">Download proof of {{ data['inScope'][0] }} (PDF, 4.2KB)</a></p>
       {% endif %} 
 
       {% if data['inScope'].length > 1 %}
        {% for benefit in data['which-benefits-need-proof'] %}
        {% if benefit in data['which-benefits-need-proof'] %}
-         <p><a href="/public/images/example-pdf.pdf" download="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
+         <p><a href="/public/images/Proof of Benefit.pdf" download="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
          {% endif %}  
          {% endfor %}
          {% endif %} 
@@ -79,7 +79,7 @@ Request complete
            <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
       {% if data['inScope'].length === 1 %}
         <p>You have requested proof of {{ data['inScope'][0] }}.</p>
-        
+       
        
 
          {% if data['digitalOrLetter'] == "Letter in the post" or  data['digitalOrLetter'] =="Download a file and get a letter in the post"%}
@@ -91,9 +91,17 @@ Request complete
       
             <p>A copy has been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
             {% endif %}
-        
+            {% endif %}
+<!-- if someone has selected multiple in scope beenfits, but only chosen one in which benefits need proof-->
+            {% if data['inScope'].length > 1 %}
+            {% if data['which-benefits-need-proof'].length === 1 %}
+            <p>You have requested proof of {{ data['which-benefits-need-proof'][0] }}.</p>
+            <p>A copy has been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
+            {% endif %}
+            {% endif %}
+
 <!-- If user has two in scope benefits, and has chosen letter / digital or both-->
-      {% elif data['which-benefits-need-proof'].length === 2 %}
+      {% if data['which-benefits-need-proof'].length === 2 %}
         <p>You have requested proof of {{ data['which-benefits-need-proof'] | formatList }}.</p>
 
         {% if data ['digitalOrLetter'] == "Letter in the post" or  data['digitalOrLetter'] == "Download a file and get a letter in the post"%}
@@ -103,11 +111,12 @@ Request complete
             {% endif %}
             
             {% if (data['digitalOrLetter'] == "Download a file and get a letter in the post") or (data['digitalOrLetter'] =="Download a file")%}
-            <p>Copies have been been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
+            <p>Copies have been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
             {% endif %}
-
+            {% endif %}
+        
 <!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
-      {% elif data['which-benefits-need-proof'].length > 2 %}
+      {% if data['which-benefits-need-proof'].length > 2 %}
         <p>You have requested proof of:</p>
         <ul class="govuk-list govuk-list--bullet">
             {% for benefit in data['which-benefits-need-proof'] %}
@@ -126,6 +135,7 @@ Request complete
     
         <p>Copies have been been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
         {% endif %}
+       
 
   
       {% endif %}
