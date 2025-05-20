@@ -92,12 +92,25 @@ Request complete
             <p>A copy has been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
             {% endif %}
             {% endif %}
+
+
 <!-- if someone has selected multiple in scope beenfits, but only chosen one in which benefits need proof-->
             {% if data['inScope'].length > 1 %}
             {% if data['which-benefits-need-proof'].length === 1 %}
+
             <p>You have requested proof of {{ data['which-benefits-need-proof'][0] }}.</p>
+
+
+            {% if data['digitalOrLetter'] == "Letter in the post" or  data['digitalOrLetter'] =="Download a file and get a letter in the post"%}
+            <p>Your letter should arrive within one week.</p>  
+            {% endif %}
+            {% if (data['digitalOrLetter'] === "Download a file and get a letter in the post" or data['digitalOrLetter'] =="Download a file")%}
+
             <p>A copy has been sent to <a href="/get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/my-notifications-pob">your notifications inbox</a>.</p>
             {% endif %}
+            {% endif %}
+    
+
             {% endif %}
 
 <!-- If user has two in scope benefits, and has chosen letter / digital or both-->
