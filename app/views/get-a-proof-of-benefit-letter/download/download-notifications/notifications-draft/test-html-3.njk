@@ -98,10 +98,27 @@ AB 12 34 56</p><br>
 <div class="govuk-!-padding-bottom-4"></div>
 
 
- <a href="/public/images/Proof of Benefit.pdf" download=""
+ <!--<a href="/public/images/Proof of Benefit.pdf" download=""
         " 
         <button class="govuk-button" value= "true" data-module="govuk-button" style="margin-bottom:50px;" 
-       </a>Download message</button></a>
+       </a>Download message</button></a>-->
+
+
+     <button id="downloadBtn" class="govuk-button" style="margin-bottom:50px;">
+  Download message
+</button>
+
+<script>
+  document.getElementById('downloadBtn').addEventListener('click', function () {
+    const link = document.createElement('a');
+    link.href = '/public/images/Proof of Benefit.pdf';
+    link.download = 'Proof of Benefit.pdf'; // optional: set desired filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // clean up
+  });
+</script>
+     
 
        <!--
         <a class="govuk-link" href="/public/images/example-pdf.pdf">Print message</a>
