@@ -45,13 +45,13 @@ Where we send your letters
              - If researchSetUpAddress is anything else, shows "The address we send your letters to is saved as:"
              This allows us to test  different content variations during research sessions -->
 
-        {% if data.researchSetUpAddress === 'home' %}
-        <h1 class="govuk-heading-l" >Your home address</h1>
-          <p>It is saved as:</p>
-        {% else %}
-        <h1 class="govuk-heading-l" >Where we send your letters</h1>
-          <p>Your address for post is saved as:</p>
-        {% endif %}
+             <h1 class="govuk-heading-l" >Where we send your letters</h1>
+
+             {% if data.researchSetUpAddress === 'home' %}
+               <p>Your address is saved as:</p>
+             {% else %}
+               <p>The address we send your letters to is saved as:</p>
+             {% endif %}
 
         <div class="govuk-inset-text">
           {% if data.researchSetUpAddress === 'home' %}
