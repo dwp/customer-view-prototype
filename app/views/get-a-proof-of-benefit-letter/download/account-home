@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+  {{ super() }}
+
+  {{ govukServiceNavigation({
+    serviceName: "Manage your benefits and State Pension",
+    serviceUrl: "/",
+    navigation: [
+    {
+      href: "#",
+      text: "Sign out"
+    }
+  ]
+  }) }}
+{% endblock %}
+
+{% block pageTitle %}
+Account home
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+  
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Account home</span>
+      <h1 class="govuk-heading-xl">
+        Sarah Phillips
+      </h1>
+
+      <!--<p>
+        <a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits</a>
+      </p>
+
+      {% if 'State Pension' in data.researchSetUpBenefits %}
+                <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your State Pension</a></p>
+                {% elif data.researchSetUpBenefits %}
+	 <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits</a></p>
+             {% endif %}-->
+
+             {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
+             <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your State Pension</a></p>
+               {% endif %}
+      
+               {% if 'State Pension' in data['inScope'] and data['inScope']|length > 1 %}
+               <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits and State Pension</a></p>
+                 {% endif %}
+      
+                 {% if 'State Pension' not in data['inScope'] %}
+                 <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits</a></p>
+                   {% endif %}
+
+<!--
+{% if 'State Pension' in data.researchSetUpBenefits and data.researchSetUpBenefits|length > 1 %}
+  <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits and State Pension</a></p>
+{% elif 'State Pension' in data.researchSetUpBenefits %}
+  <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your State Pension</a></p>
+{% elif data.researchSetUpBenefits %}
+  <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits</a></p>
+{% endif %}-->
+
+      <p class="govuk-body">
+        <a href="personal-details" class="govuk-link">View your personal details</a>
+      </p>
+
+</div>
+</div>
+
+{% endblock %}
