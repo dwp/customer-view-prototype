@@ -1,0 +1,207 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+{{ hmrcHeader({
+serviceName: "View your personal details",
+serviceUrl : "/",
+signOutHref : "signout",
+useTudorCrown: "true"
+}) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Personal details
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+tag: {
+text: "Beta"
+},
+html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new
+  tab)</a>.'
+}) }}
+
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text" style="color:red">
+    <span class="govuk-visually-hidden">Warning</span>
+    This page contains Northern Ireland specific URLs and hyperlink content
+  </strong>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Personal details
+    </h1>
+
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Your details
+        </h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Sarah Phillips
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              5 January 1978
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              National Insurance number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              AB 12 34 56 C
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Contact details
+        </h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          {% if (data['researchSetUpAddress'] === "post") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              72 Guild Street<br>London<br>SE23 6FH
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address we send letters to
+            </dt>
+            <dd class="govuk-summary-list__value">
+              12 Gregg Lane<br>London<br>SE12 6FH
+            </dd>
+          </div>
+
+          {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              72 Guild Street<br>London<br>SE23 6FH
+            </dd>
+          </div>
+          {% endif %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Mobile phone
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">07700 900 457</p>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home phone
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">01234 567 890</p>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">sarah.phillips@example.com</p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          Your benefits
+        </h2>
+        <ul class="govuk-summary-card__actions">
+        </ul>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Benefits
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% for benefit in data['researchSetUpBenefits'] %}
+              {% if benefit !== 'I need a letter for another benefit' %}
+              <p class="govuk-body">{{ benefit }}
+                {% endif %}
+                {% else %}
+              <p>No benefit selected</p>
+              {% endfor %}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-m">Tell us about a change</h2>
+
+    {% if data['researchSetUpBenefits'].length === 1 and data['researchSetUpBenefits'].includes("State Pension") %}
+    <p>To change your details, like your address, <a href="https://www.nidirect.gov.uk/articles/pensions-report-change-your-circumstances" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the NI Pension Centre (opens in a new tab)</a>.</p>
+
+    {% elif data['researchSetUpBenefits'].length > 1 and data['researchSetUpBenefits'].includes("State Pension") %}
+    <p>To change your details, like your address, <a href="https://www.nidirect.gov.uk/articles/benefits-report-change-your-circumstances" class="govuk-link" rel="noreferrer noopener" target="_blank">contact your benefit office (opens in a new tab)</a>.</p>
+
+    <p>You will also need to <a href="https://www.nidirect.gov.uk/articles/pensions-report-change-your-circumstances" class="govuk-link" rel="noreferrer noopener" target="_blank">tell the NI Pension Centre if your circumstances have changed (opens in a new tab)</a>.</p>
+
+    {% else %}
+    <p>To change your details, like your address, <a href="https://www.nidirect.gov.uk/articles/benefits-report-change-your-circumstances" class="govuk-link" rel="noreferrer noopener" target="_blank">contact your benefit office (opens in a new tab)</a>.</p>
+    {% endif %}
+
+
+    {{ govukButton({
+    text: "Go back to account home",
+    href: "account-home"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

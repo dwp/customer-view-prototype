@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+You cannot get a proof of benefit letter using this service
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot get proof of your benefits using this service
+      </h1>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text" style="color:red">
+          <span class="govuk-visually-hidden">Warning</span>
+          This page contains Northern Ireland specific copy
+        </strong>
+      </div>
+
+
+      {% if data['researchSetUpBenefits'].length === 1 and data['researchSetUpBenefits'].includes("State Pension") %}
+      <p class="govuk-body">
+        Before you can get proof of your State Pension, you need to <a class="govuk-link" href="https://www.nidirect.gov.uk/articles/benefits-report-change-your-circumstances">contact the Northern Ireland Pension Centre to correct your address (opens in a new tab)</a>.
+      </p>
+
+      {% elif data['which-benefits-need-proof'].length > 1 and data['which-benefits-need-proof'].includes("State Pension") %}
+      <p class="govuk-body">
+        Before you can get proof of your benefits, you need to <a class="govuk-link" href="https://www.nidirect.gov.uk/articles/benefits-report-change-your-circumstances">contact each benefit to tell them your address (opens in a new tab)</a>.
+      </p>
+
+      <p class="govuk-body">
+        To get proof of your State Pension, you also need to <a class="govuk-link" href="https://www.nidirect.gov.uk/articles/benefits-report-change-your-circumstances">tell the Northern Ireland Pension Centre your correct address (opens in a new tab)</a>.
+      </p>
+
+      {% else %}
+      <p class="govuk-body">
+        Before you can get proof of your benefits, you need to <a class="govuk-link" href="https://www.nidirect.gov.uk/articles/benefits-report-change-your-circumstances">contact each benefit to correct your address (opens in a new tab)</a>.
+      </p>
+      {% endif %}
+
+      <p class="govuk-body">
+        You cannot change your address online yet.
+      </p>
+
+      <p class="govuk-body">
+        You may ask for proof of your benefits when you contact each benefit to change your address.
+      </p>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Sign out",
+          href: "signout"
+        }) }}
+
+        {{ govukButton({
+          text: "Go back to account home",
+          href: "account-home",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

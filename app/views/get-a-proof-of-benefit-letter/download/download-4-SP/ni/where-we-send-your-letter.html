@@ -1,0 +1,93 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+  {{ hmrcHeader({
+    serviceName: "Get a proof of benefit letter",
+    serviceUrl : "/",
+    signOutHref : "signout",
+    useTudorCrown: "true"
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Where we send your letters
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="send-letter-to-address-answer" method="post">
+
+        <h1 class="govuk-heading-l" >Where we send your letters</h1>
+
+        {% if data.researchSetUpAddress === 'home' %}
+          <p>Your address is saved as:</p>
+        {% else %}
+          <p>The address we send your letters to is saved as:</p>
+        {% endif %}
+
+        <div class="govuk-inset-text">
+          {% if data.researchSetUpAddress === 'home' %}
+            <p>72 Guild Street
+                  <br>London
+                  <br>SE23 6FH
+                </p>
+          {% else %}
+            <p>12 Gregg Lane
+                  <br>London
+                  <br>SE12 SFH
+                </p>
+          {% endif %}
+        </div>
+
+        {{ govukRadios({
+          name: "confirmLetterSend",
+          fieldset: {
+            legend: {
+              text: "Is your address correct?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,1419 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceUrl: "index.html"
+  }) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Customer View internal prototype homepage
+{% endblock %}
+
+{% block content %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h1 class="govuk-heading-xl">
+            Get a proof of benefit letter
+          </h1>
+
+
+          <p class="govuk-body-l">This journey lets people get a proof of benefit letter sent in the post.</p>
+
+          <div>
+            <strong class="govuk-tag govuk-tag--purple">Alpha</strong> &nbsp; <strong class="govuk-tag govuk-tag--green">Beta</strong> &nbsp; <strong class="govuk-tag govuk-tag--blue"><I></I>In progress</strong> &nbsp; <strong class="govuk-tag govuk-tag--yellow">Sprint ? - now </strong><br>
+            <br>
+            <p>March 2024 - today</p>
+          </div>
+
+
+          <div class="govuk-tabs" data-module="govuk-tabs">
+            <h2 class="govuk-tabs__title">
+              Contents
+            </h2>
+            <ul class="govuk-tabs__list">
+              <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                <a class="govuk-tabs__tab" href="#ur-prototypes">
+                  User research prototypes
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#dev-baseline-prototype">
+                  Development baseline prototype
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#error-designs">
+                  Error designs
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#user-journeys">
+                  User journeys
+                </a>
+              </li>
+            </ul>
+
+
+            <!-- TAB1: User research prototypes -->
+        <div class="govuk-tabs__panel" id="ur-prototypes">
+          <!-- Future UR round -->
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+              <!-- ------------- Download 9 ------------- -->
+
+              <span class="govuk-caption-m">May 2025</span>
+              <br>
+              <p>This design lets users save a copy of their letter to their device.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Version 9 - integrating DID testing
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+
+
+              <br>
+                  {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+                  {{ govukWarningText({
+                    text: "The dynamic content in this design is for user testing only.",
+                    iconFallbackText: "Warning"
+                  }) }}
+
+                  <p>It also stores a copy of their letter on the service using the Digital Interface Design (DID) team’s notifications feature - ‘notifications’ is a working title and based upon a message centre concept, similar to an inbox.
+                  <p>This design is an iteration after user testing round 30 and based on best practise.</p>
+
+                  <details class="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Change log
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <p>Since version 8, we have:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>removed the beta invite page as it’s a distraction for user testing</li>
+                        <li>Iterated the ‘where we send your letters’ page so that it makes more sense for digital download</li>
+                        <li>removed the ‘your home address’ variant of ‘where we send your letters’</li>
+                        <li>Iterated the confirmation page to include signposting to DID’s notifications journey. </li>
+                      </ul>
+                    </div>
+                  </details>
+
+                  <h3 class="govuk-heading-m">Static homepages</h3>
+                  <p>We’re testing three static homepages to understand where DID’s notifications inbox sits on the homepage.</p>
+
+                  <p><a href="/get-a-proof-of-benefit-letter/download/download-notifications/account-home-a" class="govuk-link--no-visited-state">
+                    Homepage A: DID link in service nav
+                  </a></p>
+
+                  <p><a href="/get-a-proof-of-benefit-letter/download/download-notifications/account-home-b" class="govuk-link--no-visited-state">
+                    Homepage B: DID link in page body
+                  </a></p>
+
+                  <p><a href="/get-a-proof-of-benefit-letter/download/download-notifications/account-home-c" class="govuk-link--no-visited-state">
+                    Homepage C: DID link in service nav and page body
+                  </a></p>
+
+                  <h3 class="govuk-heading-m">Message centre test screen</h3>
+                  <p><a href="../get-a-proof-of-benefit-letter/download/download-notifications/notifications-draft/ideas/10" class="govuk-link--no-visited-state">
+                    Link to Message Centre with many notifications
+                  </a></p>
+
+
+
+                  <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                    <p>The Online Identity and Verification (OIDV) service is not included in this
+                      design</p>
+                  </div>
+                  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                </div>
+              </details>
+
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<!-- ------------- Download 8 ------------- -->
+              <span class="govuk-caption-m">April 2025</span>
+              <br>
+              <p>This design lets users save a copy of their letter to their device.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Version 8 - release 3 - Download
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+
+
+              {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+              {{ govukWarningText({
+                text: "The dynamic content in this design is for user testing only.",
+                iconFallbackText: "Warning"
+              }) }}
+
+              <p>This design is an iteration after user testing round 30 and based on best practice.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Change log
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <p>Since version 7, we have:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>refined the content across the journey</li>
+                    <li>decided on design B, which lets users save their files on the confirmation page</li>
+                    <ul>
+                      <li>this page includes descriptive links instead of the designs from version 7 because they are the most accessible</li>
+                    </ul>
+                    <li>added Universal Credit signposting to the personal details page</li>
+
+                  </ul>
+
+                </div>
+              </details>
+
+              {% from "govuk/components/button/macro.njk" import govukButton %}
+              <div class="govuk-button-group">
+
+
+                {{ govukButton({
+                  text: "View design B: files are located on the confirmation page              ",
+                  href: "../get-a-proof-of-benefit-letter/download/download-3/research-set-up/intro"
+                }) }}
+
+              </div>
+
+              <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                <p>The Online Identity and Verification (OIDV) service is not included in this
+                  design</p>
+              </div>
+
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </details>
+
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+
+
+<!-- ------------- Download 7 ------------- -->
+<span class="govuk-caption-m">March 2025 - April</span>
+<br>
+<p>This design lets users save a copy of their letter to their device.</p>
+
+            <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Version 7: Download
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+
+
+
+              {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+              {{ govukWarningText({
+                text: "The dynamic content in this design is for user testing only.",
+                iconFallbackText: "Warning"
+              }) }}
+
+              <p>We tested this in April 2025 in user testing round 30.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Change log
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <p>Since version 6, we have:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>iterated content on the start page to let users know they can now view and save an online proof of benefits file</li>
+                    <li>moved the check address page earlier so that users are signposted out of the service sooner if their address is wrong</li>
+                    <li>added a page that asks users whether they want an online file, posted letter or both</li>
+                    <li>iterated the check your answers page to include the new question that asks users how they want to get their proof</li>
+                    <li>designed two ways users can download proof of their benefits
+                      <ul>
+                      <li>design A lets users save their files on one page before they get to the confirmation page</li>
+                      <li>design B lets users save their files on the confirmation page</li>
+                    </li></ul>
+                  </ul>
+
+                </div>
+              </details>
+
+
+
+              {% from "govuk/components/button/macro.njk" import govukButton %}
+              <div class="govuk-button-group">
+                {{ govukButton({
+                  text: "Design A: files are located on a page before the confirmation page",
+                  href: "../get-a-proof-of-benefit-letter/download/download-1/research-set-up/intro"
+                }) }}
+
+
+
+                {{ govukButton({
+                  text: "Design B: files are located on the confirmation page              ",
+                  href: "../get-a-proof-of-benefit-letter/download/download-2/research-set-up/intro"
+                }) }}
+
+
+
+                {{ govukButton({
+                  text: "PDF component: visual example of confirmation page",
+                  classes: "govuk-button--secondary",
+                  href: "../get-a-proof-of-benefit-letter/download/download-2/download-your-pob-pdf-blue"
+                }) }}
+              </div>
+
+              <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                <p>The Online Identity and Verification (OIDV) service is not included in this
+                  design</p>
+              </div>
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </details>
+
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+              <!-- First iteration of download - used for UR-->
+
+
+
+              <!-- ------------- Release 2 ------------- -->
+
+              <span class="govuk-caption-m">Feb 2025 - March 2025</span>
+              <br>
+              <p>Release 2 is an exact replica of iteration 5A, with the addition of State Pension signposting.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Version 6: release 2  - PIP and NI
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+              <p>We have also included the Northern Ireland design, which signposts users in NI to nidrect instead of GOV.UK. The changes impact the URLs and the hyperlink content. NI will use their own start page on nidirect and not use ours on GOV.UK.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Change log
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <p>New dynamic State Pension content included:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>in the ‘tell us about a change’ section on the personal details page</li>
+                    <li>when a user’s address is incorrect, we signpost them to SP change of circs on the address signpost page</li>
+                  </ul>
+
+                  <p>Links that have been updated with NI content:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>beta signposting pages when people have not been invited to service</li>
+                    <li>benefits in and out of scope pages when a user is in the service and their benefits are not in scope</li>
+                    <li>if the user’s address is incorrect, they get signposted to nidirect</li>
+                  </ul>
+
+                  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                  <p>Since release 1:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>iterated the service name to ‘Get proof of your benefits’ so there are options to include more ways to get letters in future</li>
+                    <li>corrected benefit names to include acronyms on the start page</li>
+                    <li>added signposting content for people who get benefits on behalf of a child, and people who live in Wales on the start page</li>
+                    <li>made radio content on ‘how did you find out about this service?’ page more specific</li>
+                    <li>merged ‘which benefits do you need proof of?’ and ‘getting proof of your benefits’ pages for users who get combination of in-and-out-of-scope benefit pages - checkbox version for multiple in-scope benefits and a radio version for one in-scope benefit</li>
+                    <li>iterated H1 content on some signposting pages to ‘contact us’ message rather than ‘you cannot use this service’</li>
+                    <li>iterated ‘check your answers’ designs so that users select ‘change’ for the request, rather than just the benefit</li>
+                    <li>designed a ‘check your answers’ page for a person with one benefit</li>
+                    <li>corrected phase banner so that content matches guidelines</li>
+                    <li>made headings on personal details table plural if user receives multiple benefits</li>
+                    <li>Changed how we refer to getting proof of benefits across the journey - with the exception of the service name, removing ‘letter’ in many cases since users are getting an email</li>
+                    <li>added signposting for users who get one in scope benefit and any amount of out of scope benefits, when they select ‘no’ - these are unhappy paths following the main changes in iteration 3</li>
+                    <li>Iterated confirmation page to include what happens next for users who are getting proof in an email</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+                <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+                  <br>
+                  <strong>Register mobile:</strong> 969862
+                  <br>
+                  <strong>Sign in mobile:</strong> 471350
+                </p>
+              </div>
+
+              <h3 class="govuk-heading-m">Research links</h3>
+
+
+
+              <table class="govuk-table govuk-!-margin-bottom-9">
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header">Description</th>
+                      <th scope="col" class="govuk-table__header">Status</th>
+                      <th scope="col" class="govuk-table__header">Link</th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">
+                        <a href="../get-a-proof-of-benefit-letter/release-2/research-set-up/intro.html" class="govuk-link--no-visited-state">
+                          England and Scotland Journey
+                        </a>
+                      </td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">In Progress</strong></td>
+                      <td class="govuk-table__cell" style="min-width: 4rem">
+                        <div style="height: 2rem;">
+                          <button
+                            data-link="https://customer-view.herokuapp.com/get-a-proof-of-benefit-letter/release-2/research-set-up/intro"
+                            style="background-color: white; border: none; padding: 0; margin: 0; cursor: pointer;">
+                            <!-- SVG Icon -->
+                            <svg width="1.5rem" height="1.5rem" fill="none" stroke="#1d70b8" stroke-width="2" style="margin: 0;">
+                              <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                              <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                            </svg>
+                          </button>
+                          <p class="govuk-body" style="display: none; margin: 0;">Copied!</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">
+                        <a href="../get-a-proof-of-benefit-letter/release-2/ni/research-set-up/intro.html" class="govuk-link--no-visited-state">
+                          Northern Ireland Journey
+                        </a>
+                      </td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">In Progress</strong></td>
+                      <td class="govuk-table__cell" style="min-width: 4rem">
+                        <div style="height: 2rem;">
+                          <button
+                            data-link="https://customer-view.herokuapp.com/get-a-proof-of-benefit-letter/release-2/ni/research-set-up/intro"
+                            style="background-color: white; border: none; padding: 0; margin: 0; cursor: pointer;">
+                            <!-- SVG Icon -->
+                            <svg width="1.5rem" height="1.5rem" fill="none" stroke="#1d70b8" stroke-width="2" style="margin: 0;">
+                              <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                              <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                            </svg>
+                          </button>
+                          <p class="govuk-body" style="display: none; margin: 0;">Copied!</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+              </details>
+
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+              <!-- ------------- Version 5 ------------- -->
+
+
+              <span class="govuk-caption-m">Dec 2024 - January 2025</span>
+              <br>
+              <p>This design is a direct copy of iteration 4, minus the option to get an email, and plus Personal Independence Payment (PIP).</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Version 5 - PiP
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+
+
+
+              <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                  <span class="govuk-visually-hidden">Warning</span>
+                  The dynamic content in this design is for user testing only
+                </strong>
+              </div>
+
+
+
+              <p>This iteration will be tested in...</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Change log
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <p>Since version 4, we have:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>iterated the service name to ‘Get proof of your benefits’ so there are options to include more ways to get letters in future</li>
+                    <li>deleted any reference to emails used in the last version while we assess how we’ll give people digital proof of their benefits</li>
+                    <li>included content to let users know PIP is part of the service - on the start page in the bullet points and on the page when users select which benefit they want proof of</li>
+                    <li>removed details on the page before OIDV that tells users who have registered for OIDV what other services they may have used to register</li>
+                  </ul>
+
+                  <p>We’ve created two journeys to test with users:</p>
+
+                  <p>Version A of the designs includes the PIP changes mentioned above to  lets users know they can use the service if they get PIP. It doesn’t have any extra information about PIP.</p>
+
+                  <p>Version B includes more details:</p>
+
+                  <ul class="govuk-list govuk-list--bullet">
+                  <li>added signposting on the start page  for people who want a PIP letter that includes points</li>
+                  <li>added information that explains what’s included in the letter and signposting for people who want a letter that has points</li>
+                  <li>Iterated content on the incorrect address signposting page</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+                <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+                  <br>
+                  <strong>Register mobile:</strong> 969862
+                  <br>
+                  <strong>Sign in mobile:</strong> 471350
+                </p>
+              </div>
+
+              <h3 class="govuk-heading-m">Research links</h3>
+
+              <table class="govuk-table govuk-!-margin-bottom-9">
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header">Description</th>
+                      <th scope="col" class="govuk-table__header">Status</th>
+                      <th scope="col" class="govuk-table__header">Link</th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">
+                        <a href="../get-a-proof-of-benefit-letter/v5-research/no-pip/research-set-up/intro.html" class="govuk-link--no-visited-state">
+                          Journey A - Basic PIP journey
+                        </a>
+                      </td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">In Progress</strong></td>
+                      <td class="govuk-table__cell" style="min-width: 4rem">
+                        <div style="height: 2rem;">
+                          <button
+                            data-link="../get-a-proof-of-benefit-letter/v5-research/no-pip/research-set-up/intro.html"
+                            style="background-color: white; border: none; padding: 0; margin: 0; cursor: pointer;">
+                            <!-- SVG Icon -->
+                            <svg width="1.5rem" height="1.5rem" fill="none" stroke="#1d70b8" stroke-width="2" style="margin: 0;">
+                              <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                              <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                            </svg>
+                          </button>
+                          <p class="govuk-body" style="display: none; margin: 0;">Copied!</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">
+                        <a href="../get-a-proof-of-benefit-letter/v5-research/pip/research-set-up/intro.html" class="govuk-link--no-visited-state">
+                          Journey B - PIP journey plus extra signposting
+                        </a>
+                      </td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">In Progress</strong></td>
+                      <td class="govuk-table__cell" style="min-width: 4rem">
+                        <div style="height: 2rem;">
+                          <button
+                            data-link="../get-a-proof-of-benefit-letter/v5-research/pip/research-set-up/intro.html"
+                            style="background-color: white; border: none; padding: 0; margin: 0; cursor: pointer;">
+                            <!-- SVG Icon -->
+                            <svg width="1.5rem" height="1.5rem" fill="none" stroke="#1d70b8" stroke-width="2" style="margin: 0;">
+                              <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                              <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                            </svg>
+                          </button>
+                          <p class="govuk-body" style="display: none; margin: 0;">Copied!</p>
+                        </div>
+                      </td>
+                  </tbody>
+                </table>
+              </details>
+
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+               <!-- ------------- Version 4 ------------- -->
+
+               <span class="govuk-caption-m">Nov 2024 - Present</span>
+               <br>
+               <p>This design is based on research and evidence found in user research round 20 and email download work.</p>
+
+               <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Version 4 - Email
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+
+
+
+               <div class="govuk-warning-text">
+                 <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                 <strong class="govuk-warning-text__text">
+                   <span class="govuk-visually-hidden">Warning</span>
+                   The dynamic content in this design is for user testing only
+                 </strong>
+               </div>
+
+
+
+               <p>This iteration is yet to be tested.</p>
+
+               <details class="govuk-details">
+                 <summary class="govuk-details__summary">
+                   <span class="govuk-details__summary-text">
+                     Change log
+                   </span>
+                 </summary>
+                 <div class="govuk-details__text">
+                   <p>Since version 3, we have:</p>
+                   <ul class="govuk-list govuk-list--bullet">
+                    <li>Changed how we refer to getting proof of benefits across the journey - with the exception of the service name, removing ‘letter’ in many cases since users are getting an email</li>
+                    <li>Included that users can get proof of their benefits sent in an email on the start page, and timelines</li>
+                    <li>added signposting for users who get one in scope benefit and any amount of out of scope benefits, when they select ‘no’ - these are unhappy paths following the main changes in iteration 3</li>
+                    <li>Created two variant journeys that allow users to get an email</li>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>Journey A lets users choose whether to get email, letter, or both up front</li>
+                        <li>Journey B is a digital-first journey asking users whether they need an email first and then a letter second</li>
+                      </ul>
+                      <li>Iterated address signposting to encourage users to tell us their address if it is wrong</li>
+                      <li>Added email address in check your answers page</li>
+                      <li>Iterated confirmation page to include what happens next for users who are getting proof in an email</li>
+                   </ul>
+                 </div>
+               </details>
+
+               <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                 <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+                 <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+                   <br>
+                   <strong>Register mobile:</strong> 969862
+                   <br>
+                   <strong>Sign in mobile:</strong> 471350
+                 </p>
+               </div>
+
+               <h3 class="govuk-heading-m">Research links</h3>
+
+                 <table class="govuk-table govuk-!-margin-bottom-9">
+                   <thead class="govuk-table__head">
+                     <tr class="govuk-table__row">
+                       <th scope="col" class="govuk-table__header">Description</th>
+                       <th scope="col" class="govuk-table__header">Status</th>
+                       <th scope="col" class="govuk-table__header">Copy link</th>
+                     </tr>
+                   </thead>
+                   <tbody class="govuk-table__body">
+
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">
+                        <a href="../get-a-proof-of-benefit-letter/v4-research/digital/email/research-set-up/intro" class="govuk-link--no-visited-state">
+                          Journey A - Digital Priority - Email
+                        </a>
+                      </td>
+                      <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--blue">Ready</strong>
+                      </td>
+                      <td class="govuk-table__cell" style="min-width: 4rem">
+                        <div style="height: 2rem;">
+                          <button
+                            data-link="https://customer-view.herokuapp.com/get-a-proof-of-benefit-letter/v4-research/digital/email/research-set-up/intro"
+                            style="background-color: white; border: none; padding: 0; margin: 0; cursor: pointer;">
+                            <!-- SVG Icon -->
+                            <svg width="1.5rem" height="1.5rem" fill="none" stroke="#1d70b8" stroke-width="2" style="margin: 0;">
+                              <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                              <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                            </svg>
+                          </button>
+                          <p class="govuk-body" style="display: none; margin: 0;">Copied!</p>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">
+                        <a href="../get-a-proof-of-benefit-letter/v4-research/digital/noemail/research-set-up/intro" class="govuk-link--no-visited-state">
+                          Journey A - Digital Priority - No Email
+                        </a>
+                      </td>
+                      <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--blue">Ready</strong>
+                      </td>
+                      <td class="govuk-table__cell" style="min-width: 4rem">
+                        <div style="height: 2rem;">
+                          <button
+                            data-link="https://customer-view.herokuapp.com/get-a-proof-of-benefit-letter/v4-research/digital/noemail/research-set-up/intro"
+                            style="background-color: white; border: none; padding: 0; margin: 0; cursor: pointer;">
+                            <!-- SVG Icon -->
+                            <svg width="1.5rem" height="1.5rem" fill="none" stroke="#1d70b8" stroke-width="2" style="margin: 0;">
+                              <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                              <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                            </svg>
+                          </button>
+                          <p class="govuk-body" style="display: none; margin: 0;">Copied!</p>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">
+                        <a href="../get-a-proof-of-benefit-letter/v4-research/mixed/email/research-set-up/intro" class="govuk-link--no-visited-state">
+                          Journey B - Mixed Priority - Email
+                        </a>
+                      </td>
+                      <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--blue">Ready</strong>
+                      </td>
+                      <td class="govuk-table__cell" style="min-width: 4rem">
+                        <div style="height: 2rem;">
+                          <button
+                            data-link="https://customer-view.herokuapp.com/get-a-proof-of-benefit-letter/v4-research/mixed/email/research-set-up/intro"
+                            style="background-color: white; border: none; padding: 0; margin: 0; cursor: pointer;">
+                            <!-- SVG Icon -->
+                            <svg width="1.5rem" height="1.5rem" fill="none" stroke="#1d70b8" stroke-width="2" style="margin: 0;">
+                              <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                              <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                            </svg>
+                          </button>
+                          <p class="govuk-body" style="display: none; margin: 0;">Copied!</p>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">
+                        <a href="../get-a-proof-of-benefit-letter/v4-research/mixed/noemail/research-set-up/intro" class="govuk-link--no-visited-state">
+                          Journey B - Mixed Priority - No Email
+                        </a>
+                      </td>
+                      <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--blue">Ready</strong>
+                      </td>
+                      <td class="govuk-table__cell" style="min-width: 4rem">
+                        <div style="height: 2rem;">
+                          <button
+                            data-link="https://customer-view.herokuapp.com/get-a-proof-of-benefit-letter/v4-research/mixed/noemail/research-set-up/intro"
+                            style="background-color: white; border: none; padding: 0; margin: 0; cursor: pointer;">
+                            <!-- SVG Icon -->
+                            <svg width="1.5rem" height="1.5rem" fill="none" stroke="#1d70b8" stroke-width="2" style="margin: 0;">
+                              <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                              <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                            </svg>
+                          </button>
+                          <p class="govuk-body" style="display: none; margin: 0;">Copied!</p>
+                        </div>
+                      </td>
+                    </tr>
+                   </tbody>
+                 </table>
+
+                 <h3 class="govuk-heading-m">Development links</h3>
+
+                 <table class="govuk-table govuk-!-margin-bottom-0">
+                   <thead class="govuk-table__head">
+                     <tr class="govuk-table__row">
+                       <th scope="col" class="govuk-table__header">Description</th>
+                       <th scope="col" class="govuk-table__header">Purpose</th>
+                       <th scope="col" class="govuk-table__header">Status</th>
+                       <th scope="col" class="govuk-table__header">Link</th>
+                     </tr>
+                   </thead>
+                   <tbody class="govuk-table__body">
+                     <tr class="govuk-table__row">
+                       <td class="govuk-table__cell">Prototype</td>
+                       <td class="govuk-table__cell">Build</td>
+                       <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Not started</strong></td>
+                       <td class="govuk-table__cell"><a href="" class="govuk-link">View</a></td>
+                     </tr>
+                   </tbody>
+                 </table>
+
+
+               <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+               </details>
+
+               <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+              <!-- ------------- Version 3 ------------- -->
+
+              <span class="govuk-caption-m">Oct 2024 - Nov 2024</span>
+              <br>
+              <p>This design is based on research and evidence found in user research round 20.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Version 3 - Post private beta launch
+                  </span>
+                </summary>
+
+              <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                  <span class="govuk-visually-hidden">Warning</span>
+                  The dynamic content in this design is for user testing only
+                </strong>
+              </div>
+
+
+
+              <p>This iteration is parked. It is integrated into iteration 4 as work on digital download started.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Change log
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <p>Since version 2, we have:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>corrected benefit names to include acronyms on the start page</li>
+                    <li>added signposting content for people who get benefits on behalf of a child, and people who live in Wales on the start page</li>
+                    <li>made radio content on ‘how did you find out about this service?’ page more specific</li>
+                    <li>included names of other services that use OIDV to ‘we are taking you to our identity checking service’ page to help registered users understand whether they have an account or not</li>
+                    <li>merged ‘which benefits do you need proof of?’ and ‘getting proof of your benefits’ pages for users who get combination of in-and-out-of-scope benefit pages - checkbox version for multiple in-scope benefits and a radio version for one in-scope benefit</li>
+                    <li>iterated H1 content on some signposting pages to ‘contact us’ message rather than ‘you cannot use this service’</li>
+                    <li>iterated ‘check your answers’ designs so that users select ‘change’ for the request, rather than just the benefit,</li>
+                    <li>designed a ‘check your answers’ page for a person with one benefit</li>
+                    <li>corrected phase banner so that content matches guidelines</li>
+                    <li>made headings on personal details table plural if user receives multiple benefits</li>
+                    <li>added a print page button to confirmation page</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+                <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+                  <br>
+                  <strong>Register mobile:</strong> 969862
+                  <br>
+                  <strong>Sign in mobile:</strong> 471350
+                </p>
+              </div>
+
+              <h3 class="govuk-heading-m">Links</h3>
+
+                <table class="govuk-table govuk-!-margin-bottom-0">
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header">Description</th>
+                      <th scope="col" class="govuk-table__header">Purpose</th>
+                      <th scope="col" class="govuk-table__header">Status</th>
+                      <th scope="col" class="govuk-table__header">Link</th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Prototype</td>
+                      <td class="govuk-table__cell">Research</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Parked</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v3-research/research-set-up/intro.html" class="govuk-link">View</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Prototype</td>
+                      <td class="govuk-table__cell">Build</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Not started</strong></td>
+                      <td class="govuk-table__cell"><a href="" class="govuk-link">View</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+              </details>
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+              <!-- ------------- Release 1 ------------- -->
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Release 1 - Private beta baseline
+                  </span>
+                </summary>
+
+              <span class="govuk-caption-m">April 2024 - May 2024</span>
+
+              <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                  <span class="govuk-visually-hidden">Warning</span>
+                  The dynamic content in this design is for user testing only
+                </strong>
+              </div>
+
+              <p>This design is based on research and evidence found in user research round 19.</p>
+
+              <p>We tested this design in user testing round 20.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Change log
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <p>Since version 1, we have:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>Reduced and iterated content on the start page</li>
+                    <li>Removed ID requirements on the start page</li>
+                    <li>Added signposting pages for people who are not eligible in beta</li>
+                    <li>Kept account homepage design A</li>
+                    <li>Removed personal details homepage design B</li>
+                    <li>Changed ‘go back to account home’ link on personal details page to a button</li>
+                    <li>Added ‘go back to account home’ buttons on signposting pages within the service and confirmation page</li>
+                    <li>Added out-of-scope benefits to research set-up page to determine user’s benefits and the ‘which benefits do you need proof of?’ page</li>
+                    <li>Named out-of-scope benefits on the in-and-out-of-scope benefits signposting page</li>
+                    <li>Iterated the content on the in-and-out-of-scope benefits signposting page</li>
+                    <li>Iterated content on confirmation page and named out-of-scope benefits for signposting</li>
+                    <li>Removed address change link from check your answers page</li>
+                    <li>Added signed out and timed out pages</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+                <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+                  <br>
+                  <strong>Register mobile:</strong> 969862
+                  <br>
+                  <strong>Sign in mobile:</strong> 471350
+                </p>
+              </div>
+
+              <h3 class="govuk-heading-m">Links</h3>
+
+                <table class="govuk-table govuk-!-margin-bottom-0">
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header">Description</th>
+                      <th scope="col" class="govuk-table__header">Purpose</th>
+                      <th scope="col" class="govuk-table__header">Status</th>
+                      <th scope="col" class="govuk-table__header">Link</th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Prototype</td>
+                      <td class="govuk-table__cell">Research</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Ready</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v2-research/research-set-up/intro.html" class="govuk-link">View</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Prototype</td>
+                      <td class="govuk-table__cell">Build</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Ready</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v2-dev/dev-set-up/intro.html" class="govuk-link">View</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Eligibility - Error</td>
+                      <td class="govuk-table__cell">Build</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Ready</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v2-dev/errors/how-did-you-find-out-about-this-service-error" class="govuk-link">View</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Multi benefit selection - Error</td>
+                      <td class="govuk-table__cell">Build</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Ready</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v2-dev/errors/select-benefits-error" class="govuk-link">View</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Single benefit selection - Error</td>
+                      <td class="govuk-table__cell">Build</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Ready</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v2-dev/errors/do-you-want-a-letter-for-error" class="govuk-link">View</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">Address selection - Error</td>
+                      <td class="govuk-table__cell">Build</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Ready</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v2-dev/errors/do-you-want-a-letter-for-error.html" class="govuk-link">View</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">API Error - Signed in</td>
+                      <td class="govuk-table__cell">Build</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Ready</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v2-dev/errors/service-problem" class="govuk-link">View</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">API Error - Signed out</td>
+                      <td class="govuk-table__cell">Build</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Ready</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v2-dev/errors/problem-with-service" class="govuk-link">View</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">No Benefits on Record</td>
+                      <td class="govuk-table__cell">Build</td>
+                      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Ready</strong></td>
+                      <td class="govuk-table__cell"><a href="../get-a-proof-of-benefit-letter/v2-dev/you-cannot-get-proof-of-benefit-letter-no-benefits-recorded" class="govuk-link">View</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+              <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+              <!-- ------------- Version 1 ------------- -->
+
+              <span class="govuk-caption-m">March 2024 - April 2024</span>
+              <h2 class="govuk-heading-l">Version 1</h2>
+
+              <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                  <span class="govuk-visually-hidden">Warning</span>
+                  The dynamic content in this design is for user testing only
+                </strong>
+              </div>
+
+              <p></p>
+
+              <p>We’re conducting A/B testing to see which flow works best for users.</p>
+
+              <p>We tested this design in user testing round 20.</p>
+
+              <h3 class="govuk-heading-s">Flow A: account homepage</h3>
+
+              <p>Flow A has an account homepage with two links on: view your personal details, and get your proof of benefit letter.</p>
+
+              <h3 class="govuk-heading-s">Flow B: personal details homepage</h3>
+
+              <p>Flow B has a homepage with personal details on, and a link to the proof of benefits feature.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Change log
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <p>This version includes:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>A happy path for users who get in-scope benefits</li>
+                    <li>A happy path for users whose address is correct</li>
+                    <li>Signposting for users whose benefits are out-of-scope</li>
+                    <li>Signposting for users whose address needs updating</li>
+                    <li>Dynamic content depending on the benefits the user gets</li>
+                    <li>Dynamic content depending on whether the user has a correspondence address saved on our records</li>
+                    <li>The OIDV journey</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+                <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+                  <br>
+                  <strong>Register mobile:</strong> 969862
+                  <br>
+                  <strong>Sign in mobile:</strong> 471350
+                </p>
+              </div>
+
+
+              {{ govukButton({
+                text: "View prototype",
+                href: "../get-a-proof-of-benefit-letter/v1/proof-of-benefit-placeholder"
+              }) }}
+
+
+
+
+            </div>
+          </div>
+
+          <script>
+            document.querySelectorAll('.govuk-table button').forEach(button => {
+              button.addEventListener('click', () => {
+                // Get the link from the button's data-link attribute
+                const linkToCopy = button.getAttribute('data-link');
+                if (linkToCopy) {
+                  // Copy the link to the clipboard
+                  navigator.clipboard.writeText(linkToCopy).then(() => {
+                    // Find the "Copied!" message next to the button
+                    const copiedMessage = button.nextElementSibling;
+
+                    if (copiedMessage) {
+                      // Hide the button
+                      button.style.display = 'none';
+                      // Show the "Copied!" message
+                      copiedMessage.style.display = 'inline';
+
+                      // Restore the button after 2 seconds
+                      setTimeout(() => {
+                        copiedMessage.style.display = 'none';
+                        button.style.display = 'inline';
+                      }, 3000); // Hide the message after 3 seconds
+                    }
+                  }).catch(err => console.error('Failed to copy link:', err));
+                }
+              });
+            });
+        </script>
+        </div>
+
+
+
+ <!-- TAB2: Development baseline prototype -->
+ <div class="govuk-tabs__panel" id="dev-baseline-prototype">
+  <!-- Development baseline prototype -->
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Version 6: release 2  - PIP and NI
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+
+  <span class="govuk-caption-m">Feb 2025 - March 2025</span>
+  <br>
+
+  <p>Release 2 is an exact replica of iteration 5A, with the addition of State Pension signposting.</p>
+
+  <p>We have also included the Northern Ireland design, which signposts users in NI to nidrect instead of GOV.UK. The changes impact the URLs and the hyperlink content. NI will use their own start page on nidirect and not use ours on GOV.UK.</p>
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Change log
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p>New dynamic State Pension content included:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>in the ‘tell us about a change’ section on the personal details page</li>
+        <li>when a user’s address is incorrect, we signpost them to SP change of circs on the address signpost page</li>
+      </ul>
+
+      <p>Links that have been updated with NI content:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>beta signposting pages when people have not been invited to service</li>
+        <li>benefits in and out of scope pages when a user is in the service and their benefits are not in scope</li>
+        <li>if the user’s address is incorrect, they get signposted to nidirect</li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <p>Since release 1:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>iterated the service name to ‘Get proof of your benefits’ so there are options to include more ways to get letters in future</li>
+        <li>corrected benefit names to include acronyms on the start page</li>
+        <li>added signposting content for people who get benefits on behalf of a child, and people who live in Wales on the start page</li>
+        <li>made radio content on ‘how did you find out about this service?’ page more specific</li>
+        <li>merged ‘which benefits do you need proof of?’ and ‘getting proof of your benefits’ pages for users who get combination of in-and-out-of-scope benefit pages - checkbox version for multiple in-scope benefits and a radio version for one in-scope benefit</li>
+        <li>iterated H1 content on some signposting pages to ‘contact us’ message rather than ‘you cannot use this service’</li>
+        <li>iterated ‘check your answers’ designs so that users select ‘change’ for the request, rather than just the benefit</li>
+        <li>designed a ‘check your answers’ page for a person with one benefit</li>
+        <li>corrected phase banner so that content matches guidelines</li>
+        <li>made headings on personal details table plural if user receives multiple benefits</li>
+        <li>Changed how we refer to getting proof of benefits across the journey - with the exception of the service name, removing ‘letter’ in many cases since users are getting an email</li>
+        <li>added signposting for users who get one in scope benefit and any amount of out of scope benefits, when they select ‘no’ - these are unhappy paths following the main changes in iteration 3</li>
+        <li>Iterated confirmation page to include what happens next for users who are getting proof in an email</li>
+      </ul>
+    </div>
+  </details>
+
+  <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+    <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+    <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+      <br>
+      <strong>Register mobile:</strong> 969862
+      <br>
+      <strong>Sign in mobile:</strong> 471350
+    </p>
+  </div>
+
+  <h3 class="govuk-heading-m">Development links</h3>
+
+  <table class="govuk-table govuk-!-margin-bottom-0">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Description</th>
+        <th scope="col" class="govuk-table__header">Purpose</th>
+        <th scope="col" class="govuk-table__header">Status</th>
+        <th scope="col" class="govuk-table__header">Link</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">If you cannot create an account - GB</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/register/if-you-cannot-create-an-account.html" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">If you cannot create an account - NI</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/register/if-you-cannot-create-an-account-ni.html" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Email already registered - GB</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/email-already-registered-alt" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Email already registered - NI</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/email-already-registered-alt-ni" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Partially registered - GB</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/register/partially-registered-returning-user" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Partially registered - NI</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/register/partially-registered-returning-user-ni" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Partially registered lc - GB</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/register/partially-registered-returning-user-lc" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Partially registered lc - NI</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/register/partially-registered-returning-user-lc-ni" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Locked out - GB</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/locked-out" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Locked out - NI</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/locked-out-ni" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Unable to confirm identity - GB</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/unable-to-confirm-identity" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Unable to confirm identity - NI</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/unable-to-confirm-identity-ni" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">GUIDs do not match - GB</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/account-recovery/GUIDs-do-not-match" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">GUIDs do not match - NI</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="OIDV/account-recovery/GUIDs-do-not-match-ni" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Could not confirm your identity - GB</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="../idv/hmrciv/could-not-confirm-your-identity" class="govuk-link">View</a></td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">Could not confirm your identity - NI</td>
+        <td class="govuk-table__cell">OIDV</td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Done</strong></td>
+        <td class="govuk-table__cell"><a href="../idv/hmrciv/could-not-confirm-your-identity-ni" class="govuk-link">View</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  </details>
+
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Version 1
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+
+  <span class="govuk-caption-m">March 2024 - April 2024</span>
+
+              <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                  <span class="govuk-visually-hidden">Warning</span>
+                  The dynamic content in this design is for user testing only
+                </strong>
+              </div>
+
+              <p></p>
+
+              <p>We’re conducting A/B testing to see which flow works best for users.</p>
+
+              <p>We tested this design in user testing round 20.</p>
+
+              <h3 class="govuk-heading-s">Flow A: account homepage</h3>
+
+              <p>Flow A has an account homepage with two links on: view your personal details, and get your proof of benefit letter.</p>
+
+              <h3 class="govuk-heading-s">Flow B: personal details homepage</h3>
+
+              <p>Flow B has a homepage with personal details on, and a link to the proof of benefits feature.</p>
+
+              <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Change log
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <p>This version includes:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>A happy path for users who get in-scope benefits</li>
+                    <li>A happy path for users whose address is correct</li>
+                    <li>Signposting for users whose benefits are out-of-scope</li>
+                    <li>Signposting for users whose address needs updating</li>
+                    <li>Dynamic content depending on the benefits the user gets</li>
+                    <li>Dynamic content depending on whether the user has a correspondence address saved on our records</li>
+                    <li>The OIDV journey</li>
+                  </ul>
+                </div>
+              </details>
+
+              <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+                <p>To access our service, you’ll need OIDV authentication codes, which are:</p>
+
+                <p class="govuk-!-margin-bottom-0"><strong>Register email:</strong> 283194
+                  <br>
+                  <strong>Register mobile:</strong> 969862
+                  <br>
+                  <strong>Sign in mobile:</strong> 471350
+                </p>
+              </div>
+
+
+              {{ govukButton({
+                text: "View prototype",
+                href: "../get-a-proof-of-benefit-letter/v1/proof-of-benefit-placeholder"
+              }) }}
+
+
+
+
+            </div>
+          </div>
+
+          <script>
+            document.querySelectorAll('.govuk-table button').forEach(button => {
+              button.addEventListener('click', () => {
+                // Get the link from the button's data-link attribute
+                const linkToCopy = button.getAttribute('data-link');
+                if (linkToCopy) {
+                  // Copy the link to the clipboard
+                  navigator.clipboard.writeText(linkToCopy).then(() => {
+                    // Find the "Copied!" message next to the button
+                    const copiedMessage = button.nextElementSibling;
+
+                    if (copiedMessage) {
+                      // Hide the button
+                      button.style.display = 'none';
+                      // Show the "Copied!" message
+                      copiedMessage.style.display = 'inline';
+
+                      // Restore the button after 2 seconds
+                      setTimeout(() => {
+                        copiedMessage.style.display = 'none';
+                        button.style.display = 'inline';
+                      }, 3000); // Hide the message after 3 seconds
+                    }
+                  }).catch(err => console.error('Failed to copy link:', err));
+                }
+              });
+            });
+        </script>
+        </details>
+
+
+
+
+
+
+   <!-- TAB4: User journeys -->
+  <div class="govuk-tabs__panel" id="user-journeys">
+    <!-- User journeys -->
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Version 9 - integrating DID testing
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+
+
+        <span class="govuk-caption-m">May 2025</span>
+
+
+            <h3 class="govuk-heading-m">User journeys</h3>
+            <p><a href="../get-a-proof-of-benefit-letter/download/download-3/research-set-up/intro" class="govuk-link--no-visited-state">
+              View design A: Customer View download journey only
+            </a></p>
+
+            <p><a href="../get-a-proof-of-benefit-letter/download/download-notifications/research-set-up/intro" class="govuk-link--no-visited-state">
+              View design B: Customer View download journey plus signposting to DID’s notifications journey
+            </a></p>
+        </details>
+      <div>
+    </div>
+  </div>
+
+
+{% endblock %}

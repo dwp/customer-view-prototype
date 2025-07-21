@@ -21,6 +21,77 @@
       <p class="govuk-body-l">This journey lets people get a proof of benefit letter sent in the post.</p>
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+
+
+
+      <span class="govuk-caption-m">May 2025</span>
+      <h2 class="govuk-heading-l">Version 10 - including State Pension</h2>
+
+
+      {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+      {{ govukWarningText({
+        text: "The dynamic content in this design is for user testing only.",
+        iconFallbackText: "Warning"
+      }) }}
+      <p>This design lets users know they can get proof of their benefits and State Pension as a letter or a file to download.</p>
+      <p>It doesn’t include the Digital Interface Design (DID) team’s message centre functionality.
+      <p>This design is an iteration after user testing round 31 and based on best practise.</p>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Change log
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Since version 9, we have:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>included the words ‘State Pension’:</li>
+            <ul>
+              <li>in the service name</li>
+              <li>across the start page</li>
+              <li>on the home page</li>
+              <li>when we ask users what format they want proof in</li>
+              <li>on the confirmation page</li>
+            </ul>
+            <li>State Pension content is fixed before the user logs in</li>
+            <li>State Pension content is dynamic when the user is logged in</li>
+            <li>iterated the question ‘which benefits do you need proof of’ so that it’s non-specific, and now says ‘what do you need proof of?’</li>
+            <li>removed hint text explaining separate letters and files on ‘what do you need proof of?’ page</li>
+            <li>removed hint text explaining separate letters and files on ‘what do you need proof of?’ page</li>
+            <ul>
+              <li>we have reframed the ‘address’ question and included the address</li>
+              <li>We have added individual change links back in now that content is reframed </li>
+            </ul>
+          </ul>
+        </div>
+      </details>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      <div class="govuk-button-group">
+
+
+        {{ govukButton({
+          text: "View design: Download design              ",
+          href: "../get-a-proof-of-benefit-letter/download/download-4-SP/research-set-up/intro"
+        }) }}
+
+      </div>
+
+
+      <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+        <p>The Online Identity and Verification (OIDV) service is not included in this
+          design</p>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+
+
+
+
       <span class="govuk-caption-m">May 2025</span>
       <h2 class="govuk-heading-l">Version 9 - integrating DID testing</h2>
 
